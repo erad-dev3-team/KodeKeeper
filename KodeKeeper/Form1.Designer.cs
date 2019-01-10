@@ -31,14 +31,14 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.tsc_Container = new System.Windows.Forms.ToolStripContainer();
 			this.ss_Status = new System.Windows.Forms.StatusStrip();
-			this.p_Search = new System.Windows.Forms.Panel();
+			this.p_Search = new KodeKeeper.myPanel();
 			this.p_Resize = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.btn_Search = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
 			this.num_LimitResults = new System.Windows.Forms.NumericUpDown();
 			this.label5 = new System.Windows.Forms.Label();
 			this.cb_LimitResults = new System.Windows.Forms.CheckBox();
-			this.btn_Search = new System.Windows.Forms.Button();
 			this.tb_Search_Tags = new System.Windows.Forms.TextBox();
 			this.tb_Search_Description = new System.Windows.Forms.TextBox();
 			this.tb_Search_Name = new System.Windows.Forms.TextBox();
@@ -64,6 +64,7 @@
 			this.btn_Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsc_Container.BottomToolStripPanel.SuspendLayout();
 			this.tsc_Container.ContentPanel.SuspendLayout();
 			this.tsc_Container.RightToolStripPanel.SuspendLayout();
@@ -133,8 +134,9 @@
 			this.p_Search.Controls.Add(this.panel1);
 			this.p_Search.Controls.Add(this.panel2);
 			this.p_Search.Location = new System.Drawing.Point(3, 3);
+			this.p_Search.MinimumSize = new System.Drawing.Size(221, 139);
 			this.p_Search.Name = "p_Search";
-			this.p_Search.Size = new System.Drawing.Size(0, 0);
+			this.p_Search.Size = new System.Drawing.Size(360, 173);
 			this.p_Search.TabIndex = 0;
 			this.p_Search.LocationChanged += new System.EventHandler(this.p_Search_LocationChanged);
 			// 
@@ -143,7 +145,7 @@
 			this.p_Resize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.p_Resize.BackgroundImage = global::KodeKeeper.Properties.Resources.resizer;
 			this.p_Resize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-			this.p_Resize.Location = new System.Drawing.Point(-10, -10);
+			this.p_Resize.Location = new System.Drawing.Point(348, 161);
 			this.p_Resize.Name = "p_Resize";
 			this.p_Resize.Size = new System.Drawing.Size(10, 10);
 			this.p_Resize.TabIndex = 1;
@@ -155,16 +157,35 @@
 			// 
 			this.panel3.BackColor = System.Drawing.Color.Black;
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel3.Location = new System.Drawing.Point(0, -24);
+			this.panel3.Location = new System.Drawing.Point(0, 147);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(0, 1);
+			this.panel3.Size = new System.Drawing.Size(358, 1);
 			this.panel3.TabIndex = 13;
+			// 
+			// btn_Search
+			// 
+			this.btn_Search.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.btn_Search.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.btn_Search.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+			this.btn_Search.FlatAppearance.BorderSize = 0;
+			this.btn_Search.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+			this.btn_Search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+			this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btn_Search.Location = new System.Drawing.Point(0, 148);
+			this.btn_Search.Name = "btn_Search";
+			this.btn_Search.Size = new System.Drawing.Size(358, 23);
+			this.btn_Search.TabIndex = 8;
+			this.btn_Search.Text = "Search";
+			this.btn_Search.UseVisualStyleBackColor = true;
+			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+			this.btn_Search.MouseEnter += new System.EventHandler(this.btn_Search_MouseEnter);
+			this.btn_Search.MouseLeave += new System.EventHandler(this.btn_Search_MouseLeave);
 			// 
 			// label6
 			// 
 			this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(-39, 125);
+			this.label6.Location = new System.Drawing.Point(321, 125);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(38, 13);
 			this.label6.TabIndex = 12;
@@ -174,7 +195,7 @@
 			// 
 			this.num_LimitResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.num_LimitResults.Enabled = false;
-			this.num_LimitResults.Location = new System.Drawing.Point(-93, 122);
+			this.num_LimitResults.Location = new System.Drawing.Point(267, 122);
 			this.num_LimitResults.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -198,7 +219,7 @@
 			// 
 			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(-119, 125);
+			this.label5.Location = new System.Drawing.Point(241, 125);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(23, 13);
 			this.label5.TabIndex = 10;
@@ -216,32 +237,13 @@
 			this.cb_LimitResults.UseVisualStyleBackColor = true;
 			this.cb_LimitResults.CheckedChanged += new System.EventHandler(this.cb_LimitResults_CheckedChanged);
 			// 
-			// btn_Search
-			// 
-			this.btn_Search.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.btn_Search.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.btn_Search.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-			this.btn_Search.FlatAppearance.BorderSize = 0;
-			this.btn_Search.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-			this.btn_Search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-			this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btn_Search.Location = new System.Drawing.Point(0, -23);
-			this.btn_Search.Name = "btn_Search";
-			this.btn_Search.Size = new System.Drawing.Size(0, 23);
-			this.btn_Search.TabIndex = 8;
-			this.btn_Search.Text = "Search";
-			this.btn_Search.UseVisualStyleBackColor = true;
-			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-			this.btn_Search.MouseEnter += new System.EventHandler(this.btn_Search_MouseEnter);
-			this.btn_Search.MouseLeave += new System.EventHandler(this.btn_Search_MouseLeave);
-			// 
 			// tb_Search_Tags
 			// 
 			this.tb_Search_Tags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tb_Search_Tags.Location = new System.Drawing.Point(82, 93);
 			this.tb_Search_Tags.Name = "tb_Search_Tags";
-			this.tb_Search_Tags.Size = new System.Drawing.Size(0, 20);
+			this.tb_Search_Tags.Size = new System.Drawing.Size(360, 20);
 			this.tb_Search_Tags.TabIndex = 6;
 			// 
 			// tb_Search_Description
@@ -250,7 +252,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tb_Search_Description.Location = new System.Drawing.Point(82, 56);
 			this.tb_Search_Description.Name = "tb_Search_Description";
-			this.tb_Search_Description.Size = new System.Drawing.Size(0, 20);
+			this.tb_Search_Description.Size = new System.Drawing.Size(360, 20);
 			this.tb_Search_Description.TabIndex = 5;
 			// 
 			// tb_Search_Name
@@ -259,7 +261,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tb_Search_Name.Location = new System.Drawing.Point(80, 19);
 			this.tb_Search_Name.Name = "tb_Search_Name";
-			this.tb_Search_Name.Size = new System.Drawing.Size(0, 20);
+			this.tb_Search_Name.Size = new System.Drawing.Size(360, 20);
 			this.tb_Search_Name.TabIndex = 4;
 			// 
 			// label4
@@ -297,8 +299,9 @@
 			this.p_SearchHeader.Dock = System.Windows.Forms.DockStyle.Top;
 			this.p_SearchHeader.Location = new System.Drawing.Point(0, 0);
 			this.p_SearchHeader.Name = "p_SearchHeader";
-			this.p_SearchHeader.Size = new System.Drawing.Size(0, 17);
+			this.p_SearchHeader.Size = new System.Drawing.Size(358, 17);
 			this.p_SearchHeader.TabIndex = 0;
+			this.p_SearchHeader.MouseCaptureChanged += new System.EventHandler(this.p_SearchHeader_MouseCaptureChanged);
 			this.p_SearchHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.p_SearchHeader_MouseDown);
 			this.p_SearchHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.p_SearchHeader_MouseMove);
 			this.p_SearchHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.p_SearchHeader_MouseUp);
@@ -311,7 +314,7 @@
 			this.lbl_CloseSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.lbl_CloseSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.lbl_CloseSearch.ForeColor = System.Drawing.Color.White;
-			this.lbl_CloseSearch.Location = new System.Drawing.Point(-22, -6);
+			this.lbl_CloseSearch.Location = new System.Drawing.Point(336, -6);
 			this.lbl_CloseSearch.Name = "lbl_CloseSearch";
 			this.lbl_CloseSearch.Size = new System.Drawing.Size(28, 29);
 			this.lbl_CloseSearch.TabIndex = 1;
@@ -336,7 +339,7 @@
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel1.Controls.Add(this.rb_SN_OR_DESC);
 			this.panel1.Controls.Add(this.rb_SN_AND_DESC);
-			this.panel1.Location = new System.Drawing.Point(-99, 36);
+			this.panel1.Location = new System.Drawing.Point(261, 36);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(96, 24);
 			this.panel1.TabIndex = 1;
@@ -368,7 +371,7 @@
 			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.Controls.Add(this.rb_DESC_OR_TAGS);
 			this.panel2.Controls.Add(this.rb_DESC_AND_TAGS);
-			this.panel2.Location = new System.Drawing.Point(-99, 73);
+			this.panel2.Location = new System.Drawing.Point(261, 73);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(96, 24);
 			this.panel2.TabIndex = 2;
@@ -450,6 +453,8 @@
 			// 
 			// btn_Menu_File
 			// 
+			this.btn_Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Menu_AddNewFile});
 			this.btn_Menu_File.Name = "btn_Menu_File";
 			this.btn_Menu_File.Size = new System.Drawing.Size(37, 20);
 			this.btn_Menu_File.Text = "File";
@@ -477,6 +482,13 @@
 			this.btn_Menu_Help.Name = "btn_Menu_Help";
 			this.btn_Menu_Help.Size = new System.Drawing.Size(44, 20);
 			this.btn_Menu_Help.Text = "Help";
+			// 
+			// btn_Menu_AddNewFile
+			// 
+			this.btn_Menu_AddNewFile.Name = "btn_Menu_AddNewFile";
+			this.btn_Menu_AddNewFile.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_AddNewFile.Text = "Add New File";
+			this.btn_Menu_AddNewFile.Click += new System.EventHandler(this.btn_Menu_AddNewFile_Click);
 			// 
 			// Form1
 			// 
@@ -529,7 +541,6 @@
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Help;
 		private System.Windows.Forms.ToolStripButton btn_ToolStrip_Search;
 		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-		private System.Windows.Forms.Panel p_Search;
 		private System.Windows.Forms.Panel p_SearchHeader;
 		private System.Windows.Forms.Label lbl_CloseSearch;
 		private System.Windows.Forms.Label label1;
@@ -552,6 +563,8 @@
 		private System.Windows.Forms.CheckBox cb_LimitResults;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.Panel p_Resize;
+		private myPanel p_Search;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_AddNewFile;
 	}
 }
 

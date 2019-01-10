@@ -17,6 +17,16 @@ namespace KodeKeeper
 		private Point searchResize_Pnt = new Point(0, 0);
 		private c_DBHandler _dbh = new c_DBHandler("KodeKeeper.db");
 
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams cp = base.CreateParams;
+				cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+				return cp;
+			}
+		}
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -25,7 +35,7 @@ namespace KodeKeeper
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			
+			p_Search.Hide();
 		}
 
 		private void p_SearchHeader_MouseDown(object sender, MouseEventArgs e)
@@ -69,6 +79,12 @@ namespace KodeKeeper
 		public void hideSearch()
 		{
 			p_Search.Hide();
+
+			if (((p_Search.Bottom < 0 || p_Search.Right < 0) ||
+				(p_Search.Top > Height || p_Search.Left > Width)))
+			{
+				showSearch();
+			}
 		}
 
 		private void btn_ToolStrip_Search_Click(object sender, EventArgs e)
@@ -115,13 +131,21 @@ namespace KodeKeeper
 
 		private void p_Search_LocationChanged(object sender, EventArgs e)
 		{
-			if ((p_Search.Bottom < 0 || p_Search.Right < 0) ||
-				(p_Search.Top > Height || p_Search.Left > Width)) { hideSearch(); }
 		}
 
 		private void btn_Search_Click(object sender, EventArgs e)
 		{
 			//TODO: Search!
+		}
+
+		private void p_SearchHeader_MouseCaptureChanged(object sender, EventArgs e)
+		{
+		}
+
+		private void btn_Menu_AddNewFile_Click(object sender, EventArgs e)
+		{
+			f_AddFile fa = new f_AddFile();
+			fa.ShowDialog();
 		}
 	}
 }
