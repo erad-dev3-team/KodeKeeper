@@ -101,6 +101,90 @@ namespace KodeKeeper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to #Example template file
+        ///
+        ///-MAIN-
+        ///PROJECT=test_project
+        ///FNAME=baz.pl
+        ///FPATH=/foo/bar/
+        ///PARAMS=date username
+        ///VERSION=1.0
+        ///INUSE=1
+        ///
+        ///-FILE-
+        ///PATH=c:\files\foo\bar\baz.pl
+        ///IMAGE=perl_1_256
+        ///
+        ///-COMMENT-
+        ///CSTART
+        ///Here is a comment... can&apos;t be longer than 300 characters (the rest is trimmed off)
+        ///CEND
+        ///
+        ///-NOTES-
+        ///NSTART
+        ///The note explaining how the file works, what it&apos;s used for 
+        ///and anything else you want to explain
+        ///NEND
+        ///
+        ///-MISC-
+        ///RIGHTS=0755
+        ///OWNER=admin
+        ///GROUP=editors
+        ///#CREATED=
+        ///#MODIFIED=
+        ///
+        ///--FILE--
+        ///        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string file_data_example {
+            get {
+                return ResourceManager.GetString("file_data_example", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #Main file data
+        ///-MAIN-
+        ///#Project name
+        ///#(eg: weblabel_hu)
+        ///PROJECT=
+        ///#File Name
+        ///#(eg: index.php)
+        ///FNAME=
+        ///#File Path
+        ///#(eg: /usr/local/weblabel_ssl/)
+        ///FPATH=
+        ///#Input parameters
+        ///#(eg: run)
+        ///PARAMS=
+        ///#File Version
+        ///#(eg: v01 or _new)
+        ///VERSION=
+        ///#Is file in use
+        ///#(bool: 0 for false 1 for true)
+        ///INUSE=
+        ///
+        ///#File to attach
+        ///-FILE-
+        ///#File path
+        ///#(eg: c:\foo\bar\index.php)
+        ///PATH=
+        ///#Image to use if not the default
+        ///#(eg: code_2_256)
+        ///IMAGE=
+        ///
+        ///#Comment for the file
+        ///#300 character long max
+        ///-COMMENT-
+        ///#put commen [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FileDataTemplate {
+            get {
+                return ResourceManager.GetString("FileDataTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] filedb {
@@ -117,6 +201,16 @@ namespace KodeKeeper.Properties {
             get {
                 object obj = ResourceManager.GetObject("filedb1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO images (name, size, for, image) VALUES 
+        ///(&apos;code_128&apos;, 128, &apos;code&apos;, &apos;137|80|78|71|13|10|26|10|0|0|0|13|73|72|68|82|0|0|0|128|0|0|0|128|8|6|0|0|0|195|62|97|203|0|0|0|1|115|82|71|66|0|174|206|28|233|0|0|0|4|103|65|77|65|0|0|177|143|11|252|97|5|0|0|0|9|112|72|89|115|0|0|78|188|0|0|78|188|1|161|45|138|240|0|0|0|25|116|69|88|116|83|111|102|116|119|97|114|101|0|119|119|119|46|105|110|107|115|99|97|112|101|46|111|114|103|155|238|60|26|0|0|10|217|73|68|65|84|120|94|237|157|11|140|30|85|21|199|23|159|17|1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ImageInsert {
+            get {
+                return ResourceManager.GetString("ImageInsert", resourceCulture);
             }
         }
         

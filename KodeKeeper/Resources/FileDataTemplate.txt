@@ -1,0 +1,70 @@
+#Main file data
+-MAIN-
+#Project name
+#(eg: weblabel_hu)
+PROJECT=
+#File Name
+#(eg: index.php)
+FNAME=
+#File Path
+#(eg: /usr/local/weblabel_ssl/)
+FPATH=
+#Input parameters
+#(eg: run)
+PARAMS=
+#File Version
+#(eg: v01 or _new)
+VERSION=
+#Is file in use
+#(bool: 0 for false 1 for true)
+INUSE=
+
+#File to attach
+-FILE-
+#File path
+#(eg: c:\foo\bar\index.php)
+PATH=
+#Image to use if not the default
+#(eg: code_2_256)
+IMAGE=
+
+#Comment for the file
+#300 character long max
+-COMMENT-
+#put comment between start and end tags
+CSTART
+CEND
+
+#Notes for the file
+#Unlimited length
+-NOTES-
+#put notes between start and end tags
+NSTART
+NEND
+
+#Additional file data
+#If file is attached, the data is attempted to be
+#parsed from the file. 
+#If not, or if it's unreliable, you can overwrite here
+-MISC-
+#User rights
+#Format: 4 octal values
+#Special/Owner/Group/Other
+#(eg: 0755)
+#RIGHTS=
+#File owner
+#(eg: root)
+#OWNER=
+#File group
+#(eg: developers)
+#GROUP=
+#Date of file creation
+#(eg: 2017-10-03)
+#CREATED=
+#Date of last file modification
+#(eg: 2018-01-13)
+#MODIFIED=
+
+#For creating multifile template
+#After each file add a --FILE-- line
+#--FILE--

@@ -51,6 +51,13 @@
 			this.lbl_MimeType = new System.Windows.Forms.Label();
 			this.lbl_FileType = new System.Windows.Forms.Label();
 			this.gb_AdditionalInfo = new System.Windows.Forms.GroupBox();
+			this.p_DragDrop_AllData = new System.Windows.Forms.Panel();
+			this.lbl_AllData = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
 			this.btn_RightsHelp = new System.Windows.Forms.Button();
 			this.btn_RightsSetup = new System.Windows.Forms.Button();
 			this.mtb_Rights = new System.Windows.Forms.MaskedTextBox();
@@ -61,16 +68,21 @@
 			this.label19 = new System.Windows.Forms.Label();
 			this.gb_AddFile = new System.Windows.Forms.GroupBox();
 			this.p_DragDrop_File = new System.Windows.Forms.Panel();
+			this.lbl_FileAttachment = new System.Windows.Forms.Label();
+			this.pb_FileType_Image = new System.Windows.Forms.PictureBox();
 			this.gb_Comments = new System.Windows.Forms.GroupBox();
 			this.p_DragDrop_Comment = new System.Windows.Forms.Panel();
+			this.lbl_CommentData = new System.Windows.Forms.Label();
 			this.tb_Comment = new System.Windows.Forms.TextBox();
 			this.gb_Notes = new System.Windows.Forms.GroupBox();
 			this.p_DragDrop_Notes = new System.Windows.Forms.Panel();
+			this.lbl_NotesData = new System.Windows.Forms.Label();
 			this.tb_FileNotes = new System.Windows.Forms.TextBox();
 			this.btn_Close = new System.Windows.Forms.Button();
 			this.btn_Save = new System.Windows.Forms.Button();
 			this.btn_Help = new System.Windows.Forms.Button();
 			this.p_DragDrop_MainData = new System.Windows.Forms.Panel();
+			this.lbl_MainData = new System.Windows.Forms.Label();
 			this.p_RightSetup = new System.Windows.Forms.Panel();
 			this.cb_Other_3 = new System.Windows.Forms.CheckBox();
 			this.cb_Other_2 = new System.Windows.Forms.CheckBox();
@@ -84,14 +96,21 @@
 			this.cb_Special_3 = new System.Windows.Forms.CheckBox();
 			this.cb_Special_2 = new System.Windows.Forms.CheckBox();
 			this.cb_Special_1 = new System.Windows.Forms.CheckBox();
-			this.pb_FileType_Image = new System.Windows.Forms.PictureBox();
+			this.gb_MainData = new System.Windows.Forms.GroupBox();
+			this.btn_PasteData = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.num_FileVersion)).BeginInit();
 			this.gb_AdditionalInfo.SuspendLayout();
+			this.p_DragDrop_AllData.SuspendLayout();
 			this.gb_AddFile.SuspendLayout();
-			this.gb_Comments.SuspendLayout();
-			this.gb_Notes.SuspendLayout();
-			this.p_RightSetup.SuspendLayout();
+			this.p_DragDrop_File.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pb_FileType_Image)).BeginInit();
+			this.gb_Comments.SuspendLayout();
+			this.p_DragDrop_Comment.SuspendLayout();
+			this.gb_Notes.SuspendLayout();
+			this.p_DragDrop_Notes.SuspendLayout();
+			this.p_DragDrop_MainData.SuspendLayout();
+			this.p_RightSetup.SuspendLayout();
+			this.gb_MainData.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -106,7 +125,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 36);
+			this.label2.Location = new System.Drawing.Point(19, 25);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(46, 13);
 			this.label2.TabIndex = 1;
@@ -115,7 +134,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 59);
+			this.label3.Location = new System.Drawing.Point(19, 48);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(58, 13);
 			this.label3.TabIndex = 2;
@@ -124,7 +143,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 82);
+			this.label4.Location = new System.Drawing.Point(19, 71);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(53, 13);
 			this.label4.TabIndex = 3;
@@ -133,7 +152,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 105);
+			this.label5.Location = new System.Drawing.Point(19, 94);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(93, 13);
 			this.label5.TabIndex = 4;
@@ -151,7 +170,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(12, 128);
+			this.label7.Location = new System.Drawing.Point(19, 117);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(48, 13);
 			this.label7.TabIndex = 6;
@@ -160,7 +179,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(306, 36);
+			this.label8.Location = new System.Drawing.Point(313, 25);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(60, 13);
 			this.label8.TabIndex = 7;
@@ -169,35 +188,35 @@
 			// cb_ProjectName
 			// 
 			this.cb_ProjectName.FormattingEnabled = true;
-			this.cb_ProjectName.Location = new System.Drawing.Point(121, 32);
+			this.cb_ProjectName.Location = new System.Drawing.Point(128, 21);
 			this.cb_ProjectName.Name = "cb_ProjectName";
 			this.cb_ProjectName.Size = new System.Drawing.Size(166, 21);
 			this.cb_ProjectName.TabIndex = 8;
 			// 
 			// tb_FileName
 			// 
-			this.tb_FileName.Location = new System.Drawing.Point(121, 55);
+			this.tb_FileName.Location = new System.Drawing.Point(128, 44);
 			this.tb_FileName.Name = "tb_FileName";
-			this.tb_FileName.Size = new System.Drawing.Size(294, 20);
+			this.tb_FileName.Size = new System.Drawing.Size(331, 20);
 			this.tb_FileName.TabIndex = 9;
 			// 
 			// tb_FilePath
 			// 
-			this.tb_FilePath.Location = new System.Drawing.Point(121, 78);
+			this.tb_FilePath.Location = new System.Drawing.Point(128, 67);
 			this.tb_FilePath.Name = "tb_FilePath";
-			this.tb_FilePath.Size = new System.Drawing.Size(294, 20);
+			this.tb_FilePath.Size = new System.Drawing.Size(331, 20);
 			this.tb_FilePath.TabIndex = 10;
 			// 
 			// tb_InputParameters
 			// 
-			this.tb_InputParameters.Location = new System.Drawing.Point(121, 101);
+			this.tb_InputParameters.Location = new System.Drawing.Point(128, 90);
 			this.tb_InputParameters.Name = "tb_InputParameters";
-			this.tb_InputParameters.Size = new System.Drawing.Size(294, 20);
+			this.tb_InputParameters.Size = new System.Drawing.Size(331, 20);
 			this.tb_InputParameters.TabIndex = 11;
 			// 
 			// num_FileVersion
 			// 
-			this.num_FileVersion.Location = new System.Drawing.Point(121, 124);
+			this.num_FileVersion.Location = new System.Drawing.Point(128, 113);
 			this.num_FileVersion.Name = "num_FileVersion";
 			this.num_FileVersion.Size = new System.Drawing.Size(120, 20);
 			this.num_FileVersion.TabIndex = 12;
@@ -205,7 +224,7 @@
 			// cb_FileInUse
 			// 
 			this.cb_FileInUse.AutoSize = true;
-			this.cb_FileInUse.Location = new System.Drawing.Point(372, 36);
+			this.cb_FileInUse.Location = new System.Drawing.Point(379, 25);
 			this.cb_FileInUse.Name = "cb_FileInUse";
 			this.cb_FileInUse.Size = new System.Drawing.Size(15, 14);
 			this.cb_FileInUse.TabIndex = 13;
@@ -215,14 +234,14 @@
 			// 
 			this.tb_FileOpen.Location = new System.Drawing.Point(9, 16);
 			this.tb_FileOpen.Name = "tb_FileOpen";
-			this.tb_FileOpen.Size = new System.Drawing.Size(342, 20);
+			this.tb_FileOpen.Size = new System.Drawing.Size(310, 20);
 			this.tb_FileOpen.TabIndex = 15;
 			// 
 			// btn_FileBrowse
 			// 
-			this.btn_FileBrowse.Location = new System.Drawing.Point(344, 15);
+			this.btn_FileBrowse.Location = new System.Drawing.Point(308, 15);
 			this.btn_FileBrowse.Name = "btn_FileBrowse";
-			this.btn_FileBrowse.Size = new System.Drawing.Size(50, 22);
+			this.btn_FileBrowse.Size = new System.Drawing.Size(52, 22);
 			this.btn_FileBrowse.TabIndex = 16;
 			this.btn_FileBrowse.Text = "Browse";
 			this.btn_FileBrowse.UseVisualStyleBackColor = true;
@@ -284,6 +303,12 @@
 			// gb_AdditionalInfo
 			// 
 			this.gb_AdditionalInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.gb_AdditionalInfo.Controls.Add(this.p_DragDrop_AllData);
+			this.gb_AdditionalInfo.Controls.Add(this.label15);
+			this.gb_AdditionalInfo.Controls.Add(this.label14);
+			this.gb_AdditionalInfo.Controls.Add(this.label13);
+			this.gb_AdditionalInfo.Controls.Add(this.label9);
+			this.gb_AdditionalInfo.Controls.Add(this.label6);
 			this.gb_AdditionalInfo.Controls.Add(this.btn_RightsHelp);
 			this.gb_AdditionalInfo.Controls.Add(this.btn_RightsSetup);
 			this.gb_AdditionalInfo.Controls.Add(this.mtb_Rights);
@@ -292,17 +317,91 @@
 			this.gb_AdditionalInfo.Controls.Add(this.label17);
 			this.gb_AdditionalInfo.Controls.Add(this.label18);
 			this.gb_AdditionalInfo.Controls.Add(this.label19);
-			this.gb_AdditionalInfo.Location = new System.Drawing.Point(433, 260);
+			this.gb_AdditionalInfo.Location = new System.Drawing.Point(486, 297);
 			this.gb_AdditionalInfo.Name = "gb_AdditionalInfo";
-			this.gb_AdditionalInfo.Size = new System.Drawing.Size(236, 101);
+			this.gb_AdditionalInfo.Size = new System.Drawing.Size(331, 101);
 			this.gb_AdditionalInfo.TabIndex = 23;
 			this.gb_AdditionalInfo.TabStop = false;
+			this.gb_AdditionalInfo.Tag = "0";
 			this.gb_AdditionalInfo.Text = "Additional Info";
 			this.gb_AdditionalInfo.Enter += new System.EventHandler(this.groupBox1_Enter);
 			// 
+			// p_DragDrop_AllData
+			// 
+			this.p_DragDrop_AllData.AllowDrop = true;
+			this.p_DragDrop_AllData.Controls.Add(this.lbl_AllData);
+			this.p_DragDrop_AllData.Location = new System.Drawing.Point(3, 16);
+			this.p_DragDrop_AllData.Name = "p_DragDrop_AllData";
+			this.p_DragDrop_AllData.Size = new System.Drawing.Size(2, 2);
+			this.p_DragDrop_AllData.TabIndex = 31;
+			this.p_DragDrop_AllData.Tag = "0";
+			this.p_DragDrop_AllData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.p_DragDrop_AllData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.p_DragDrop_AllData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// lbl_AllData
+			// 
+			this.lbl_AllData.AllowDrop = true;
+			this.lbl_AllData.AutoSize = true;
+			this.lbl_AllData.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lbl_AllData.Location = new System.Drawing.Point(10, 10);
+			this.lbl_AllData.Name = "lbl_AllData";
+			this.lbl_AllData.Size = new System.Drawing.Size(179, 23);
+			this.lbl_AllData.TabIndex = 1;
+			this.lbl_AllData.Tag = "0";
+			this.lbl_AllData.Text = "All File Data";
+			this.lbl_AllData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.lbl_AllData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.lbl_AllData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(201, 24);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(58, 13);
+			this.label15.TabIndex = 36;
+			this.label15.Text = "File dates: ";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(245, 72);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(77, 13);
+			this.label14.TabIndex = 35;
+			this.label14.Text = "0000 / 00 / 00";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(245, 48);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(77, 13);
+			this.label13.TabIndex = 34;
+			this.label13.Text = "0000 / 00 / 00";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(193, 72);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(53, 13);
+			this.label9.TabIndex = 33;
+			this.label9.Text = "Modified: ";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(193, 48);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(50, 13);
+			this.label6.TabIndex = 32;
+			this.label6.Text = "Created: ";
+			// 
 			// btn_RightsHelp
 			// 
-			this.btn_RightsHelp.Location = new System.Drawing.Point(101, 18);
+			this.btn_RightsHelp.Location = new System.Drawing.Point(62, 18);
 			this.btn_RightsHelp.Name = "btn_RightsHelp";
 			this.btn_RightsHelp.Size = new System.Drawing.Size(17, 22);
 			this.btn_RightsHelp.TabIndex = 14;
@@ -311,7 +410,7 @@
 			// 
 			// btn_RightsSetup
 			// 
-			this.btn_RightsSetup.Location = new System.Drawing.Point(161, 18);
+			this.btn_RightsSetup.Location = new System.Drawing.Point(122, 18);
 			this.btn_RightsSetup.Name = "btn_RightsSetup";
 			this.btn_RightsSetup.Size = new System.Drawing.Size(60, 22);
 			this.btn_RightsSetup.TabIndex = 13;
@@ -321,7 +420,7 @@
 			// 
 			// mtb_Rights
 			// 
-			this.mtb_Rights.Location = new System.Drawing.Point(114, 19);
+			this.mtb_Rights.Location = new System.Drawing.Point(75, 19);
 			this.mtb_Rights.Mask = "0 0 0 0";
 			this.mtb_Rights.Name = "mtb_Rights";
 			this.mtb_Rights.Size = new System.Drawing.Size(51, 20);
@@ -333,14 +432,14 @@
 			// 
 			// tb_Group
 			// 
-			this.tb_Group.Location = new System.Drawing.Point(101, 68);
+			this.tb_Group.Location = new System.Drawing.Point(62, 68);
 			this.tb_Group.Name = "tb_Group";
 			this.tb_Group.Size = new System.Drawing.Size(120, 20);
 			this.tb_Group.TabIndex = 11;
 			// 
 			// tb_Owner
 			// 
-			this.tb_Owner.Location = new System.Drawing.Point(101, 44);
+			this.tb_Owner.Location = new System.Drawing.Point(62, 44);
 			this.tb_Owner.Name = "tb_Owner";
 			this.tb_Owner.Size = new System.Drawing.Size(120, 20);
 			this.tb_Owner.TabIndex = 10;
@@ -374,8 +473,8 @@
 			// 
 			// gb_AddFile
 			// 
-			this.gb_AddFile.Controls.Add(this.pb_FileType_Image);
 			this.gb_AddFile.Controls.Add(this.p_DragDrop_File);
+			this.gb_AddFile.Controls.Add(this.pb_FileType_Image);
 			this.gb_AddFile.Controls.Add(this.btn_FileBrowse);
 			this.gb_AddFile.Controls.Add(this.tb_FileOpen);
 			this.gb_AddFile.Controls.Add(this.lbl_MimeType);
@@ -384,19 +483,51 @@
 			this.gb_AddFile.Controls.Add(this.lbl_FileType);
 			this.gb_AddFile.Controls.Add(this.label12);
 			this.gb_AddFile.Controls.Add(this.label10);
-			this.gb_AddFile.Location = new System.Drawing.Point(15, 151);
+			this.gb_AddFile.Location = new System.Drawing.Point(15, 178);
 			this.gb_AddFile.Name = "gb_AddFile";
-			this.gb_AddFile.Size = new System.Drawing.Size(400, 119);
+			this.gb_AddFile.Size = new System.Drawing.Size(465, 113);
 			this.gb_AddFile.TabIndex = 24;
 			this.gb_AddFile.TabStop = false;
+			this.gb_AddFile.Tag = "2";
 			this.gb_AddFile.Text = "Add File";
 			// 
 			// p_DragDrop_File
 			// 
-			this.p_DragDrop_File.Location = new System.Drawing.Point(5, 5);
+			this.p_DragDrop_File.AllowDrop = true;
+			this.p_DragDrop_File.Controls.Add(this.lbl_FileAttachment);
+			this.p_DragDrop_File.Location = new System.Drawing.Point(3, 16);
 			this.p_DragDrop_File.Name = "p_DragDrop_File";
-			this.p_DragDrop_File.Size = new System.Drawing.Size(3, 3);
+			this.p_DragDrop_File.Size = new System.Drawing.Size(2, 2);
 			this.p_DragDrop_File.TabIndex = 23;
+			this.p_DragDrop_File.Tag = "2";
+			this.p_DragDrop_File.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.p_DragDrop_File.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.p_DragDrop_File.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// lbl_FileAttachment
+			// 
+			this.lbl_FileAttachment.AllowDrop = true;
+			this.lbl_FileAttachment.AutoSize = true;
+			this.lbl_FileAttachment.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lbl_FileAttachment.Location = new System.Drawing.Point(10, 10);
+			this.lbl_FileAttachment.Name = "lbl_FileAttachment";
+			this.lbl_FileAttachment.Size = new System.Drawing.Size(205, 23);
+			this.lbl_FileAttachment.TabIndex = 1;
+			this.lbl_FileAttachment.Tag = "2";
+			this.lbl_FileAttachment.Text = "File attachment";
+			this.lbl_FileAttachment.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.lbl_FileAttachment.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.lbl_FileAttachment.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// pb_FileType_Image
+			// 
+			this.pb_FileType_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pb_FileType_Image.Location = new System.Drawing.Point(361, 9);
+			this.pb_FileType_Image.Name = "pb_FileType_Image";
+			this.pb_FileType_Image.Size = new System.Drawing.Size(100, 100);
+			this.pb_FileType_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pb_FileType_Image.TabIndex = 24;
+			this.pb_FileType_Image.TabStop = false;
 			// 
 			// gb_Comments
 			// 
@@ -404,19 +535,41 @@
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.gb_Comments.Controls.Add(this.p_DragDrop_Comment);
 			this.gb_Comments.Controls.Add(this.tb_Comment);
-			this.gb_Comments.Location = new System.Drawing.Point(15, 276);
+			this.gb_Comments.Location = new System.Drawing.Point(15, 296);
 			this.gb_Comments.Name = "gb_Comments";
-			this.gb_Comments.Size = new System.Drawing.Size(400, 85);
+			this.gb_Comments.Size = new System.Drawing.Size(465, 102);
 			this.gb_Comments.TabIndex = 25;
 			this.gb_Comments.TabStop = false;
+			this.gb_Comments.Tag = "4";
 			this.gb_Comments.Text = "Comment (300)";
 			// 
 			// p_DragDrop_Comment
 			// 
-			this.p_DragDrop_Comment.Location = new System.Drawing.Point(396, 70);
+			this.p_DragDrop_Comment.AllowDrop = true;
+			this.p_DragDrop_Comment.Controls.Add(this.lbl_CommentData);
+			this.p_DragDrop_Comment.Location = new System.Drawing.Point(3, 16);
 			this.p_DragDrop_Comment.Name = "p_DragDrop_Comment";
-			this.p_DragDrop_Comment.Size = new System.Drawing.Size(3, 3);
+			this.p_DragDrop_Comment.Size = new System.Drawing.Size(2, 2);
 			this.p_DragDrop_Comment.TabIndex = 23;
+			this.p_DragDrop_Comment.Tag = "4";
+			this.p_DragDrop_Comment.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.p_DragDrop_Comment.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.p_DragDrop_Comment.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// lbl_CommentData
+			// 
+			this.lbl_CommentData.AllowDrop = true;
+			this.lbl_CommentData.AutoSize = true;
+			this.lbl_CommentData.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lbl_CommentData.Location = new System.Drawing.Point(10, 10);
+			this.lbl_CommentData.Name = "lbl_CommentData";
+			this.lbl_CommentData.Size = new System.Drawing.Size(101, 23);
+			this.lbl_CommentData.TabIndex = 1;
+			this.lbl_CommentData.Tag = "4";
+			this.lbl_CommentData.Text = "Comment";
+			this.lbl_CommentData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.lbl_CommentData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.lbl_CommentData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
 			// 
 			// tb_Comment
 			// 
@@ -427,7 +580,7 @@
 			this.tb_Comment.MaxLength = 300;
 			this.tb_Comment.Multiline = true;
 			this.tb_Comment.Name = "tb_Comment";
-			this.tb_Comment.Size = new System.Drawing.Size(394, 66);
+			this.tb_Comment.Size = new System.Drawing.Size(459, 83);
 			this.tb_Comment.TabIndex = 0;
 			// 
 			// gb_Notes
@@ -437,19 +590,41 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gb_Notes.Controls.Add(this.p_DragDrop_Notes);
 			this.gb_Notes.Controls.Add(this.tb_FileNotes);
-			this.gb_Notes.Location = new System.Drawing.Point(433, 12);
+			this.gb_Notes.Location = new System.Drawing.Point(486, 9);
 			this.gb_Notes.Name = "gb_Notes";
-			this.gb_Notes.Size = new System.Drawing.Size(372, 242);
+			this.gb_Notes.Size = new System.Drawing.Size(502, 282);
 			this.gb_Notes.TabIndex = 26;
 			this.gb_Notes.TabStop = false;
+			this.gb_Notes.Tag = "3";
 			this.gb_Notes.Text = "File Notes";
 			// 
 			// p_DragDrop_Notes
 			// 
-			this.p_DragDrop_Notes.Location = new System.Drawing.Point(378, 220);
+			this.p_DragDrop_Notes.AllowDrop = true;
+			this.p_DragDrop_Notes.Controls.Add(this.lbl_NotesData);
+			this.p_DragDrop_Notes.Location = new System.Drawing.Point(3, 16);
 			this.p_DragDrop_Notes.Name = "p_DragDrop_Notes";
-			this.p_DragDrop_Notes.Size = new System.Drawing.Size(3, 3);
+			this.p_DragDrop_Notes.Size = new System.Drawing.Size(2, 2);
 			this.p_DragDrop_Notes.TabIndex = 23;
+			this.p_DragDrop_Notes.Tag = "3";
+			this.p_DragDrop_Notes.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.p_DragDrop_Notes.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.p_DragDrop_Notes.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// lbl_NotesData
+			// 
+			this.lbl_NotesData.AllowDrop = true;
+			this.lbl_NotesData.AutoSize = true;
+			this.lbl_NotesData.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lbl_NotesData.Location = new System.Drawing.Point(10, 10);
+			this.lbl_NotesData.Name = "lbl_NotesData";
+			this.lbl_NotesData.Size = new System.Drawing.Size(75, 23);
+			this.lbl_NotesData.TabIndex = 1;
+			this.lbl_NotesData.Tag = "3";
+			this.lbl_NotesData.Text = "Notes";
+			this.lbl_NotesData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.lbl_NotesData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.lbl_NotesData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
 			// 
 			// tb_FileNotes
 			// 
@@ -459,15 +634,15 @@
 			this.tb_FileNotes.Location = new System.Drawing.Point(3, 16);
 			this.tb_FileNotes.Multiline = true;
 			this.tb_FileNotes.Name = "tb_FileNotes";
-			this.tb_FileNotes.Size = new System.Drawing.Size(366, 223);
+			this.tb_FileNotes.Size = new System.Drawing.Size(496, 263);
 			this.tb_FileNotes.TabIndex = 0;
 			// 
 			// btn_Close
 			// 
 			this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_Close.Location = new System.Drawing.Point(680, 338);
+			this.btn_Close.Location = new System.Drawing.Point(907, 375);
 			this.btn_Close.Name = "btn_Close";
-			this.btn_Close.Size = new System.Drawing.Size(125, 23);
+			this.btn_Close.Size = new System.Drawing.Size(78, 23);
 			this.btn_Close.TabIndex = 27;
 			this.btn_Close.Text = "Close";
 			this.btn_Close.UseVisualStyleBackColor = true;
@@ -475,9 +650,9 @@
 			// btn_Save
 			// 
 			this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_Save.Location = new System.Drawing.Point(680, 309);
+			this.btn_Save.Location = new System.Drawing.Point(823, 375);
 			this.btn_Save.Name = "btn_Save";
-			this.btn_Save.Size = new System.Drawing.Size(125, 23);
+			this.btn_Save.Size = new System.Drawing.Size(78, 23);
 			this.btn_Save.TabIndex = 28;
 			this.btn_Save.Text = "Save";
 			this.btn_Save.UseVisualStyleBackColor = true;
@@ -485,19 +660,40 @@
 			// btn_Help
 			// 
 			this.btn_Help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_Help.Location = new System.Drawing.Point(680, 262);
+			this.btn_Help.Location = new System.Drawing.Point(823, 297);
 			this.btn_Help.Name = "btn_Help";
-			this.btn_Help.Size = new System.Drawing.Size(125, 23);
+			this.btn_Help.Size = new System.Drawing.Size(165, 23);
 			this.btn_Help.TabIndex = 29;
 			this.btn_Help.Text = "Help";
 			this.btn_Help.UseVisualStyleBackColor = true;
 			// 
 			// p_DragDrop_MainData
 			// 
-			this.p_DragDrop_MainData.Location = new System.Drawing.Point(3, 9);
+			this.p_DragDrop_MainData.AllowDrop = true;
+			this.p_DragDrop_MainData.Controls.Add(this.lbl_MainData);
+			this.p_DragDrop_MainData.Location = new System.Drawing.Point(3, 16);
 			this.p_DragDrop_MainData.Name = "p_DragDrop_MainData";
-			this.p_DragDrop_MainData.Size = new System.Drawing.Size(3, 3);
+			this.p_DragDrop_MainData.Size = new System.Drawing.Size(2, 2);
 			this.p_DragDrop_MainData.TabIndex = 30;
+			this.p_DragDrop_MainData.Tag = "1";
+			this.p_DragDrop_MainData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.p_DragDrop_MainData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.p_DragDrop_MainData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
+			// 
+			// lbl_MainData
+			// 
+			this.lbl_MainData.AllowDrop = true;
+			this.lbl_MainData.AutoSize = true;
+			this.lbl_MainData.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.lbl_MainData.Location = new System.Drawing.Point(10, 10);
+			this.lbl_MainData.Name = "lbl_MainData";
+			this.lbl_MainData.Size = new System.Drawing.Size(127, 23);
+			this.lbl_MainData.TabIndex = 0;
+			this.lbl_MainData.Tag = "1";
+			this.lbl_MainData.Text = "Main Data";
+			this.lbl_MainData.DragDrop += new System.Windows.Forms.DragEventHandler(this.DATA_DragDrop);
+			this.lbl_MainData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			this.lbl_MainData.DragLeave += new System.EventHandler(this.p_DragDrop_MainData_DragLeave);
 			// 
 			// p_RightSetup
 			// 
@@ -516,7 +712,7 @@
 			this.p_RightSetup.Controls.Add(this.cb_Special_3);
 			this.p_RightSetup.Controls.Add(this.cb_Special_2);
 			this.p_RightSetup.Controls.Add(this.cb_Special_1);
-			this.p_RightSetup.Location = new System.Drawing.Point(557, 179);
+			this.p_RightSetup.Location = new System.Drawing.Point(571, 216);
 			this.p_RightSetup.Name = "p_RightSetup";
 			this.p_RightSetup.Size = new System.Drawing.Size(96, 99);
 			this.p_RightSetup.TabIndex = 31;
@@ -655,22 +851,49 @@
 			this.cb_Special_1.UseVisualStyleBackColor = true;
 			this.cb_Special_1.CheckedChanged += new System.EventHandler(this.cb_Other_CheckedChanged);
 			// 
-			// pb_FileType_Image
+			// gb_MainData
 			// 
-			this.pb_FileType_Image.Location = new System.Drawing.Point(321, 39);
-			this.pb_FileType_Image.Name = "pb_FileType_Image";
-			this.pb_FileType_Image.Size = new System.Drawing.Size(73, 75);
-			this.pb_FileType_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pb_FileType_Image.TabIndex = 24;
-			this.pb_FileType_Image.TabStop = false;
+			this.gb_MainData.Controls.Add(this.p_DragDrop_MainData);
+			this.gb_MainData.Controls.Add(this.label2);
+			this.gb_MainData.Controls.Add(this.label3);
+			this.gb_MainData.Controls.Add(this.label4);
+			this.gb_MainData.Controls.Add(this.label5);
+			this.gb_MainData.Controls.Add(this.label7);
+			this.gb_MainData.Controls.Add(this.label8);
+			this.gb_MainData.Controls.Add(this.cb_ProjectName);
+			this.gb_MainData.Controls.Add(this.tb_FileName);
+			this.gb_MainData.Controls.Add(this.tb_FilePath);
+			this.gb_MainData.Controls.Add(this.tb_InputParameters);
+			this.gb_MainData.Controls.Add(this.cb_FileInUse);
+			this.gb_MainData.Controls.Add(this.num_FileVersion);
+			this.gb_MainData.Location = new System.Drawing.Point(15, 30);
+			this.gb_MainData.Name = "gb_MainData";
+			this.gb_MainData.Size = new System.Drawing.Size(465, 142);
+			this.gb_MainData.TabIndex = 32;
+			this.gb_MainData.TabStop = false;
+			this.gb_MainData.Tag = "1";
+			this.gb_MainData.Text = "Main Data";
+			this.gb_MainData.DragEnter += new System.Windows.Forms.DragEventHandler(this.DATA_DragEnter);
+			// 
+			// btn_PasteData
+			// 
+			this.btn_PasteData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_PasteData.Location = new System.Drawing.Point(823, 321);
+			this.btn_PasteData.Name = "btn_PasteData";
+			this.btn_PasteData.Size = new System.Drawing.Size(165, 23);
+			this.btn_PasteData.TabIndex = 33;
+			this.btn_PasteData.Text = "Attempt to paste all data";
+			this.btn_PasteData.UseVisualStyleBackColor = true;
 			// 
 			// f_AddFile
 			// 
+			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(817, 373);
+			this.ClientSize = new System.Drawing.Size(1000, 410);
+			this.Controls.Add(this.btn_PasteData);
+			this.Controls.Add(this.gb_MainData);
 			this.Controls.Add(this.p_RightSetup);
-			this.Controls.Add(this.p_DragDrop_MainData);
 			this.Controls.Add(this.btn_Help);
 			this.Controls.Add(this.btn_Save);
 			this.Controls.Add(this.btn_Close);
@@ -678,36 +901,38 @@
 			this.Controls.Add(this.gb_Comments);
 			this.Controls.Add(this.gb_AddFile);
 			this.Controls.Add(this.gb_AdditionalInfo);
-			this.Controls.Add(this.cb_FileInUse);
-			this.Controls.Add(this.num_FileVersion);
-			this.Controls.Add(this.tb_InputParameters);
-			this.Controls.Add(this.tb_FilePath);
-			this.Controls.Add(this.tb_FileName);
-			this.Controls.Add(this.cb_ProjectName);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.label7);
 			this.Controls.Add(this.lbl_ID);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "f_AddFile";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Add File";
 			this.Load += new System.EventHandler(this.f_AddFile_Load);
+			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.f_AddFile_DragEnter);
+			this.DragLeave += new System.EventHandler(this.DATA_DragLeave);
 			((System.ComponentModel.ISupportInitialize)(this.num_FileVersion)).EndInit();
 			this.gb_AdditionalInfo.ResumeLayout(false);
 			this.gb_AdditionalInfo.PerformLayout();
+			this.p_DragDrop_AllData.ResumeLayout(false);
+			this.p_DragDrop_AllData.PerformLayout();
 			this.gb_AddFile.ResumeLayout(false);
 			this.gb_AddFile.PerformLayout();
+			this.p_DragDrop_File.ResumeLayout(false);
+			this.p_DragDrop_File.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_FileType_Image)).EndInit();
 			this.gb_Comments.ResumeLayout(false);
 			this.gb_Comments.PerformLayout();
+			this.p_DragDrop_Comment.ResumeLayout(false);
+			this.p_DragDrop_Comment.PerformLayout();
 			this.gb_Notes.ResumeLayout(false);
 			this.gb_Notes.PerformLayout();
+			this.p_DragDrop_Notes.ResumeLayout(false);
+			this.p_DragDrop_Notes.PerformLayout();
+			this.p_DragDrop_MainData.ResumeLayout(false);
+			this.p_DragDrop_MainData.PerformLayout();
 			this.p_RightSetup.ResumeLayout(false);
 			this.p_RightSetup.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb_FileType_Image)).EndInit();
+			this.gb_MainData.ResumeLayout(false);
+			this.gb_MainData.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -772,5 +997,18 @@
 		private System.Windows.Forms.CheckBox cb_Special_2;
 		private System.Windows.Forms.CheckBox cb_Special_1;
 		private System.Windows.Forms.PictureBox pb_FileType_Image;
+		private System.Windows.Forms.GroupBox gb_MainData;
+		private System.Windows.Forms.Panel p_DragDrop_AllData;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label lbl_MainData;
+		private System.Windows.Forms.Label lbl_AllData;
+		private System.Windows.Forms.Label lbl_FileAttachment;
+		private System.Windows.Forms.Label lbl_CommentData;
+		private System.Windows.Forms.Label lbl_NotesData;
+		private System.Windows.Forms.Button btn_PasteData;
 	}
 }

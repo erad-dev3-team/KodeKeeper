@@ -1,0 +1,64 @@
+#Example template file
+
+-MAIN-
+PROJECT=test_project
+FNAME=baz.pl
+FPATH=/foo/bar/
+PARAMS=date username
+VERSION=1.0
+INUSE=1
+
+-FILE-
+PATH=c:\files\foo\bar\baz.pl
+IMAGE=perl_1_256
+
+-COMMENT-
+CSTART
+Here is a comment... can't be longer than 300 characters (the rest is trimmed off)
+CEND
+
+-NOTES-
+NSTART
+The note explaining how the file works, what it's used for 
+and anything else you want to explain
+NEND
+
+-MISC-
+RIGHTS=0755
+OWNER=admin
+GROUP=editors
+#CREATED=
+#MODIFIED=
+
+--FILE--
+
+-MAIN-
+PROJECT=test_project
+FNAME=baz+.pm
+FPATH=/foo/bar/
+PARAMS=
+VERSION=2.0
+INUSE=0
+
+-FILE-
+PATH=c:\files\foo\bar\baz+.pm
+IMAGE=perl_2_256
+
+-COMMENT-
+CSTART
+another comment... it's hard comming up with examples
+CEND
+
+-NOTES-
+NSTART
+Two strings walk into a bar and sit down. The bartender says, “So what’ll it be?”
+The first string says, “I think I’ll have a beer quag fulk boorg jdk^CjfdLk jk3s d#f67howe%^U r89nvy~~owmc63^Dz x.xvcu”
+“Please excuse my friend,” the second string says, “He isn’t null-terminated.”
+NEND
+
+-MISC-
+#RIGHTS=0755
+#OWNER=admin
+#GROUP=editors
+CREATED=2355-10-11
+#MODIFIED=

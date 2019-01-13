@@ -65,14 +65,38 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"projects " +
 									"(" +
-											"id INTEGER PRIMARY KEY AUTOINCREMENT,			" +
-											"name TEXT,										" +
-											"number_of_files INTEGER,						" +
-											"added TEXT,									" +
-											"modified TEXT									" +
+											"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +		//row ID
+											"name TEXT,											" +		//Project name
+											"number_of_files INTEGER,							" +		//Number of files in the project
+											"added TEXT,										" +		//Date the project was added
+											"modified TEXT,										" +     //Date the project was modified
+											"comment TEXT										" +     //comment
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS project_id_index ON projects(id);";
+				_sql.ExecuteNonQuery();
+			}
+			
+			if (!checkTableExists("images"))
+			{
+				_sql.CommandText = "CREATE TABLE " +
+										"images " +
+									"(" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +		//row ID
+										"name TEXT,											\r\n" +		//Image file name
+										"size INTEGER,										\r\n" +		//Image Size in pixels
+										"for TEXT,											\r\n" +		//What the image is used for
+										"image TEXT											\r\n" +		//Image data in bytes
+										"comment TEXT										\r\n" +     //Comment
+									");" +
+
+									"CREATE INDEX IF NOT EXISTS images_id_index ON images(id);" +
+									"CREATE INDEX IF NOT EXISTS images_name_index ON images(name);";
+
+				_sql.ExecuteNonQuery();
+
+				_sql.CommandText = auto_add_data.autoAddImages();
+
 				_sql.ExecuteNonQuery();
 			}
 
@@ -81,28 +105,22 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"filetypes " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +
-										"type TEXT,											" +
-										"description TEXT,									" +
-										"mime_type TEXT,									" +
-										"comment TEXT										" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"type TEXT,											\r\n" +     //File type
+										"description TEXT,									\r\n" +     //File type description
+										"mime_type TEXT,									\r\n" +     //Mime type
+										"def_image_id INTEGER,								\r\n" +     //Default image index
+										"comment TEXT,										\r\n" +     //comment
+										"FOREIGN KEY(def_image_id) REFERENCES images(id)	\r\n" +     //
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS filetypes_id_index ON filetypes(id);" +
-									"--Default FileTypes List															\r\n" +
-									"INSERT INTO filetypes																\r\n" +
-										"(type, description, mime_type, comment)										\r\n" +
-									"VALUES																				\r\n" +
-										"('pl'	,'Perl script file',			'text/x-script.perl',			''),	\r\n" +
-										"('pm'	,'Perl module',					'text/x-script.perl-module',	''),	\r\n" +
-										"('php'	,'PHP script file',				'text/x-php',					''),	\r\n" +
-										"('html','Html file',					'text/html',					''),	\r\n" +
-										"('txt'	,'Plaintext file',				'text/plain',					''),	\r\n" +
-										"('pdf'	,'Portable Data Format file',	'application/pdf',				''),	\r\n" +
-										"('jpeg','Jpeg image',					'image/jpeg',					''),	\r\n" +
-										"('png'	,'Png image',					'image/png',					''),	\r\n" +
-										"('jar'	,'Java archive file',			'application/java-archive',		'');	\r\n" +
-										"--(''	,'','','')";
+									"CREATE INDEX IF NOT EXISTS filetypes_type_index ON filetypes(type);";
+
+				_sql.ExecuteNonQuery();
+
+				_sql.CommandText = auto_add_data.autoAddFileTypes();
+
 				_sql.ExecuteNonQuery();
 			}
 
@@ -111,25 +129,25 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"files " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
-										"project_id INTEGER,								\r\n" +     //ID of project under which the file is
-										"file_name TEXT,									\r\n" +     //File Name (eg: cr_new.php)
-										"location TEXT,										\r\n" +     //File Location (eg: /usr/local/dpdweblabel/cr/)
-										"file_type_id INTEGER,								\r\n" +     //ID of filetype
-										"file_version INTEGER,								\r\n" +     //Version of file (eg: 2)
-										"in_use INTEGER,									\r\n" +     //Bool value, 1 if file is in use 0 otherwise (eg: 1)
-										"parameters TEXT,									\r\n" +     //Input parameters for file (eg: parcel_number address_id)
-										"file_contents TEXT,								\r\n" +     //Contents of file. B64 encoded
-										"file_size INTEGER,									\r\n" +     //File size in bytes (eg: 897)
-										"notes TEXT,										\r\n" +     //Notes on the file, what it's for, how it works anything else...
-										"rights INTEGER,									\r\n" +     //File Rights (eg: 766)
-										"owner TEXT,										\r\n" +     //File Owner (eg: root)
-										"\"group\" TEXT,									\r\n" +     //File Group (eg: developers)
-										"added TEXT,										\r\n" +     //File added date (eg: 2018-05-11)
-										"modified TEXT,										\r\n" +     //File modified date (eg: 2018-07-27)
-										"comment TEXT,										\r\n" +     //Any additional comment
-										"FOREIGN KEY(project_id) REFERENCES projects(id),	\r\n" +     //Foreign key for project_id
-										"FOREIGN KEY(file_type_id) REFERENCES filetypes(id)	\r\n" +     //Foreign key for file_type_id
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +		//row ID
+										"project_id INTEGER,								\r\n" +		//ID of project under which the file is
+										"file_name TEXT,									\r\n" +		//File Name (eg: cr_new.php)
+										"location TEXT,										\r\n" +		//File Location (eg: /usr/local/dpdweblabel/cr/)
+										"file_type_id INTEGER,								\r\n" +		//ID of filetype
+										"file_version INTEGER,								\r\n" +		//Version of file (eg: 2)
+										"in_use INTEGER,									\r\n" +		//Bool value, 1 if file is in use 0 otherwise (eg: 1)
+										"parameters TEXT,									\r\n" +		//Input parameters for file (eg: parcel_number address_id)
+										"file_contents TEXT,								\r\n" +		//Contents of file. B64 encoded
+										"file_size INTEGER,									\r\n" +		//File size in bytes (eg: 897)
+										"notes TEXT,										\r\n" +		//Notes on the file, what it's for, how it works anything else...
+										"rights INTEGER,									\r\n" +		//File Rights (eg: 766)
+										"owner TEXT,										\r\n" +		//File Owner (eg: root)
+										"\"group\" TEXT,									\r\n" +		//File Group (eg: developers)
+										"added TEXT,										\r\n" +		//File added date (eg: 2018-05-11)
+										"modified TEXT,										\r\n" +		//File modified date (eg: 2018-07-27)
+										"comment TEXT,										\r\n" +		//Any additional comment
+										"FOREIGN KEY(project_id) REFERENCES projects(id),	\r\n" +		//Foreign key for project_id
+										"FOREIGN KEY(file_type_id) REFERENCES filetypes(id)	\r\n" +		//Foreign key for file_type_id
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS files_id_index ON files(id);			\r\n" +
@@ -144,23 +162,23 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"links " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +
-										"name INTEGER,										" +
-										"file_from INTEGER,									" +
-										"file_to INTEGER,									" +
-										"is_data_sent INTEGER,								" +
-										"data_sent TEXT,									" +
-										"is_data_returned INTEGER,							" +
-										"data_returned TEXT,								" +
-										"comment TEXT,										" +
-										"FOREIGN KEY(file_from) REFERENCES files(id),		" +
-										"FOREIGN KEY(file_to) REFERENCES files(id)			" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"name INTEGER,										\r\n" +		//
+										"file_from INTEGER,									\r\n" +		//
+										"file_to INTEGER,									\r\n" +		//
+										"is_data_sent INTEGER,								\r\n" +		//
+										"data_sent TEXT,									\r\n" +		//
+										"is_data_returned INTEGER,							\r\n" +		//
+										"data_returned TEXT,								\r\n" +		//
+										"comment TEXT,										\r\n" +		//
+										"FOREIGN KEY(file_from) REFERENCES files(id),		\r\n" +		//
+										"FOREIGN KEY(file_to) REFERENCES files(id)			\r\n" +		//
 									");" +
 
-									"CREATE INDEX IF NOT EXISTS links_id_index ON links(id);			" +
-									"CREATE INDEX IF NOT EXISTS links_name_index ON links(name);		" +
-									"CREATE INDEX IF NOT EXISTS links_from_index ON links(file_from);	" +
-									"CREATE INDEX IF NOT EXISTS links_to_index ON links(file_to);		";
+									"CREATE INDEX IF NOT EXISTS links_id_index ON links(id);			\r\n" +
+									"CREATE INDEX IF NOT EXISTS links_name_index ON links(name);		\r\n" +
+									"CREATE INDEX IF NOT EXISTS links_from_index ON links(file_from);	\r\n" +
+									"CREATE INDEX IF NOT EXISTS links_to_index ON links(file_to);		\r\n";
 				_sql.ExecuteNonQuery();
 			}
 
@@ -169,15 +187,15 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"tags_list " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +
-										"tag TEXT,											" +
-										"description TEXT,									" +
-										"comment TEXT										" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"tag TEXT,											\r\n" +		//
+										"description TEXT,									\r\n" +		//
+										"comment TEXT										\r\n" +		//
 									");" +
 
-									"CREATE INDEX IF NOT EXISTS tags_list_id_index ON tags_list(id);					" +
-									"CREATE INDEX IF NOT EXISTS tags_list_tag_index ON tags_list(tag);					" +
-									"CREATE INDEX IF NOT EXISTS tags_list_description_index ON tags_list(description);	";
+									"CREATE INDEX IF NOT EXISTS tags_list_id_index ON tags_list(id);					\r\n" +
+									"CREATE INDEX IF NOT EXISTS tags_list_tag_index ON tags_list(tag);					\r\n" +
+									"CREATE INDEX IF NOT EXISTS tags_list_description_index ON tags_list(description);	\r\n";
 				_sql.ExecuteNonQuery();
 			}
 
@@ -186,17 +204,19 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"tags " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +
-										"tag_id INTEGER,									" +
-										"file_id INTEGER,									" +
-										"comment TEXT,										" +
-										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		" +
-										"FOREIGN KEY(file_id) REFERENCES files(id)			" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"tag_id INTEGER,									\r\n" +		//
+										"file_id INTEGER,									\r\n" +		//
+										"comment TEXT,										\r\n" +		//
+										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		\r\n" +		//
+										"FOREIGN KEY(file_id) REFERENCES files(id)			\r\n" +		//
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS tags_id_index ON tags(id);";
 				_sql.ExecuteNonQuery();
 			}
+
+
 
 			return "+";
 		}

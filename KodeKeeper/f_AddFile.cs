@@ -151,5 +151,194 @@ namespace KodeKeeper
 		{
 			if (mtb_Rights.Text.Trim() == "") { mtb_Rights.Text = "0 0 0 0"; }
 		}
+
+		public void showDropPoints()
+		{
+			p_DragDrop_Comment.Dock = DockStyle.Fill;
+			p_DragDrop_Comment.Show();
+
+			p_DragDrop_File.Dock = DockStyle.Fill;
+			p_DragDrop_File.Show();
+
+			p_DragDrop_MainData.Dock = DockStyle.Fill;
+			p_DragDrop_MainData.Show();
+
+			p_DragDrop_AllData.Dock = DockStyle.Fill;
+			p_DragDrop_AllData.Show();
+
+			p_DragDrop_Notes.Dock = DockStyle.Fill;
+			p_DragDrop_Notes.Show();
+		}
+
+		public void hideDropPoints()
+		{
+			p_DragDrop_Comment.Dock = DockStyle.None;
+			p_DragDrop_Comment.Hide();
+
+			p_DragDrop_File.Dock = DockStyle.None;
+			p_DragDrop_File.Hide();
+
+			p_DragDrop_MainData.Dock = DockStyle.None;
+			p_DragDrop_MainData.Hide();
+
+			p_DragDrop_AllData.Dock = DockStyle.None;
+			p_DragDrop_AllData.Hide();
+
+			p_DragDrop_Notes.Dock = DockStyle.None;
+			p_DragDrop_Notes.Hide();
+		}
+
+		public bool attemptDrop(dropTarget target)
+		{
+			switch (target)
+			{
+				case dropTarget.allFields:
+					return parseAllData();
+				case dropTarget.mainFields:
+					return parseMainData();
+				case dropTarget.fileAttachment:
+					return parseFile();
+				case dropTarget.notes:
+					return parseNotes();
+				case dropTarget.comment:
+					return parseComment();
+				default:return false;
+			}
+		}
+
+		public void flashDragDrop(dropTarget target)
+		{
+
+			switch (target)
+			{
+				case dropTarget.allFields:
+					lbl_AllData.ForeColor			= Color.Red;
+					break;
+				case dropTarget.mainFields:
+					lbl_MainData.ForeColor			= Color.Red;
+					break;
+				case dropTarget.fileAttachment:
+					lbl_FileAttachment.ForeColor	= Color.Red;
+					break;
+				case dropTarget.notes:
+					lbl_NotesData.ForeColor			= Color.Red;
+					break;
+				case dropTarget.comment:
+					lbl_CommentData.ForeColor		= Color.Red;
+					break;
+			}
+		}
+
+		public void unflashDragDrop()
+		{
+			lbl_AllData.ForeColor			= Color.Black;
+			lbl_MainData.ForeColor			= Color.Black;
+			lbl_FileAttachment.ForeColor	= Color.Black;
+			lbl_NotesData.ForeColor			= Color.Black;
+			lbl_CommentData.ForeColor		= Color.Black;
+		}
+
+		private void f_AddFile_DragEnter(object sender, DragEventArgs e)
+		{
+			e.Effect = DragDropEffects.Copy | DragDropEffects.Link;
+			showDropPoints();
+		}
+
+		private void DATA_DragLeave(object sender, EventArgs e)
+		{
+			if (!Bounds.Contains(Cursor.Position))
+			{
+				hideDropPoints();
+			}
+		}
+
+		private void DATA_DragDrop(object sender, DragEventArgs e)
+		{
+			if (int.TryParse(((Control)sender).Tag.ToString(), out int t))
+			{
+				attemptDrop((dropTarget)t);
+				hideDropPoints();
+			}
+		}
+		
+		private void p_DragDrop_MainData_DragLeave(object sender, EventArgs e)
+		{
+			if (int.TryParse(((Control)sender).Tag.ToString(), out int t))
+			{ unflashDragDrop(); }
+		}
+
+		public void flash(int t)
+		{
+			flashDragDrop((dropTarget)t);
+		}
+
+		private void DATA_DragEnter(object sender, DragEventArgs e)
+		{
+			e.Effect = DragDropEffects.All | DragDropEffects.Copy;
+			if (int.TryParse(((Control)sender).Tag.ToString(), out int t)){flash(t);}
+		}
+
+		public bool parseAllData()
+		{
+			return		parseMainData()
+					&&	parseFile()
+					&&	parseNotes()
+					&&	parseComment()
+					&&	parseAdditionalData();
+		}
+
+		public bool parseMainData()
+		{
+			bool ret = false;
+
+
+
+			return ret;
+		}
+
+		public bool parseFile()
+		{
+			bool ret = false;
+
+
+
+			return ret;
+		}
+
+		public bool parseComment()
+		{
+			bool ret = false;
+
+
+
+			return ret;
+		}
+
+		public bool parseNotes()
+		{
+			bool ret = false;
+
+
+
+			return ret;
+		}
+
+		public bool parseAdditionalData()
+		{
+			bool ret = false;
+
+
+
+			return ret;
+		}
+	}
+
+	public enum dropTarget
+	{
+		allFields,
+		mainFields,
+		fileAttachment,
+		notes,
+		comment
 	}
 }
