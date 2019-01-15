@@ -136,6 +136,14 @@ namespace KodeKeeper
 		private void btn_Search_Click(object sender, EventArgs e)
 		{
 			//TODO: Search!
+
+			//TESTING!!!
+			update_handler uh = new update_handler(_dbh);
+			List<dataUpdateObject> v = uh.checkUpdate();
+			foreach(dataUpdateObject c in v)
+			{
+				Console.WriteLine($"{c.Name}-{c.Values}");
+			}
 		}
 
 		private void p_SearchHeader_MouseCaptureChanged(object sender, EventArgs e)

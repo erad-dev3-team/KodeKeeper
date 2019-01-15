@@ -522,9 +522,9 @@
 			// pb_FileType_Image
 			// 
 			this.pb_FileType_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pb_FileType_Image.Location = new System.Drawing.Point(361, 9);
+			this.pb_FileType_Image.Location = new System.Drawing.Point(361, 16);
 			this.pb_FileType_Image.Name = "pb_FileType_Image";
-			this.pb_FileType_Image.Size = new System.Drawing.Size(100, 100);
+			this.pb_FileType_Image.Size = new System.Drawing.Size(97, 89);
 			this.pb_FileType_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pb_FileType_Image.TabIndex = 24;
 			this.pb_FileType_Image.TabStop = false;

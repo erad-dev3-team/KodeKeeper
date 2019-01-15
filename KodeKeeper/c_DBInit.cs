@@ -205,14 +205,27 @@ namespace KodeKeeper
 										"tags " +
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
-										"tag_id INTEGER,									\r\n" +		//
-										"file_id INTEGER,									\r\n" +		//
-										"comment TEXT,										\r\n" +		//
-										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		\r\n" +		//
-										"FOREIGN KEY(file_id) REFERENCES files(id)			\r\n" +		//
+										"tag_id INTEGER,									\r\n" +     //
+										"file_id INTEGER,									\r\n" +     //
+										"comment TEXT,										\r\n" +     //
+										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		\r\n" +     //
+										"FOREIGN KEY(file_id) REFERENCES files(id)			\r\n" +     //
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS tags_id_index ON tags(id);";
+				_sql.ExecuteNonQuery();
+			}
+
+			if (!checkTableExists("userdata"))
+			{
+				_sql.CommandText = "CREATE TABLE " +
+										"userdata " +
+									"(" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"username TEXT,										\r\n" +     //Username
+										"last_update_received TEXT,							\r\n" +     //When did the user last pull an update from the server
+										"last_update_sent TEXT								\r\n" +     //When did the user last upload changes he made
+									");";
 				_sql.ExecuteNonQuery();
 			}
 
