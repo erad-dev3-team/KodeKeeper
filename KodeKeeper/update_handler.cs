@@ -7,8 +7,16 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-using LightJson;
-using LightJson.Serialization;
+// using LightJson;
+// using LightJson.Serialization;
+
+using Newtonsoft;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Serialization;
 
 namespace KodeKeeper
 {
@@ -23,8 +31,36 @@ namespace KodeKeeper
 			Sqlc = _dbh.Sqlc;
 		}
 
-		public List<dataUpdateObject> checkUpdate()
+		public dataUpdateObject getUpdate()
 		{
+			dataUpdateObject d = new dataUpdateObject();
+			string username = _dbh.getUserName();
+
+			username = "WolfyD";
+			string data = "";
+
+			if (username != null)
+			{
+				data = createConnection("http://wpss.atoldavid.hu/api/get_data.php", $"username={username}");
+			}
+
+			if (data != "")
+			{
+				//TODO:::FIX DIS BS
+				var obj = JObject.Parse(JObject.Parse(data)["Data to update:"].Children()[1].ToString());
+				
+				foreach (var v in obj)
+				{
+					d.Add(v.Key, v.Value.ToString());
+				}
+			}
+
+			return d;
+		}
+
+		public dataUpdateObject checkUpdate()
+		{
+			dataUpdateObject d = new dataUpdateObject();
 			string username = _dbh.getUserName();
 
 			username = "WolfyD";
@@ -35,23 +71,20 @@ namespace KodeKeeper
 				data = createConnection("http://wpss.atoldavid.hu/api/check_update.php", $"username={username}");
 			}
 
-			List<dataUpdateObject> uobj = new List<dataUpdateObject>();
 
 			if (data != "")
 			{
+				/*
 				var jr = JsonReader.Parse(data);
 				foreach(var v in (((JsonObject)jr)["Count of outdated data"]).AsJsonObject)
 				{
-					dataUpdateObject d = new dataUpdateObject();
-					d.addName(v.Key);
-					if (d.addValue(v.Value))
-					{
-						uobj.Add(d);
-					}
+					
+					d.Add(v.Key, v.Value);
 				}
+				*/
 			}
 
-			return uobj;
+			return d;
 		}
 
 		public string createConnection(string url, string data)

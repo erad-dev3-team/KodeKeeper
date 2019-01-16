@@ -139,10 +139,10 @@ namespace KodeKeeper
 
 			//TESTING!!!
 			update_handler uh = new update_handler(_dbh);
-			List<dataUpdateObject> v = uh.checkUpdate();
-			foreach(dataUpdateObject c in v)
+			dataUpdateObject v = uh.getUpdate();
+			foreach(System.Collections.DictionaryEntry c in v.Get())
 			{
-				Console.WriteLine($"{c.Name}-{c.Values}");
+				Console.WriteLine($"{c.Key}-{c.Value}");
 			}
 		}
 
