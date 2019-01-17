@@ -9,9 +9,7 @@ namespace KodeKeeper
 	class dataUpdateObject
 	{
 		Hashtable values = new Hashtable();
-
-		public string Name = "";
-		public int Values = -1;
+		public string Name { get; set; } = "";
 
 		public bool Add(string name, string value)
 		{
@@ -20,8 +18,9 @@ namespace KodeKeeper
 				values.Add(addName(name), addValue(value));
 				return true;
 			}
-			catch
+			catch(Exception ex)
 			{
+				Console.WriteLine(ex.Message);
 				return false;
 			}
 		}
@@ -35,15 +34,15 @@ namespace KodeKeeper
 			else { return name; }
 		}
 
-		private int addValue(string value)
+		private string addValue(string value)
 		{
-			if(int.TryParse(value, out int i))
+			if (int.TryParse(value, out int i))
 			{
-				return i;
+				return i.ToString();
 			}
 			else
 			{
-				return -1;
+				return value;
 			}
 		}
 
@@ -56,5 +55,26 @@ namespace KodeKeeper
 		{
 			return values[name].ToString();
 		}
+	}
+
+	class dataObject
+	{
+		List<dataUpdateObject> data = new List<dataUpdateObject>();
+		
+		public void Add(dataUpdateObject d)
+		{
+			data.Add(d);
+		}
+
+		public List<dataUpdateObject> GetAll()
+		{
+			return data;
+		}
+
+		public dataUpdateObject[] get(string Name)
+		{
+			return data.Where(x=>x.Name == Name).Select(x=>x).ToArray();
+		}
+
 	}
 }

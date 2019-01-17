@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -139,10 +140,14 @@ namespace KodeKeeper
 
 			//TESTING!!!
 			update_handler uh = new update_handler(_dbh);
-			dataUpdateObject v = uh.getUpdate();
-			foreach(System.Collections.DictionaryEntry c in v.Get())
+			dataObject v = uh.getUpdate();
+			foreach(dataUpdateObject c in v.GetAll())
 			{
-				Console.WriteLine($"{c.Key}-{c.Value}");
+				Console.WriteLine($"-----{c.Name}-----");
+				foreach (System.Collections.DictionaryEntry o in c.Get())
+				{
+					Console.WriteLine($"{o.Key}-{o.Value}");
+				}
 			}
 		}
 

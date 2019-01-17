@@ -92,7 +92,7 @@ namespace KodeKeeper.Properties {
         ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
         ////*!40101 SET NAMES utf8mb4 */;
         ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZON [rest of string was truncated]&quot;;.
+        ////*!40103 S [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string data {
             get {
@@ -211,16 +211,6 @@ namespace KodeKeeper.Properties {
         internal static string ImageInsert {
             get {
                 return ResourceManager.GetString("ImageInsert", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] LightJson {
-            get {
-                object obj = ResourceManager.GetObject("LightJson", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

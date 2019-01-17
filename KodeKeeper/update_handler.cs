@@ -31,9 +31,10 @@ namespace KodeKeeper
 			Sqlc = _dbh.Sqlc;
 		}
 
-		public dataUpdateObject getUpdate()
+		public dataObject getUpdate()
 		{
-			dataUpdateObject d = new dataUpdateObject();
+			dataObject dObj = new dataObject();
+			
 			string username = _dbh.getUserName();
 
 			username = "WolfyD";
@@ -47,15 +48,22 @@ namespace KodeKeeper
 			if (data != "")
 			{
 				//TODO:::FIX DIS BS
-				var obj = JObject.Parse(JObject.Parse(data)["Data to update:"].Children()[1].ToString());
+				var obj = JObject.Parse(data)["Data to update:"].Children();
 				
-				foreach (var v in obj)
+				foreach (JToken v in obj)
 				{
-					d.Add(v.Key, v.Value.ToString());
+					var o = v.First;
+					dataUpdateObject d = new dataUpdateObject();
+					d.Name = o.First().ToString();
+					foreach (var vv in o.Children())
+					{
+						d.Add(vv.Path.Split('.').Last(), vv.First().ToString());
+					}
+					dObj.Add(d);
 				}
 			}
 
-			return d;
+			return dObj;
 		}
 
 		public dataUpdateObject checkUpdate()
