@@ -8,7 +8,7 @@ using System.IO;
 
 namespace KodeKeeper
 {
-	class c_DBHandler
+	public class c_DBHandler
 	{
 		public SQLiteConnection Sqlc = null;
 		private SQLiteCommand _sql = null;
@@ -26,6 +26,18 @@ namespace KodeKeeper
 		{
 			if (Sqlc == null || new int[] { 0, 16 }.Contains((int)Sqlc.State)) { return false; }
 			return true;
+		}
+
+		public bool updateInsert(string insertdata)
+		{
+			bool ret = false;
+
+
+			_sql.CommandText = insertdata;
+			_sql.Prepare();
+
+
+			return ret;
 		}
 
 		public void setFileData()

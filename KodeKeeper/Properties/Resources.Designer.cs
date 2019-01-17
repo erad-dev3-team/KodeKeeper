@@ -61,6 +61,16 @@ namespace KodeKeeper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cal {
+            get {
+                object obj = ResourceManager.GetObject("cal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] connections {
@@ -92,7 +102,7 @@ namespace KodeKeeper.Properties {
         ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
         ////*!40101 SET NAMES utf8mb4 */;
         ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 S [rest of string was truncated]&quot;;.
+        ////*!40103 SET TIME_ZON [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string data {
             get {

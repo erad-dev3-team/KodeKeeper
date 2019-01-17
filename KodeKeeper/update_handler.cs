@@ -54,7 +54,7 @@ namespace KodeKeeper
 				{
 					var o = v.First;
 					dataUpdateObject d = new dataUpdateObject();
-					d.Name = o.First().ToString();
+					d.Name = o.First().First().ToString();
 					foreach (var vv in o.Children())
 					{
 						d.Add(vv.Path.Split('.').Last(), vv.First().ToString());
@@ -87,9 +87,16 @@ namespace KodeKeeper
 				foreach(var v in (((JsonObject)jr)["Count of outdated data"]).AsJsonObject)
 				{
 					
-					d.Add(v.Key, v.Value);
+					
 				}
 				*/
+
+				var jr = JObject.Parse(data)["Count of outdated data"].Children();
+				d.Name = "Updatable Data Count";
+				foreach (JToken v in jr)
+				{
+					d.Add(v.Path.Split('.').Last(), v.First.ToString());
+				}
 			}
 
 			return d;

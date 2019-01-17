@@ -70,6 +70,7 @@ namespace KodeKeeper
 											"number_of_files INTEGER,							" +		//Number of files in the project
 											"added TEXT,										" +		//Date the project was added
 											"modified TEXT,										" +     //Date the project was modified
+											"insert_user_id INTEGER,							" + 
 											"comment TEXT										" +     //comment
 									");" +
 
@@ -86,7 +87,7 @@ namespace KodeKeeper
 										"name TEXT,											\r\n" +		//Image file name
 										"size INTEGER,										\r\n" +		//Image Size in pixels
 										"for TEXT,											\r\n" +		//What the image is used for
-										"image TEXT											\r\n" +		//Image data in bytes
+										"image TEXT											\r\n" +     //Image data in bytes
 										"comment TEXT										\r\n" +     //Comment
 									");" +
 
@@ -111,6 +112,8 @@ namespace KodeKeeper
 										"mime_type TEXT,									\r\n" +     //Mime type
 										"def_image_id INTEGER,								\r\n" +     //Default image index
 										"comment TEXT,										\r\n" +     //comment
+										"insert_user_id INTEGER,							\r\n" +
+										"modified TEXT,										\r\n" +
 										"FOREIGN KEY(def_image_id) REFERENCES images(id)	\r\n" +     //
 									");" +
 
@@ -143,8 +146,10 @@ namespace KodeKeeper
 										"rights INTEGER,									\r\n" +		//File Rights (eg: 766)
 										"owner TEXT,										\r\n" +		//File Owner (eg: root)
 										"\"group\" TEXT,									\r\n" +		//File Group (eg: developers)
-										"added TEXT,										\r\n" +		//File added date (eg: 2018-05-11)
-										"modified TEXT,										\r\n" +		//File modified date (eg: 2018-07-27)
+										"file_added TEXT,									\r\n" +		//File added date (eg: 2018-05-11)
+										"file_modified TEXT,								\r\n" +     //File modified date (eg: 2018-07-27)
+										"insert_user_id INTEGER,							\r\n" +
+										"modified TEXT,										\r\n" +
 										"comment TEXT,										\r\n" +		//Any additional comment
 										"FOREIGN KEY(project_id) REFERENCES projects(id),	\r\n" +		//Foreign key for project_id
 										"FOREIGN KEY(file_type_id) REFERENCES filetypes(id)	\r\n" +		//Foreign key for file_type_id
@@ -170,7 +175,11 @@ namespace KodeKeeper
 										"data_sent TEXT,									\r\n" +		//
 										"is_data_returned INTEGER,							\r\n" +		//
 										"data_returned TEXT,								\r\n" +		//
-										"comment TEXT,										\r\n" +		//
+										"insert_user_id INTEGER,							\r\n" +
+										"method_from TEXT,									\r\n" +
+										"method_to TEXT,									\r\n" +
+										"modified TEXT,										\r\n" +
+										"comment TEXT,										\r\n" +     //
 										"FOREIGN KEY(file_from) REFERENCES files(id),		\r\n" +		//
 										"FOREIGN KEY(file_to) REFERENCES files(id)			\r\n" +		//
 									");" +
@@ -189,7 +198,9 @@ namespace KodeKeeper
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
 										"tag TEXT,											\r\n" +		//
-										"description TEXT,									\r\n" +		//
+										"description TEXT,									\r\n" +     //
+										"insert_user_id INTEGER,							\r\n" +
+										"modified TEXT,										\r\n" +
 										"comment TEXT										\r\n" +		//
 									");" +
 
@@ -207,6 +218,8 @@ namespace KodeKeeper
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
 										"tag_id INTEGER,									\r\n" +     //
 										"file_id INTEGER,									\r\n" +     //
+										"insert_user_id INTEGER,							\r\n" +
+										"modified TEXT,										\r\n" +
 										"comment TEXT,										\r\n" +     //
 										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		\r\n" +     //
 										"FOREIGN KEY(file_id) REFERENCES files(id)			\r\n" +     //

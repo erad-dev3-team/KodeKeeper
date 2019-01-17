@@ -17,6 +17,7 @@ namespace KodeKeeper
 		private bool searchResize_MDown = false;
 		private Point searchResize_Pnt = new Point(0, 0);
 		private c_DBHandler _dbh = new c_DBHandler("KodeKeeper.db");
+		private update_handler uh;
 
 		protected override CreateParams CreateParams
 		{
@@ -37,6 +38,7 @@ namespace KodeKeeper
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			p_Search.Hide();
+			uh = new update_handler(_dbh);
 		}
 
 		private void p_SearchHeader_MouseDown(object sender, MouseEventArgs e)
@@ -136,19 +138,7 @@ namespace KodeKeeper
 
 		private void btn_Search_Click(object sender, EventArgs e)
 		{
-			//TODO: Search!
-
-			//TESTING!!!
-			update_handler uh = new update_handler(_dbh);
-			dataObject v = uh.getUpdate();
-			foreach(dataUpdateObject c in v.GetAll())
-			{
-				Console.WriteLine($"-----{c.Name}-----");
-				foreach (System.Collections.DictionaryEntry o in c.Get())
-				{
-					Console.WriteLine($"{o.Key}-{o.Value}");
-				}
-			}
+			//TODO: Search
 		}
 
 		private void p_SearchHeader_MouseCaptureChanged(object sender, EventArgs e)
@@ -159,6 +149,37 @@ namespace KodeKeeper
 		{
 			f_AddFile fa = new f_AddFile();
 			fa.ShowDialog();
+		}
+
+		private void btn_Menu_Data_CheckUpdates_Click(object sender, EventArgs e)
+		{
+			dataUpdateObject v = uh.checkUpdate();
+			Hashtable vv = v.Get();
+			int i = 0;
+			foreach(DictionaryEntry vvv in vv)
+			{
+				if(int.TryParse(vvv.Value.ToString(),out int ii))
+				{
+					i += ii;
+				}
+			}
+
+			if(i > 0)
+			{
+				openUpdateScreen(v);
+			}
+			
+		}
+
+		private void btn_Menu_Data_OpenUpdateScreen_Click(object sender, EventArgs e)
+		{
+			openUpdateScreen();
+		}
+
+		public void openUpdateScreen(dataUpdateObject obj = null)
+		{
+			dataUpdate du = new dataUpdate(obj) { _dbh = _dbh };
+			du.ShowDialog();
 		}
 	}
 }

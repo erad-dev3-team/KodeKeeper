@@ -6,7 +6,7 @@ using System.Text;
 
 namespace KodeKeeper
 {
-	class dataUpdateObject
+	public class dataUpdateObject
 	{
 		Hashtable values = new Hashtable();
 		public string Name { get; set; } = "";
@@ -15,7 +15,7 @@ namespace KodeKeeper
 		{
 			try
 			{
-				values.Add(addName(name), addValue(value));
+				values.Add(name, addValue(value));
 				return true;
 			}
 			catch(Exception ex)
