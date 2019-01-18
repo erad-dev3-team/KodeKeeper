@@ -82,15 +82,6 @@ namespace KodeKeeper
 
 			if (data != "")
 			{
-				/*
-				var jr = JsonReader.Parse(data);
-				foreach(var v in (((JsonObject)jr)["Count of outdated data"]).AsJsonObject)
-				{
-					
-					
-				}
-				*/
-
 				var jr = JObject.Parse(data)["Count of outdated data"].Children();
 				d.Name = "Updatable Data Count";
 				foreach (JToken v in jr)
@@ -107,14 +98,13 @@ namespace KodeKeeper
 			System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
 			FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 			string version = fvi.FileVersion;
-
-
+			
 			HttpWebRequest wreq = (HttpWebRequest)WebRequest.Create(url);
-			byte[] content = Encoding.UTF8.GetBytes(data);
+			byte[] content		= Encoding.UTF8.GetBytes(data);
 			wreq.Method			= "POST";
 			wreq.UserAgent		= "WolfPaw KodeKeeper v" + version;
 			wreq.ContentType	= "application/x-www-form-urlencoded";
-			wreq.ContentLength = content.Length;
+			wreq.ContentLength	= content.Length;
 			using(Stream s = wreq.GetRequestStream())
 			{
 				s.Write(content, 0, content.Length);

@@ -43,12 +43,12 @@
 			this.btn_Close = new System.Windows.Forms.Button();
 			this.ss_Status = new System.Windows.Forms.StatusStrip();
 			this.lbl_Info = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.pb_Progress = new System.Windows.Forms.ToolStripProgressBar();
 			this.rtb_Query = new System.Windows.Forms.RichTextBox();
 			this.btn_CopyQuery = new System.Windows.Forms.Button();
 			this.btn_SaveQuery = new System.Windows.Forms.Button();
 			this.btn_StartQuery = new System.Windows.Forms.Button();
-			this.pb_Progress = new System.Windows.Forms.ToolStripProgressBar();
-			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.groupBox1.SuspendLayout();
 			this.ss_Status.SuspendLayout();
 			this.SuspendLayout();
@@ -180,7 +180,7 @@
             this.pb_Progress});
 			this.ss_Status.Location = new System.Drawing.Point(0, 333);
 			this.ss_Status.Name = "ss_Status";
-			this.ss_Status.Size = new System.Drawing.Size(302, 22);
+			this.ss_Status.Size = new System.Drawing.Size(310, 22);
 			this.ss_Status.TabIndex = 9;
 			// 
 			// lbl_Info
@@ -188,6 +188,18 @@
 			this.lbl_Info.Name = "lbl_Info";
 			this.lbl_Info.Size = new System.Drawing.Size(10, 17);
 			this.lbl_Info.Text = "|";
+			// 
+			// toolStripStatusLabel1
+			// 
+			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+			this.toolStripStatusLabel1.Size = new System.Drawing.Size(353, 17);
+			this.toolStripStatusLabel1.Spring = true;
+			// 
+			// pb_Progress
+			// 
+			this.pb_Progress.Name = "pb_Progress";
+			this.pb_Progress.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.pb_Progress.Size = new System.Drawing.Size(100, 16);
 			// 
 			// rtb_Query
 			// 
@@ -223,24 +235,13 @@
 			this.btn_StartQuery.TabIndex = 13;
 			this.btn_StartQuery.Text = "===  START UPDATE  ===";
 			this.btn_StartQuery.UseVisualStyleBackColor = true;
-			// 
-			// pb_Progress
-			// 
-			this.pb_Progress.Name = "pb_Progress";
-			this.pb_Progress.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.pb_Progress.Size = new System.Drawing.Size(100, 16);
-			// 
-			// toolStripStatusLabel1
-			// 
-			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-			this.toolStripStatusLabel1.Size = new System.Drawing.Size(674, 17);
-			this.toolStripStatusLabel1.Spring = true;
+			this.btn_StartQuery.Click += new System.EventHandler(this.btn_StartQuery_Click);
 			// 
 			// dataUpdate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(302, 355);
+			this.ClientSize = new System.Drawing.Size(310, 355);
 			this.Controls.Add(this.btn_StartQuery);
 			this.Controls.Add(this.btn_SaveQuery);
 			this.Controls.Add(this.btn_CopyQuery);
