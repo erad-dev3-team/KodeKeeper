@@ -31,6 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.tsc_Container = new System.Windows.Forms.ToolStripContainer();
 			this.ss_Status = new System.Windows.Forms.StatusStrip();
+			this.lbl_Info = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ts_SideToolBar = new System.Windows.Forms.ToolStrip();
 			this.btn_ToolStrip_Search = new System.Windows.Forms.ToolStripButton();
 			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -38,16 +39,15 @@
 			this.ms_Menu = new System.Windows.Forms.MenuStrip();
 			this.btn_Menu_File = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data_CheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data_OpenUpdateScreen = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsep_Menu_Data_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btn_Menu_Data_UploadData = new System.Windows.Forms.ToolStripMenuItem();
-			this.lbl_Info = new System.Windows.Forms.ToolStripStatusLabel();
+			this.btn_Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.p_Search = new KodeKeeper.myPanel();
 			this.p_Resize = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
@@ -122,6 +122,12 @@
 			this.ss_Status.Size = new System.Drawing.Size(800, 22);
 			this.ss_Status.TabIndex = 0;
 			// 
+			// lbl_Info
+			// 
+			this.lbl_Info.Name = "lbl_Info";
+			this.lbl_Info.Size = new System.Drawing.Size(10, 17);
+			this.lbl_Info.Text = "|";
+			// 
 			// ts_SideToolBar
 			// 
 			this.ts_SideToolBar.Dock = System.Windows.Forms.DockStyle.None;
@@ -191,30 +197,6 @@
 			this.btn_Menu_AddNewFile.Text = "Add New File";
 			this.btn_Menu_AddNewFile.Click += new System.EventHandler(this.btn_Menu_AddNewFile_Click);
 			// 
-			// btn_Menu_Edit
-			// 
-			this.btn_Menu_Edit.Name = "btn_Menu_Edit";
-			this.btn_Menu_Edit.Size = new System.Drawing.Size(39, 20);
-			this.btn_Menu_Edit.Text = "Edit";
-			// 
-			// btn_Menu_Settings
-			// 
-			this.btn_Menu_Settings.Name = "btn_Menu_Settings";
-			this.btn_Menu_Settings.Size = new System.Drawing.Size(61, 20);
-			this.btn_Menu_Settings.Text = "Settings";
-			// 
-			// btn_Menu_Tools
-			// 
-			this.btn_Menu_Tools.Name = "btn_Menu_Tools";
-			this.btn_Menu_Tools.Size = new System.Drawing.Size(48, 20);
-			this.btn_Menu_Tools.Text = "Tools";
-			// 
-			// btn_Menu_Help
-			// 
-			this.btn_Menu_Help.Name = "btn_Menu_Help";
-			this.btn_Menu_Help.Size = new System.Drawing.Size(44, 20);
-			this.btn_Menu_Help.Text = "Help";
-			// 
 			// btn_Menu_Data
 			// 
 			this.btn_Menu_Data.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -254,11 +236,29 @@
 			this.btn_Menu_Data_UploadData.Size = new System.Drawing.Size(182, 22);
 			this.btn_Menu_Data_UploadData.Text = "Upload Changes";
 			// 
-			// lbl_Info
+			// btn_Menu_Edit
 			// 
-			this.lbl_Info.Name = "lbl_Info";
-			this.lbl_Info.Size = new System.Drawing.Size(10, 17);
-			this.lbl_Info.Text = "|";
+			this.btn_Menu_Edit.Name = "btn_Menu_Edit";
+			this.btn_Menu_Edit.Size = new System.Drawing.Size(39, 20);
+			this.btn_Menu_Edit.Text = "Edit";
+			// 
+			// btn_Menu_Settings
+			// 
+			this.btn_Menu_Settings.Name = "btn_Menu_Settings";
+			this.btn_Menu_Settings.Size = new System.Drawing.Size(61, 20);
+			this.btn_Menu_Settings.Text = "Settings";
+			// 
+			// btn_Menu_Tools
+			// 
+			this.btn_Menu_Tools.Name = "btn_Menu_Tools";
+			this.btn_Menu_Tools.Size = new System.Drawing.Size(48, 20);
+			this.btn_Menu_Tools.Text = "Tools";
+			// 
+			// btn_Menu_Help
+			// 
+			this.btn_Menu_Help.Name = "btn_Menu_Help";
+			this.btn_Menu_Help.Size = new System.Drawing.Size(44, 20);
+			this.btn_Menu_Help.Text = "Help";
 			// 
 			// p_Search
 			// 
@@ -554,6 +554,7 @@
 			this.Controls.Add(this.ms_Menu);
 			this.MainMenuStrip = this.ms_Menu;
 			this.Name = "Form1";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.tsc_Container.BottomToolStripPanel.ResumeLayout(false);
 			this.tsc_Container.BottomToolStripPanel.PerformLayout();

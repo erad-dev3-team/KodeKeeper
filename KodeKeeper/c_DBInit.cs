@@ -137,6 +137,7 @@ namespace KodeKeeper
 										"file_name TEXT,									\r\n" +		//File Name (eg: cr_new.php)
 										"location TEXT,										\r\n" +		//File Location (eg: /usr/local/dpdweblabel/cr/)
 										"file_type_id INTEGER,								\r\n" +		//ID of filetype
+										"md5 TEXT UNIQUE									\r\n" +     //MD5 generated from (project_id + file_name + location + file_type_id)
 										"file_version INTEGER,								\r\n" +		//Version of file (eg: 2)
 										"in_use INTEGER,									\r\n" +		//Bool value, 1 if file is in use 0 otherwise (eg: 1)
 										"parameters TEXT,									\r\n" +		//Input parameters for file (eg: parcel_number address_id)
@@ -148,8 +149,8 @@ namespace KodeKeeper
 										"\"group\" TEXT,									\r\n" +		//File Group (eg: developers)
 										"file_added TEXT,									\r\n" +		//File added date (eg: 2018-05-11)
 										"file_modified TEXT,								\r\n" +     //File modified date (eg: 2018-07-27)
-										"insert_user_id INTEGER,							\r\n" +
-										"modified TEXT,										\r\n" +
+										"insert_user_id INTEGER,							\r\n" +		//
+										"modified TEXT,										\r\n" +		//
 										"comment TEXT,										\r\n" +		//Any additional comment
 										"FOREIGN KEY(project_id) REFERENCES projects(id),	\r\n" +		//Foreign key for project_id
 										"FOREIGN KEY(file_type_id) REFERENCES filetypes(id)	\r\n" +		//Foreign key for file_type_id

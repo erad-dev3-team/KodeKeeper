@@ -12,6 +12,9 @@ namespace KodeKeeper
 	public partial class f_AddFile : Form
 	{
 		List<CheckBox> rightCheckboxes = new List<CheckBox>();
+		string[] _stringTypes = new string[] { "txt", "html", "htm", "lst" };
+		string[] _archiveTypes = new string[] { "zip", "rar", "7z", "tar", "tar.gz" };
+		List<fileDataObject> _files = new List<fileDataObject>();
 
 		public f_AddFile()
 		{
@@ -188,8 +191,146 @@ namespace KodeKeeper
 			p_DragDrop_Notes.Hide();
 		}
 
-		public bool attemptDrop(dropTarget target)
+		public void parseAllDataToObject(string str)
 		{
+			//TODO: FIX
+			if (str.Contains("--FILE--"))
+			{
+				string[] strs = parseAllDataToMulti(str);
+				foreach(string s in strs)
+				{
+					parseAllDataToObject(s);
+				}
+			}
+
+			fileDataObject fdo = new fileDataObject();
+			bool toComment = false;
+			bool toNotes = false;
+
+			foreach (string s in str.Split('\n'))
+			{
+				if (!s.StartsWith("#") && s.Length > 0 && s.Contains("="))
+				{
+					string ln = s.Substring(0, s.IndexOf("="));
+					switch (ln)
+					{
+						case "PROJECT":
+							if (int.TryParse(s, out int _i))
+							{
+								fdo.ProjectId = _i;
+							}
+							break;
+						case "FNAME":
+							fdo.FileName = s;
+							break;
+						case "FPATH":
+							fdo.Location = s;
+							break;
+						case "PARAMS":
+							fdo.Parameters = s;
+							break;
+						case "VERSION":
+							fdo.FileVersion = s;
+							break;
+						case "INUSE":
+							fdo.InUse = s == "1" ? true : false;
+							break;
+						case "PATH":
+							fdo.FilePath = s;
+							break;
+						case "IMAGE":
+							fdo.FileImageName = s;
+							break;
+						case "CSTART":
+							toComment = true;
+							break;
+						case "CEND":
+							toComment = false;
+							break;
+						case "NSTART":
+							toNotes = true;
+							break;
+						case "NEND":
+							toNotes = false;
+							break;
+						case "RIGHTS":
+							fdo.Rights = s;
+							break;
+						case "OWNER":
+							fdo.Owner = s;
+							break;
+						case "GROUP":
+							fdo.Group = s;
+							break;
+						case "CREATED":
+							if(DateTime.TryParse(s, out DateTime dtc))
+							{
+								fdo.Created = dtc;
+							}
+							break;
+						case "MODIFIED":
+							if (DateTime.TryParse(s, out DateTime dtm))
+							{
+								fdo.Modified = dtm;
+							}
+							break;
+					}
+
+					if (toComment)
+					{
+						fdo.Comment += s + "\r\n";
+					}
+
+					if (toNotes)
+					{
+						fdo.Notes += s + "\r\n";
+					}
+				}
+			}
+
+			_files.Add(fdo);
+		}
+		
+		public string[] parseAllDataToMulti(string str)
+		{
+			List<string> ret = new List<string>();
+			StringBuilder sb = new StringBuilder();
+			foreach(String s in str.Split('\n'))
+			{
+				if(s.Trim() == "--FILE--")
+				{
+					ret.Add(sb.ToString());
+					sb.Clear();
+					continue;
+				}
+
+				if(s.Trim() != "" && !s.StartsWith("#"))
+				{
+					sb.Append(s + "\r\n");
+				}
+			}
+
+			return ret.ToArray();
+		}
+
+		public bool attemptDrop(dropTarget target, DragEventArgs e)
+		{
+			//TODO: poop
+			Object send = null;
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string file = (e.Data.GetData(DataFormats.FileDrop) as string[])[0];
+				string ext = file.Substring(file.IndexOf(".") + 1);
+				if (_stringTypes.Contains(ext.ToLower()))
+				{
+					parseAllDataToObject(file);
+					if(_files.Count > 0)
+					{
+
+					}
+				}
+			}
+
 			switch (target)
 			{
 				case dropTarget.allFields:
@@ -256,7 +397,7 @@ namespace KodeKeeper
 		{
 			if (int.TryParse(((Control)sender).Tag.ToString(), out int t))
 			{
-				attemptDrop((dropTarget)t);
+				attemptDrop((dropTarget)t, e);
 				hideDropPoints();
 			}
 		}
@@ -278,7 +419,7 @@ namespace KodeKeeper
 			if (int.TryParse(((Control)sender).Tag.ToString(), out int t)){flash(t);}
 		}
 
-		public bool parseAllData()
+		public bool parseAllData(String fileContents)
 		{
 			return		parseMainData()
 					&&	parseFile()

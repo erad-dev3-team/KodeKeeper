@@ -30,18 +30,41 @@ namespace KodeKeeper
 
 		public bool updateInsert(string insertdata)
 		{
-			bool ret = false;
+			try
+			{
+				if (!checkConnection()) { throw new Exception("ERR"); }
 
+				_sql.CommandText = insertdata;
+				_sql.ExecuteNonQuery();
 
-			_sql.CommandText = insertdata;
-			_sql.Prepare();
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 
+		public bool checkTableExists(string tableName)
+		{
+			_sql.CommandText = ("SELECT name FROM sqlite_master WHERE type='table' AND name='" + tableName + "'");
+			if (_sql.ExecuteScalar() is null) { return false; }
+			else { return true; }
+		}
 
-			return ret;
+		//TODO: 20190120 - GetData
+		public Dictionary<string, string> getData(string table)
+		{
+			
+			if (checkTableExists(table))
+			{
+				_sql.CommandText = "SELECT * FROM " + table;
+			}
 		}
 
 		public void setFileData()
 		{
+			//TODO: FileDataInsert
 			if (!checkConnection()) { return; }
 			_sql.CommandText = $@"INSERT INTO files
 (
