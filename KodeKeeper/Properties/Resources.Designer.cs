@@ -71,16 +71,6 @@ namespace KodeKeeper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] connections {
-            get {
-                object obj = ResourceManager.GetObject("connections", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap connections1 {
@@ -195,26 +185,6 @@ namespace KodeKeeper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] filedb {
-            get {
-                object obj = ResourceManager.GetObject("filedb", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] filedb1 {
-            get {
-                object obj = ResourceManager.GetObject("filedb1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO images (name, size, for, image) VALUES 
         ///(&apos;code_128&apos;, 128, &apos;code&apos;, &apos;137|80|78|71|13|10|26|10|0|0|0|13|73|72|68|82|0|0|0|128|0|0|0|128|8|6|0|0|0|195|62|97|203|0|0|0|1|115|82|71|66|0|174|206|28|233|0|0|0|4|103|65|77|65|0|0|177|143|11|252|97|5|0|0|0|9|112|72|89|115|0|0|78|188|0|0|78|188|1|161|45|138|240|0|0|0|25|116|69|88|116|83|111|102|116|119|97|114|101|0|119|119|119|46|105|110|107|115|99|97|112|101|46|111|114|103|155|238|60|26|0|0|10|217|73|68|65|84|120|94|237|157|11|140|30|85|21|199|23|159|17|1 [rest of string was truncated]&quot;;.
         /// </summary>
@@ -250,6 +220,16 @@ namespace KodeKeeper.Properties {
         internal static byte[] ScintillaNET {
             get {
                 object obj = ResourceManager.GetObject("ScintillaNET", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SharpCompress {
+            get {
+                object obj = ResourceManager.GetObject("SharpCompress", resourceCulture);
                 return ((byte[])(obj));
             }
         }

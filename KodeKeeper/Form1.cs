@@ -181,5 +181,11 @@ namespace KodeKeeper
 			dataUpdate du = new dataUpdate(obj) { _dbh = _dbh };
 			du.ShowDialog();
 		}
+
+		private void btn_Menu_File_ConnectToServer_Click(object sender, EventArgs e)
+		{
+			f_cts fcts = new f_cts();
+			fcts.ShowDialog();
+		}
 	}
 }

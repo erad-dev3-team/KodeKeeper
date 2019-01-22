@@ -32,22 +32,6 @@
 			this.tsc_Container = new System.Windows.Forms.ToolStripContainer();
 			this.ss_Status = new System.Windows.Forms.StatusStrip();
 			this.lbl_Info = new System.Windows.Forms.ToolStripStatusLabel();
-			this.ts_SideToolBar = new System.Windows.Forms.ToolStrip();
-			this.btn_ToolStrip_Search = new System.Windows.Forms.ToolStripButton();
-			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-			this.ts_TopTools = new System.Windows.Forms.ToolStrip();
-			this.ms_Menu = new System.Windows.Forms.MenuStrip();
-			this.btn_Menu_File = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Data = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Data_CheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Data_OpenUpdateScreen = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsep_Menu_Data_Sep1 = new System.Windows.Forms.ToolStripSeparator();
-			this.btn_Menu_Data_UploadData = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
-			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.p_Search = new KodeKeeper.myPanel();
 			this.p_Resize = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
@@ -71,19 +55,36 @@
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.rb_DESC_OR_TAGS = new System.Windows.Forms.RadioButton();
 			this.rb_DESC_AND_TAGS = new System.Windows.Forms.RadioButton();
+			this.ts_SideToolBar = new System.Windows.Forms.ToolStrip();
+			this.btn_ToolStrip_Search = new System.Windows.Forms.ToolStripButton();
+			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+			this.ts_TopTools = new System.Windows.Forms.ToolStrip();
+			this.ms_Menu = new System.Windows.Forms.MenuStrip();
+			this.btn_Menu_File = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Data = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Data_CheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Data_OpenUpdateScreen = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsep_Menu_Data_Sep1 = new System.Windows.Forms.ToolStripSeparator();
+			this.btn_Menu_Data_UploadData = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Edit = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Settings = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_File_ConnectToServer = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsc_Container.BottomToolStripPanel.SuspendLayout();
 			this.tsc_Container.ContentPanel.SuspendLayout();
 			this.tsc_Container.RightToolStripPanel.SuspendLayout();
 			this.tsc_Container.TopToolStripPanel.SuspendLayout();
 			this.tsc_Container.SuspendLayout();
 			this.ss_Status.SuspendLayout();
-			this.ts_SideToolBar.SuspendLayout();
-			this.ms_Menu.SuspendLayout();
 			this.p_Search.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_LimitResults)).BeginInit();
 			this.p_SearchHeader.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
+			this.ts_SideToolBar.SuspendLayout();
+			this.ms_Menu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tsc_Container
@@ -127,138 +128,6 @@
 			this.lbl_Info.Name = "lbl_Info";
 			this.lbl_Info.Size = new System.Drawing.Size(10, 17);
 			this.lbl_Info.Text = "|";
-			// 
-			// ts_SideToolBar
-			// 
-			this.ts_SideToolBar.Dock = System.Windows.Forms.DockStyle.None;
-			this.ts_SideToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_ToolStrip_Search,
-            this.toolStripDropDownButton1});
-			this.ts_SideToolBar.Location = new System.Drawing.Point(0, 3);
-			this.ts_SideToolBar.Name = "ts_SideToolBar";
-			this.ts_SideToolBar.Size = new System.Drawing.Size(30, 49);
-			this.ts_SideToolBar.TabIndex = 0;
-			// 
-			// btn_ToolStrip_Search
-			// 
-			this.btn_ToolStrip_Search.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.btn_ToolStrip_Search.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.btn_ToolStrip_Search.Image = ((System.Drawing.Image)(resources.GetObject("btn_ToolStrip_Search.Image")));
-			this.btn_ToolStrip_Search.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btn_ToolStrip_Search.Name = "btn_ToolStrip_Search";
-			this.btn_ToolStrip_Search.Size = new System.Drawing.Size(28, 28);
-			this.btn_ToolStrip_Search.Text = "🔎";
-			this.btn_ToolStrip_Search.Click += new System.EventHandler(this.btn_ToolStrip_Search_Click);
-			// 
-			// toolStripDropDownButton1
-			// 
-			this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-			this.toolStripDropDownButton1.Size = new System.Drawing.Size(28, 4);
-			this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-			// 
-			// ts_TopTools
-			// 
-			this.ts_TopTools.Dock = System.Windows.Forms.DockStyle.None;
-			this.ts_TopTools.Location = new System.Drawing.Point(3, 0);
-			this.ts_TopTools.Name = "ts_TopTools";
-			this.ts_TopTools.Size = new System.Drawing.Size(111, 25);
-			this.ts_TopTools.TabIndex = 1;
-			// 
-			// ms_Menu
-			// 
-			this.ms_Menu.BackColor = System.Drawing.Color.Transparent;
-			this.ms_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_Menu_File,
-            this.btn_Menu_Data,
-            this.btn_Menu_Edit,
-            this.btn_Menu_Settings,
-            this.btn_Menu_Tools,
-            this.btn_Menu_Help});
-			this.ms_Menu.Location = new System.Drawing.Point(0, 0);
-			this.ms_Menu.Name = "ms_Menu";
-			this.ms_Menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.ms_Menu.Size = new System.Drawing.Size(800, 24);
-			this.ms_Menu.TabIndex = 0;
-			// 
-			// btn_Menu_File
-			// 
-			this.btn_Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_Menu_AddNewFile});
-			this.btn_Menu_File.Name = "btn_Menu_File";
-			this.btn_Menu_File.Size = new System.Drawing.Size(37, 20);
-			this.btn_Menu_File.Text = "File";
-			// 
-			// btn_Menu_AddNewFile
-			// 
-			this.btn_Menu_AddNewFile.Name = "btn_Menu_AddNewFile";
-			this.btn_Menu_AddNewFile.Size = new System.Drawing.Size(144, 22);
-			this.btn_Menu_AddNewFile.Text = "Add New File";
-			this.btn_Menu_AddNewFile.Click += new System.EventHandler(this.btn_Menu_AddNewFile_Click);
-			// 
-			// btn_Menu_Data
-			// 
-			this.btn_Menu_Data.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_Menu_Data_CheckUpdates,
-            this.btn_Menu_Data_OpenUpdateScreen,
-            this.tsep_Menu_Data_Sep1,
-            this.btn_Menu_Data_UploadData});
-			this.btn_Menu_Data.Name = "btn_Menu_Data";
-			this.btn_Menu_Data.Size = new System.Drawing.Size(43, 20);
-			this.btn_Menu_Data.Text = "Data";
-			// 
-			// btn_Menu_Data_CheckUpdates
-			// 
-			this.btn_Menu_Data_CheckUpdates.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.btn_Menu_Data_CheckUpdates.Name = "btn_Menu_Data_CheckUpdates";
-			this.btn_Menu_Data_CheckUpdates.Size = new System.Drawing.Size(182, 22);
-			this.btn_Menu_Data_CheckUpdates.Text = "Check Update";
-			this.btn_Menu_Data_CheckUpdates.Click += new System.EventHandler(this.btn_Menu_Data_CheckUpdates_Click);
-			// 
-			// btn_Menu_Data_OpenUpdateScreen
-			// 
-			this.btn_Menu_Data_OpenUpdateScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.btn_Menu_Data_OpenUpdateScreen.Name = "btn_Menu_Data_OpenUpdateScreen";
-			this.btn_Menu_Data_OpenUpdateScreen.Size = new System.Drawing.Size(182, 22);
-			this.btn_Menu_Data_OpenUpdateScreen.Text = "Open Update Screen";
-			this.btn_Menu_Data_OpenUpdateScreen.Click += new System.EventHandler(this.btn_Menu_Data_OpenUpdateScreen_Click);
-			// 
-			// tsep_Menu_Data_Sep1
-			// 
-			this.tsep_Menu_Data_Sep1.Name = "tsep_Menu_Data_Sep1";
-			this.tsep_Menu_Data_Sep1.Size = new System.Drawing.Size(179, 6);
-			// 
-			// btn_Menu_Data_UploadData
-			// 
-			this.btn_Menu_Data_UploadData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.btn_Menu_Data_UploadData.Name = "btn_Menu_Data_UploadData";
-			this.btn_Menu_Data_UploadData.Size = new System.Drawing.Size(182, 22);
-			this.btn_Menu_Data_UploadData.Text = "Upload Changes";
-			// 
-			// btn_Menu_Edit
-			// 
-			this.btn_Menu_Edit.Name = "btn_Menu_Edit";
-			this.btn_Menu_Edit.Size = new System.Drawing.Size(39, 20);
-			this.btn_Menu_Edit.Text = "Edit";
-			// 
-			// btn_Menu_Settings
-			// 
-			this.btn_Menu_Settings.Name = "btn_Menu_Settings";
-			this.btn_Menu_Settings.Size = new System.Drawing.Size(61, 20);
-			this.btn_Menu_Settings.Text = "Settings";
-			// 
-			// btn_Menu_Tools
-			// 
-			this.btn_Menu_Tools.Name = "btn_Menu_Tools";
-			this.btn_Menu_Tools.Size = new System.Drawing.Size(48, 20);
-			this.btn_Menu_Tools.Text = "Tools";
-			// 
-			// btn_Menu_Help
-			// 
-			this.btn_Menu_Help.Name = "btn_Menu_Help";
-			this.btn_Menu_Help.Size = new System.Drawing.Size(44, 20);
-			this.btn_Menu_Help.Text = "Help";
 			// 
 			// p_Search
 			// 
@@ -545,6 +414,146 @@
 			this.rb_DESC_AND_TAGS.Text = "AND";
 			this.rb_DESC_AND_TAGS.UseVisualStyleBackColor = true;
 			// 
+			// ts_SideToolBar
+			// 
+			this.ts_SideToolBar.Dock = System.Windows.Forms.DockStyle.None;
+			this.ts_SideToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_ToolStrip_Search,
+            this.toolStripDropDownButton1});
+			this.ts_SideToolBar.Location = new System.Drawing.Point(0, 3);
+			this.ts_SideToolBar.Name = "ts_SideToolBar";
+			this.ts_SideToolBar.Size = new System.Drawing.Size(30, 49);
+			this.ts_SideToolBar.TabIndex = 0;
+			// 
+			// btn_ToolStrip_Search
+			// 
+			this.btn_ToolStrip_Search.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.btn_ToolStrip_Search.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.btn_ToolStrip_Search.Image = ((System.Drawing.Image)(resources.GetObject("btn_ToolStrip_Search.Image")));
+			this.btn_ToolStrip_Search.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btn_ToolStrip_Search.Name = "btn_ToolStrip_Search";
+			this.btn_ToolStrip_Search.Size = new System.Drawing.Size(28, 28);
+			this.btn_ToolStrip_Search.Text = "🔎";
+			this.btn_ToolStrip_Search.Click += new System.EventHandler(this.btn_ToolStrip_Search_Click);
+			// 
+			// toolStripDropDownButton1
+			// 
+			this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+			this.toolStripDropDownButton1.Size = new System.Drawing.Size(28, 4);
+			this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+			// 
+			// ts_TopTools
+			// 
+			this.ts_TopTools.Dock = System.Windows.Forms.DockStyle.None;
+			this.ts_TopTools.Location = new System.Drawing.Point(3, 0);
+			this.ts_TopTools.Name = "ts_TopTools";
+			this.ts_TopTools.Size = new System.Drawing.Size(111, 25);
+			this.ts_TopTools.TabIndex = 1;
+			// 
+			// ms_Menu
+			// 
+			this.ms_Menu.BackColor = System.Drawing.Color.Transparent;
+			this.ms_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Menu_File,
+            this.btn_Menu_Data,
+            this.btn_Menu_Edit,
+            this.btn_Menu_Settings,
+            this.btn_Menu_Tools,
+            this.btn_Menu_Help});
+			this.ms_Menu.Location = new System.Drawing.Point(0, 0);
+			this.ms_Menu.Name = "ms_Menu";
+			this.ms_Menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+			this.ms_Menu.Size = new System.Drawing.Size(800, 24);
+			this.ms_Menu.TabIndex = 0;
+			// 
+			// btn_Menu_File
+			// 
+			this.btn_Menu_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Menu_AddNewFile,
+            this.btn_Menu_File_ConnectToServer});
+			this.btn_Menu_File.Name = "btn_Menu_File";
+			this.btn_Menu_File.Size = new System.Drawing.Size(37, 20);
+			this.btn_Menu_File.Text = "File";
+			// 
+			// btn_Menu_AddNewFile
+			// 
+			this.btn_Menu_AddNewFile.Name = "btn_Menu_AddNewFile";
+			this.btn_Menu_AddNewFile.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_AddNewFile.Text = "Add New File";
+			this.btn_Menu_AddNewFile.Click += new System.EventHandler(this.btn_Menu_AddNewFile_Click);
+			// 
+			// btn_Menu_Data
+			// 
+			this.btn_Menu_Data.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Menu_Data_CheckUpdates,
+            this.btn_Menu_Data_OpenUpdateScreen,
+            this.tsep_Menu_Data_Sep1,
+            this.btn_Menu_Data_UploadData});
+			this.btn_Menu_Data.Name = "btn_Menu_Data";
+			this.btn_Menu_Data.Size = new System.Drawing.Size(43, 20);
+			this.btn_Menu_Data.Text = "Data";
+			// 
+			// btn_Menu_Data_CheckUpdates
+			// 
+			this.btn_Menu_Data_CheckUpdates.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.btn_Menu_Data_CheckUpdates.Name = "btn_Menu_Data_CheckUpdates";
+			this.btn_Menu_Data_CheckUpdates.Size = new System.Drawing.Size(182, 22);
+			this.btn_Menu_Data_CheckUpdates.Text = "Check Update";
+			this.btn_Menu_Data_CheckUpdates.Click += new System.EventHandler(this.btn_Menu_Data_CheckUpdates_Click);
+			// 
+			// btn_Menu_Data_OpenUpdateScreen
+			// 
+			this.btn_Menu_Data_OpenUpdateScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.btn_Menu_Data_OpenUpdateScreen.Name = "btn_Menu_Data_OpenUpdateScreen";
+			this.btn_Menu_Data_OpenUpdateScreen.Size = new System.Drawing.Size(182, 22);
+			this.btn_Menu_Data_OpenUpdateScreen.Text = "Open Update Screen";
+			this.btn_Menu_Data_OpenUpdateScreen.Click += new System.EventHandler(this.btn_Menu_Data_OpenUpdateScreen_Click);
+			// 
+			// tsep_Menu_Data_Sep1
+			// 
+			this.tsep_Menu_Data_Sep1.Name = "tsep_Menu_Data_Sep1";
+			this.tsep_Menu_Data_Sep1.Size = new System.Drawing.Size(179, 6);
+			// 
+			// btn_Menu_Data_UploadData
+			// 
+			this.btn_Menu_Data_UploadData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.btn_Menu_Data_UploadData.Name = "btn_Menu_Data_UploadData";
+			this.btn_Menu_Data_UploadData.Size = new System.Drawing.Size(182, 22);
+			this.btn_Menu_Data_UploadData.Text = "Upload Changes";
+			// 
+			// btn_Menu_Edit
+			// 
+			this.btn_Menu_Edit.Name = "btn_Menu_Edit";
+			this.btn_Menu_Edit.Size = new System.Drawing.Size(39, 20);
+			this.btn_Menu_Edit.Text = "Edit";
+			// 
+			// btn_Menu_Settings
+			// 
+			this.btn_Menu_Settings.Name = "btn_Menu_Settings";
+			this.btn_Menu_Settings.Size = new System.Drawing.Size(61, 20);
+			this.btn_Menu_Settings.Text = "Settings";
+			// 
+			// btn_Menu_Tools
+			// 
+			this.btn_Menu_Tools.Name = "btn_Menu_Tools";
+			this.btn_Menu_Tools.Size = new System.Drawing.Size(48, 20);
+			this.btn_Menu_Tools.Text = "Tools";
+			// 
+			// btn_Menu_Help
+			// 
+			this.btn_Menu_Help.Name = "btn_Menu_Help";
+			this.btn_Menu_Help.Size = new System.Drawing.Size(44, 20);
+			this.btn_Menu_Help.Text = "Help";
+			// 
+			// btn_Menu_File_ConnectToServer
+			// 
+			this.btn_Menu_File_ConnectToServer.Name = "btn_Menu_File_ConnectToServer";
+			this.btn_Menu_File_ConnectToServer.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_File_ConnectToServer.Text = "Connect to Server";
+			this.btn_Menu_File_ConnectToServer.Click += new System.EventHandler(this.btn_Menu_File_ConnectToServer_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,10 +576,6 @@
 			this.tsc_Container.PerformLayout();
 			this.ss_Status.ResumeLayout(false);
 			this.ss_Status.PerformLayout();
-			this.ts_SideToolBar.ResumeLayout(false);
-			this.ts_SideToolBar.PerformLayout();
-			this.ms_Menu.ResumeLayout(false);
-			this.ms_Menu.PerformLayout();
 			this.p_Search.ResumeLayout(false);
 			this.p_Search.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_LimitResults)).EndInit();
@@ -580,6 +585,10 @@
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
+			this.ts_SideToolBar.ResumeLayout(false);
+			this.ts_SideToolBar.PerformLayout();
+			this.ms_Menu.ResumeLayout(false);
+			this.ms_Menu.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -629,6 +638,7 @@
 		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Data_Sep1;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Data_UploadData;
 		private System.Windows.Forms.ToolStripStatusLabel lbl_Info;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_File_ConnectToServer;
 	}
 }
 

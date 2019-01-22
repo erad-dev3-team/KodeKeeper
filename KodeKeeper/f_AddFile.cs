@@ -320,7 +320,8 @@ namespace KodeKeeper
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			{
 				string file = (e.Data.GetData(DataFormats.FileDrop) as string[])[0];
-				string ext = file.Substring(file.IndexOf(".") + 1);
+				string ext = file.Substring(file.LastIndexOf(".") + 1);
+				if(ext.ToLower() == "gz" && file.ToLower().EndsWith(".tar.gz")) { ext = "tar.gz"; }
 				if (_stringTypes.Contains(ext.ToLower()))
 				{
 					parseAllDataToObject(file);
@@ -330,6 +331,8 @@ namespace KodeKeeper
 					}
 				}
 			}
+
+			
 
 			switch (target)
 			{
