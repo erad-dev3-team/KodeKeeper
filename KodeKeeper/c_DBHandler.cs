@@ -51,7 +51,7 @@ namespace KodeKeeper
 			if (_sql.ExecuteScalar() is null) { return false; }
 			else { return true; }
 		}
-
+		/*
 		//TODO: 20190120 - GetData
 		public Dictionary<string, string> getData(string table)
 		{
@@ -61,7 +61,7 @@ namespace KodeKeeper
 				_sql.CommandText = "SELECT * FROM " + table;
 			}
 		}
-
+		*/
 		public void setFileData()
 		{
 			//TODO: FileDataInsert

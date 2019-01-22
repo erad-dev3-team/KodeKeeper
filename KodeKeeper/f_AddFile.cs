@@ -334,7 +334,7 @@ namespace KodeKeeper
 			switch (target)
 			{
 				case dropTarget.allFields:
-					return parseAllData();
+					//return parseAllData();
 				case dropTarget.mainFields:
 					return parseMainData();
 				case dropTarget.fileAttachment:
