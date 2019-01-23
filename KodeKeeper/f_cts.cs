@@ -32,11 +32,15 @@ namespace KodeKeeper
 
 		private void F_cts_Load(object sender, EventArgs e)
 		{
-			Connect();
+			//TODO: Load connections from DB
+
+
+			//Connect();
 		}
 
 		public void Connect()
 		{
+
 			// Set up session options
 			SessionOptions sessionOptions = new SessionOptions
 			{
@@ -44,14 +48,33 @@ namespace KodeKeeper
 				HostName = "atoldavid.hu",
 				UserName = "marci",
 				Password = "123qwe",
-				SshHostKeyFingerprint = "ssh-ed25519 256 3kKh4vM8Mdmzvbpg/q/25013nk/QpqgQHBdVEJqTBwU="
+				SshHostKeyFingerprint = "ssh-ed25519 256 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
 			};
 
 			sessionOptions.AddRawSettings("PingIntervalSecs", "10");
 			sessionOptions.AddRawSettings("TcpNoDelay", "1");
 
 			session = new Session();
-			session.Open(sessionOptions);
+			try
+			{
+				session.Open(sessionOptions);
+			}
+			catch(Exception ex)
+			{
+				if(sessionOptions.SshHostKeyFingerprint == "ssh-ed25519 256 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00")
+				{
+					string key = ex.Message.Substring(ex.Message.IndexOf("!") + 1);
+					key = key.Substring(key.IndexOf(":") + 1);
+					key = key.Substring(0, key.IndexOf("."));
+					if(key.Contains("Host key fingerprint is"))
+					{
+						key = key.Substring(key.IndexOf("Host key fingerprint is") + "Host key fingerprint is".Length);
+					}
+					key = key.Trim();
+					sessionOptions.SshHostKeyFingerprint = key;
+					session.Open(sessionOptions);
+				}
+			}
 
 			if (session.Opened)
 			{
@@ -71,8 +94,38 @@ namespace KodeKeeper
 				lvi.SubItems.Add(finfo.Owner);
 				lvi.SubItems.Add(finfo.Group);
 				lvi.SubItems.Add(finfo.FilePermissions.Octal.ToString());
-				listView1.Items.Add(lvi);
+				//listView1.Items.Add(lvi);
 			}
+		}
+
+		private void cb_MoreInfo_CheckedChanged(object sender, EventArgs e)
+		{
+			if (cb_MoreInfo.Checked)
+			{
+				Height = btn_Logs.Top + btn_Logs.Height + (Height - (gb_ServerSpecs.Height + gb_ServerSpecs.Top)) + 50;
+			}
+			else
+			{
+				Height = lbl_ProjectName.Top + lbl_ProjectName.Height + (Height - (gb_ServerSpecs.Height + gb_ServerSpecs.Top)) + 50;
+			}
+		}
+
+		private void btn_Close_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void btn_Edit_Click(object sender, EventArgs e)
+		{
+			f_EditServer fe = new f_EditServer();
+			///SEND current data
+			fe.ShowDialog();
+		}
+
+		private void btn_Add_Click(object sender, EventArgs e)
+		{
+			f_EditServer fe = new f_EditServer();
+			fe.ShowDialog();
 		}
 	}
 }

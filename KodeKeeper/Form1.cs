@@ -184,6 +184,11 @@ namespace KodeKeeper
 
 		private void btn_Menu_File_ConnectToServer_Click(object sender, EventArgs e)
 		{
+			
+		}
+
+		private void btn_Menu_Connection_Open_Click(object sender, EventArgs e)
+		{
 			f_cts fcts = new f_cts();
 			fcts.ShowDialog();
 		}

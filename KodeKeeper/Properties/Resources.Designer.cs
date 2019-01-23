@@ -92,7 +92,7 @@ namespace KodeKeeper.Properties {
         ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
         ////*!40101 SET NAMES utf8mb4 */;
         ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZON [rest of string was truncated]&quot;;.
+        ////*!40103 S [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string data {
             get {
@@ -220,16 +220,6 @@ namespace KodeKeeper.Properties {
         internal static byte[] ScintillaNET {
             get {
                 object obj = ResourceManager.GetObject("ScintillaNET", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SharpCompress {
-            get {
-                object obj = ResourceManager.GetObject("SharpCompress", resourceCulture);
                 return ((byte[])(obj));
             }
         }
