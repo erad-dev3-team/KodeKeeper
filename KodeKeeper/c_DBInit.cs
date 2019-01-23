@@ -56,6 +56,8 @@ namespace KodeKeeper
 			else { return true; }
 		}
 
+
+		//TODO: Foreign key-ket összehangolni az új UID-kkel
 		public string createTables()
 		{
 			if (!checkConnection()) { return "E:ConnectionError"; }
@@ -65,12 +67,13 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"projects " +
 									"(" +
-											"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +		//row ID
+											"id INTEGER PRIMARY KEY AUTOINCREMENT,				" +     //row ID
+											"projects_uid INTEGER UNIQUE,						" +		//Unique ID
 											"name TEXT,											" +		//Project name
 											"number_of_files INTEGER,							" +		//Number of files in the project
 											"added TEXT,										" +		//Date the project was added
 											"modified TEXT,										" +     //Date the project was modified
-											"insert_user_id INTEGER,							" + 
+											"insert_user_id INTEGER,							" +		//
 											"comment TEXT										" +     //comment
 									");" +
 
@@ -107,13 +110,14 @@ namespace KodeKeeper
 										"filetypes " +
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"filetypes_uid INTEGER UNIQUE,						\r\n" +     //Unique ID
 										"type TEXT,											\r\n" +     //File type
 										"description TEXT,									\r\n" +     //File type description
 										"mime_type TEXT,									\r\n" +     //Mime type
 										"def_image_id INTEGER,								\r\n" +     //Default image index
 										"comment TEXT,										\r\n" +     //comment
-										"insert_user_id INTEGER,							\r\n" +
-										"modified TEXT,										\r\n" +
+										"insert_user_id INTEGER,							\r\n" +		//
+										"modified TEXT,										\r\n" +		//
 										"FOREIGN KEY(def_image_id) REFERENCES images(id)	\r\n" +     //
 									");" +
 
@@ -132,13 +136,14 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"files " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +		//row ID
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"file_uid INTEGER UNIQUE,							\r\n" +		//Unique ID
 										"project_id INTEGER,								\r\n" +		//ID of project under which the file is
 										"file_name TEXT,									\r\n" +		//File Name (eg: cr_new.php)
 										"location TEXT,										\r\n" +		//File Location (eg: /usr/local/dpdweblabel/cr/)
 										"file_type_id INTEGER,								\r\n" +		//ID of filetype
-										"md5 TEXT UNIQUE									\r\n" +     //MD5 generated from (project_id + file_name + location + file_type_id)
-										"file_version INTEGER,								\r\n" +		//Version of file (eg: 2)
+										"md5 TEXT UNIQUE,									\r\n" +     //MD5 generated from (project_id + file_name + location + file_type_id)
+										"file_version TEXT,									\r\n" +		//Version of file (eg: 2)
 										"in_use INTEGER,									\r\n" +		//Bool value, 1 if file is in use 0 otherwise (eg: 1)
 										"parameters TEXT,									\r\n" +		//Input parameters for file (eg: parcel_number address_id)
 										"file_contents TEXT,								\r\n" +		//Contents of file. B64 encoded
@@ -169,6 +174,7 @@ namespace KodeKeeper
 										"links " +
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"links_uid INTEGER UNIQUE,							\r\n" +     //Unique ID
 										"name INTEGER,										\r\n" +		//
 										"file_from INTEGER,									\r\n" +		//
 										"file_to INTEGER,									\r\n" +		//
@@ -176,10 +182,10 @@ namespace KodeKeeper
 										"data_sent TEXT,									\r\n" +		//
 										"is_data_returned INTEGER,							\r\n" +		//
 										"data_returned TEXT,								\r\n" +		//
-										"insert_user_id INTEGER,							\r\n" +
-										"method_from TEXT,									\r\n" +
-										"method_to TEXT,									\r\n" +
-										"modified TEXT,										\r\n" +
+										"insert_user_id INTEGER,							\r\n" +		//
+										"method_from TEXT,									\r\n" +		//
+										"method_to TEXT,									\r\n" +		//
+										"modified TEXT,										\r\n" +		//
 										"comment TEXT,										\r\n" +     //
 										"FOREIGN KEY(file_from) REFERENCES files(id),		\r\n" +		//
 										"FOREIGN KEY(file_to) REFERENCES files(id)			\r\n" +		//
@@ -198,10 +204,11 @@ namespace KodeKeeper
 										"tags_list " +
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"tags_list_uid INTEGER UNIQUE,						\r\n" +     //Unique ID
 										"tag TEXT,											\r\n" +		//
 										"description TEXT,									\r\n" +     //
-										"insert_user_id INTEGER,							\r\n" +
-										"modified TEXT,										\r\n" +
+										"insert_user_id INTEGER,							\r\n" +		//
+										"modified TEXT,										\r\n" +		//
 										"comment TEXT										\r\n" +		//
 									");" +
 
@@ -216,14 +223,34 @@ namespace KodeKeeper
 				_sql.CommandText = "CREATE TABLE " +
 										"tags " +
 									"(" +
-										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
-										"tag_id INTEGER,									\r\n" +     //
-										"file_id INTEGER,									\r\n" +     //
-										"insert_user_id INTEGER,							\r\n" +
-										"modified TEXT,										\r\n" +
-										"comment TEXT,										\r\n" +     //
-										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),		\r\n" +     //
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,					\r\n" +     //row ID
+										"tag_id INTEGER,										\r\n" +     //
+										"tags_uid INTEGER UNIQUE,								\r\n" +     //Unique ID
+										"file_id INTEGER,										\r\n" +     //
+										"insert_user_id INTEGER,								\r\n" +     //
+										"modified TEXT,											\r\n" +     //
+										"comment TEXT,											\r\n" +     //
+										"FOREIGN KEY(tag_id) REFERENCES tags_list(id),			\r\n" +     //
+										"FOREIGN KEY(tag_id) REFERENCES tag_type(tag_type_uid),	\r\n" +     //
 										"FOREIGN KEY(file_id) REFERENCES files(id)			\r\n" +     //
+									");" +
+
+									"CREATE INDEX IF NOT EXISTS tags_id_index ON tags(id);";
+				_sql.ExecuteNonQuery();
+			}
+
+			if (!checkTableExists("tag_type"))
+			{
+				_sql.CommandText = "CREATE TABLE " +
+										"tag_type " +
+									"(" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"tag_type_uid INTEGER UNIQUE,						\r\n" +     //Unique ID
+										"tag_type TEXT,										\r\n" +     //
+										"example TEXT,										\r\n" +     //
+										"insert_user_id INTEGER,							\r\n" +     //
+										"modified TEXT,										\r\n" +     //
+										"comment TEXT										\r\n" +     //
 									");" +
 
 									"CREATE INDEX IF NOT EXISTS tags_id_index ON tags(id);";
@@ -236,9 +263,10 @@ namespace KodeKeeper
 										"userdata " +
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"uid INTEGER,										\r\n" +     //Unique ID
 										"username TEXT,										\r\n" +     //Username
 										"last_server INTEGER,								\r\n" +     //Last server connected to
-										"version_number INTEGER,							\r\n" +     //Last server connected to
+										"version_number INTEGER,							\r\n" +     //Program version
 										"last_update_received TEXT,							\r\n" +     //When did the user last pull an update from the server
 										"last_update_sent TEXT								\r\n" +     //When did the user last upload changes he made
 									");";
@@ -252,8 +280,8 @@ namespace KodeKeeper
 									"(" +
 										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
 										"project_id INTEGER,								\r\n" +     //Id for project connected to server (projects.id)
-										"log_id TEXT										\r\n" +     //Id for entries in log file (autogenerated)
-										"generate_default_tags TEXT							\r\n" +		//1 for true 0 for false (Generate tags from path, file name and other parameters)
+										"log_id TEXT,										\r\n" +     //Id for entries in log file (autogenerated)
+										"generate_default_tags TEXT,						\r\n" +		//1 for true 0 for false (Generate tags from path, file name and other parameters)
 										"name TEXT,											\r\n" +     //Name of connection
 										"host_name TEXT,									\r\n" +     //Name of host or IP
 										"port INTEGER,										\r\n" +     //PORT number
@@ -275,7 +303,21 @@ namespace KodeKeeper
 				_sql.ExecuteNonQuery();
 			}
 
-	
+			if (!checkTableExists("keys"))
+			{
+				_sql.CommandText = "CREATE TABLE " +
+										"keys " +
+									"(" +
+										"id INTEGER PRIMARY KEY AUTOINCREMENT,				\r\n" +     //row ID
+										"key_name TEXT,										\r\n" +     //
+										"key_path TEXT,										\r\n" +     //
+										"key_passphrase TEXT,								\r\n" +     //
+										"key_active TEXT									\r\n" +     //Y = Yes, N = No
+									");";
+				_sql.ExecuteNonQuery();
+			}
+
+
 
 			return "+";
 		}

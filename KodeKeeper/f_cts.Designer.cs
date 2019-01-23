@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.cb_Servers = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -39,10 +38,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.gb_ServerSpecs = new System.Windows.Forms.GroupBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.btn_Logs = new System.Windows.Forms.Button();
+			this.cb_MoreInfo = new System.Windows.Forms.CheckBox();
 			this.lbl_Key = new System.Windows.Forms.Label();
 			this.lbl_LastUpdate = new System.Windows.Forms.Label();
 			this.lbl_ProjectName = new System.Windows.Forms.Label();
@@ -54,11 +50,15 @@
 			this.lbl_Password = new System.Windows.Forms.Label();
 			this.lbl_Auth = new System.Windows.Forms.Label();
 			this.lbl_Username = new System.Windows.Forms.Label();
+			this.btn_Logs = new System.Windows.Forms.Button();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
 			this.btn_Connect = new System.Windows.Forms.Button();
 			this.btn_Edit = new System.Windows.Forms.Button();
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.btn_Close = new System.Windows.Forms.Button();
-			this.cb_MoreInfo = new System.Windows.Forms.CheckBox();
+			this.cb_Servers = new KodeKeeper.myComboBox();
 			this.gb_ServerSpecs.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -70,14 +70,6 @@
 			this.label1.Size = new System.Drawing.Size(44, 13);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Server: ";
-			// 
-			// cb_Servers
-			// 
-			this.cb_Servers.FormattingEnabled = true;
-			this.cb_Servers.Location = new System.Drawing.Point(62, 6);
-			this.cb_Servers.Name = "cb_Servers";
-			this.cb_Servers.Size = new System.Drawing.Size(266, 21);
-			this.cb_Servers.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -182,46 +174,22 @@
 			this.gb_ServerSpecs.Controls.Add(this.label6);
 			this.gb_ServerSpecs.Location = new System.Drawing.Point(15, 33);
 			this.gb_ServerSpecs.Name = "gb_ServerSpecs";
-			this.gb_ServerSpecs.Size = new System.Drawing.Size(394, 101);
+			this.gb_ServerSpecs.Size = new System.Drawing.Size(394, 97);
 			this.gb_ServerSpecs.TabIndex = 10;
 			this.gb_ServerSpecs.TabStop = false;
 			this.gb_ServerSpecs.Text = "Connection Settings";
 			// 
-			// label10
+			// cb_MoreInfo
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(10, 73);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(46, 13);
-			this.label10.TabIndex = 10;
-			this.label10.Text = "Project: ";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(10, 259);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(108, 13);
-			this.label11.TabIndex = 11;
-			this.label11.Text = "Last update finished: ";
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(10, 283);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(31, 13);
-			this.label12.TabIndex = 12;
-			this.label12.Text = "Key: ";
-			// 
-			// btn_Logs
-			// 
-			this.btn_Logs.Location = new System.Drawing.Point(13, 322);
-			this.btn_Logs.Name = "btn_Logs";
-			this.btn_Logs.Size = new System.Drawing.Size(105, 23);
-			this.btn_Logs.TabIndex = 13;
-			this.btn_Logs.Text = "Show Logs";
-			this.btn_Logs.UseVisualStyleBackColor = true;
+			this.cb_MoreInfo.AutoSize = true;
+			this.cb_MoreInfo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.cb_MoreInfo.Location = new System.Drawing.Point(312, -1);
+			this.cb_MoreInfo.Name = "cb_MoreInfo";
+			this.cb_MoreInfo.Size = new System.Drawing.Size(71, 17);
+			this.cb_MoreInfo.TabIndex = 25;
+			this.cb_MoreInfo.Text = "More Info";
+			this.cb_MoreInfo.UseVisualStyleBackColor = true;
+			this.cb_MoreInfo.CheckedChanged += new System.EventHandler(this.cb_MoreInfo_CheckedChanged);
 			// 
 			// lbl_Key
 			// 
@@ -322,67 +290,102 @@
 			this.lbl_Username.TabIndex = 18;
 			this.lbl_Username.Text = " ";
 			// 
+			// btn_Logs
+			// 
+			this.btn_Logs.Location = new System.Drawing.Point(13, 322);
+			this.btn_Logs.Name = "btn_Logs";
+			this.btn_Logs.Size = new System.Drawing.Size(105, 23);
+			this.btn_Logs.TabIndex = 13;
+			this.btn_Logs.Text = "Show Logs";
+			this.btn_Logs.UseVisualStyleBackColor = true;
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(10, 283);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(31, 13);
+			this.label12.TabIndex = 12;
+			this.label12.Text = "Key: ";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(10, 259);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(108, 13);
+			this.label11.TabIndex = 11;
+			this.label11.Text = "Last update finished: ";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(10, 73);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(46, 13);
+			this.label10.TabIndex = 10;
+			this.label10.Text = "Project: ";
+			// 
 			// btn_Connect
 			// 
+			this.btn_Connect.Enabled = false;
 			this.btn_Connect.Location = new System.Drawing.Point(334, 4);
 			this.btn_Connect.Name = "btn_Connect";
 			this.btn_Connect.Size = new System.Drawing.Size(75, 23);
 			this.btn_Connect.TabIndex = 11;
 			this.btn_Connect.Text = "Connect";
 			this.btn_Connect.UseVisualStyleBackColor = true;
+			this.btn_Connect.Click += new System.EventHandler(this.btn_Connect_Click);
 			// 
 			// btn_Edit
 			// 
 			this.btn_Edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btn_Edit.Enabled = false;
-			this.btn_Edit.Location = new System.Drawing.Point(15, 140);
+			this.btn_Edit.Location = new System.Drawing.Point(15, 136);
 			this.btn_Edit.Name = "btn_Edit";
-			this.btn_Edit.Size = new System.Drawing.Size(75, 23);
+			this.btn_Edit.Size = new System.Drawing.Size(97, 23);
 			this.btn_Edit.TabIndex = 12;
-			this.btn_Edit.Text = "Edit Server";
+			this.btn_Edit.Text = "Edit Connection";
 			this.btn_Edit.UseVisualStyleBackColor = true;
 			this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
 			// 
 			// btn_Add
 			// 
 			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btn_Add.Enabled = false;
-			this.btn_Add.Location = new System.Drawing.Point(96, 139);
+			this.btn_Add.Location = new System.Drawing.Point(118, 136);
 			this.btn_Add.Name = "btn_Add";
-			this.btn_Add.Size = new System.Drawing.Size(75, 23);
+			this.btn_Add.Size = new System.Drawing.Size(121, 23);
 			this.btn_Add.TabIndex = 13;
-			this.btn_Add.Text = "Add Server";
+			this.btn_Add.Text = "Add new Connection";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
 			// 
 			// btn_Close
 			// 
 			this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btn_Close.Location = new System.Drawing.Point(209, 139);
+			this.btn_Close.Location = new System.Drawing.Point(245, 136);
 			this.btn_Close.Name = "btn_Close";
-			this.btn_Close.Size = new System.Drawing.Size(200, 23);
+			this.btn_Close.Size = new System.Drawing.Size(164, 23);
 			this.btn_Close.TabIndex = 14;
 			this.btn_Close.Text = "Close";
 			this.btn_Close.UseVisualStyleBackColor = true;
 			this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
 			// 
-			// cb_MoreInfo
+			// cb_Servers
 			// 
-			this.cb_MoreInfo.AutoSize = true;
-			this.cb_MoreInfo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.cb_MoreInfo.Location = new System.Drawing.Point(312, -1);
-			this.cb_MoreInfo.Name = "cb_MoreInfo";
-			this.cb_MoreInfo.Size = new System.Drawing.Size(71, 17);
-			this.cb_MoreInfo.TabIndex = 25;
-			this.cb_MoreInfo.Text = "More Info";
-			this.cb_MoreInfo.UseVisualStyleBackColor = true;
-			this.cb_MoreInfo.CheckedChanged += new System.EventHandler(this.cb_MoreInfo_CheckedChanged);
+			this.cb_Servers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cb_Servers.FormattingEnabled = true;
+			this.cb_Servers.Location = new System.Drawing.Point(62, 6);
+			this.cb_Servers.Name = "cb_Servers";
+			this.cb_Servers.Size = new System.Drawing.Size(266, 21);
+			this.cb_Servers.TabIndex = 1;
+			this.cb_Servers.SelectedIndexChanged += new System.EventHandler(this.cb_Servers_SelectedIndexChanged);
 			// 
 			// f_cts
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(421, 174);
+			this.ClientSize = new System.Drawing.Size(421, 170);
 			this.ControlBox = false;
 			this.Controls.Add(this.btn_Close);
 			this.Controls.Add(this.btn_Add);
@@ -394,6 +397,7 @@
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "f_cts";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Connect to server";
 			this.gb_ServerSpecs.ResumeLayout(false);
 			this.gb_ServerSpecs.PerformLayout();
@@ -405,7 +409,7 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ComboBox cb_Servers;
+		private myComboBox cb_Servers;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;

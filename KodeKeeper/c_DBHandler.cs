@@ -62,6 +62,136 @@ namespace KodeKeeper
 			}
 		}
 		*/
+		
+
+		public int coalesce(int type, object value)
+		{
+			int val = -1;
+			if (value == null || value is DBNull || value.ToString() == "")
+			{
+				val = default(int);
+			}
+			else
+			{
+				int.TryParse(value.ToString(), out val);
+			}
+
+			return val;
+		}
+
+		public string coalesce(string type, object value)
+		{
+			string val = value.ToString();
+
+			if(value == null || value is DBNull || value.ToString() == "")
+			{
+				value = "";
+			}
+			return value.ToString();
+		}
+
+		public void updateSshFingerPrint(int id, string fingerprint)
+		{
+			if (!checkConnection()) { return; }
+			_sql.CommandText = $"UPDATE connections SET SshHostKeyFingerprint='{fingerprint}' WHERE id={id}";
+			_sql.ExecuteNonQuery();
+		}
+		
+		public List<connection> getConnections()
+		{
+			if (!checkConnection()) { return null; }
+			List<connection> conns = new List<connection>();
+
+			_sql.CommandText = "SELECT * FROM connections";
+
+			SQLiteDataReader reader = _sql.ExecuteReader();
+
+			while (reader.Read())
+			{
+				connection c = new connection();
+				
+				c.Id						= coalesce(0,	reader.GetValue(reader.GetOrdinal("id")						));
+				c.Project_id				= coalesce(0,	reader.GetValue(reader.GetOrdinal("project_id")				));
+				c.Log_id					= coalesce(0,	reader.GetValue(reader.GetOrdinal("log_id")					));
+				c.Name						= coalesce("",	reader.GetValue(reader.GetOrdinal("name")					));
+				c.Host						= coalesce("",	reader.GetValue(reader.GetOrdinal("host_name")				));
+				c.Port						= coalesce(0,	reader.GetValue(reader.GetOrdinal("port")					));
+				c.Password					= coalesce("",	reader.GetValue(reader.GetOrdinal("password")				));
+				c.Username					= coalesce("",	reader.GetValue(reader.GetOrdinal("username")				));
+				c.Connection_protocol		= coalesce("",	reader.GetValue(reader.GetOrdinal("connection_protocol")	));
+				c.Authentication_method		= coalesce("",	reader.GetValue(reader.GetOrdinal("authentication_method")	));
+				c.Username					= coalesce("",	reader.GetValue(reader.GetOrdinal("username")				));
+				c.Password					= coalesce("",	reader.GetValue(reader.GetOrdinal("password")				));
+				c.Keyfile_path				= coalesce("",	reader.GetValue(reader.GetOrdinal("keyfile_path")			));
+				c.Key_pass_phrase			= coalesce("",	reader.GetValue(reader.GetOrdinal("key_pass_phrase")		));
+				c.Use_stored_keys			= coalesce("",	reader.GetValue(reader.GetOrdinal("use_stored_keys")		));
+				c.SshHostKeyFingerprint		= coalesce("",	reader.GetValue(reader.GetOrdinal("SshHostKeyFingerprint")	));
+				c.Home_folder				= coalesce("",	reader.GetValue(reader.GetOrdinal("home_folder")			));
+				c.LastConnected				= coalesce("",	reader.GetValue(reader.GetOrdinal("lastConnected")			));
+				c.Last_error				= coalesce("",	reader.GetValue(reader.GetOrdinal("last_error")				));
+				c.Last_update_finished		= coalesce("",	reader.GetValue(reader.GetOrdinal("last_update_finished")	));
+				c.Ping_interval				= coalesce(0,	reader.GetValue(reader.GetOrdinal("ping_interval")			));
+				
+				conns.Add(c);
+			}
+
+			reader.Close();
+
+			return conns;
+		}
+
+		public string getProjectName(int project_id)
+		{
+			if (!checkConnection()) { return ""; }
+			_sql.CommandText = $"SELECT  name FROM projects WHERE id={project_id}";
+			object r = _sql.ExecuteScalar();
+			if (!(r is null) && !(r is DBNull) && r.ToString() != "")
+			{
+				return r.ToString();
+			}
+
+			return "";
+		}
+
+		public int getFileTypeId(string fileTypeName)
+		{
+			if (!checkConnection()) { return -1; }
+			_sql.CommandText = $"SELECT  id FROM filetypes WHERE lower(type) LIKE '%{fileTypeName.ToLower()}%'";
+			object r = _sql.ExecuteScalar();
+			if (!(r is null) && !(r is DBNull) && r.ToString() != "")
+			{
+				if (int.TryParse(r.ToString(), out int i)) {
+					return i;
+				}
+				else
+				{
+					return -1;
+				}
+			}
+
+			return 0;
+		}
+
+		public object[] getImageForType(string fileTypeName)
+		{
+			object[] o = new object[] { "", "", "" };
+
+			if (!checkConnection()) { return null; }
+			_sql.CommandText = $"SELECT id, name, image FROM images WHERE lower(for) LIKE '%{fileTypeName.ToLower()}%'";
+			SQLiteDataReader r = _sql.ExecuteReader();
+
+			while (r.Read())
+			{
+				o[0] = r.GetValue(r.GetOrdinal("id"));
+				o[1] = r.GetValue(r.GetOrdinal("name"));
+				o[2] = r.GetValue(r.GetOrdinal("image"));
+			}
+
+			r.Close();
+
+			return o;
+		}
+
 		public void setFileData()
 		{
 			//TODO: FileDataInsert

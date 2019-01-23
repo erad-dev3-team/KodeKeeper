@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace KodeKeeper
 {
-	public partial class Form1 : Form
+	public partial class f_KodeKeeperMain : Form
 	{
 		private bool searchHeader_MDown = false;
 		private Point searchHeader_Pnt = new Point(0, 0);
@@ -29,7 +29,7 @@ namespace KodeKeeper
 			}
 		}
 
-		public Form1()
+		public f_KodeKeeperMain()
 		{
 			InitializeComponent();
 			Load += Form1_Load;
@@ -190,7 +190,14 @@ namespace KodeKeeper
 		private void btn_Menu_Connection_Open_Click(object sender, EventArgs e)
 		{
 			f_cts fcts = new f_cts();
+			fcts.Dbh = _dbh;
 			fcts.ShowDialog();
+		}
+
+		private void btn_Menu_Connections_AddNewConnection_Click(object sender, EventArgs e)
+		{
+			f_EditConnection ec = new f_EditConnection();
+			ec.ShowDialog();
 		}
 	}
 }

@@ -3,25 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using WinSCP;
-
 namespace KodeKeeper
 {
 	public partial class f_cts : Form
 	{
-		private Protocol _protocol = Protocol.Ftp;
-		private string _host = "127.0.0.1";
-		private string _username = "username";
-		private string _password = "password";
-		private string _fingerprint = "";
-		private string _keyPath = "";
-		private Session session;
-
+		public c_DBHandler Dbh { get; set; }
+		connection tag = null;
 
 		public f_cts()
 		{
@@ -33,71 +26,13 @@ namespace KodeKeeper
 		private void F_cts_Load(object sender, EventArgs e)
 		{
 			//TODO: Load connections from DB
-
-
-			//Connect();
-		}
-
-		public void Connect()
-		{
-
-			// Set up session options
-			SessionOptions sessionOptions = new SessionOptions
+			List<connection> conn = Dbh.getConnections();
+			foreach(connection c in conn)
 			{
-				Protocol = Protocol.Sftp,
-				HostName = "atoldavid.hu",
-				UserName = "marci",
-				Password = "123qwe",
-				SshHostKeyFingerprint = "ssh-ed25519 256 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
-			};
-
-			sessionOptions.AddRawSettings("PingIntervalSecs", "10");
-			sessionOptions.AddRawSettings("TcpNoDelay", "1");
-
-			session = new Session();
-			try
-			{
-				session.Open(sessionOptions);
-			}
-			catch(Exception ex)
-			{
-				if(sessionOptions.SshHostKeyFingerprint == "ssh-ed25519 256 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00")
-				{
-					string key = ex.Message.Substring(ex.Message.IndexOf("!") + 1);
-					key = key.Substring(key.IndexOf(":") + 1);
-					key = key.Substring(0, key.IndexOf("."));
-					if(key.Contains("Host key fingerprint is"))
-					{
-						key = key.Substring(key.IndexOf("Host key fingerprint is") + "Host key fingerprint is".Length);
-					}
-					key = key.Trim();
-					sessionOptions.SshHostKeyFingerprint = key;
-					session.Open(sessionOptions);
-				}
-			}
-
-			if (session.Opened)
-			{
-				getData();
+				cb_Servers.Add(c.Name,c);
 			}
 		}
-
-		public void getData()
-		{
-
-			IEnumerable<RemoteFileInfo> v = session.EnumerateRemoteFiles("/var/www/html/ps/", "*", EnumerationOptions.AllDirectories);
-			foreach (RemoteFileInfo finfo in v)
-			{
-				ListViewItem lvi = new ListViewItem();
-				lvi.Text = finfo.FullName;
-				lvi.SubItems.Add(finfo.Length + "bytes");
-				lvi.SubItems.Add(finfo.Owner);
-				lvi.SubItems.Add(finfo.Group);
-				lvi.SubItems.Add(finfo.FilePermissions.Octal.ToString());
-				//listView1.Items.Add(lvi);
-			}
-		}
-
+		
 		private void cb_MoreInfo_CheckedChanged(object sender, EventArgs e)
 		{
 			if (cb_MoreInfo.Checked)
@@ -117,15 +52,121 @@ namespace KodeKeeper
 
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
-			f_EditServer fe = new f_EditServer();
+			f_EditConnection fe = new f_EditConnection();
 			///SEND current data
 			fe.ShowDialog();
 		}
 
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
-			f_EditServer fe = new f_EditServer();
+			f_EditConnection fe = new f_EditConnection();
 			fe.ShowDialog();
+		}
+
+		private void cb_Servers_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				Text = "Connect to Server - " + cb_Servers.Text;
+				tag = (connection)cb_Servers.getTag();
+
+				if (tag != null)
+				{
+					if (tag.Host != "" && tag.Username != "" &&
+						((tag.Password != "" && tag.Authentication_method == "pwd") ||
+						(tag.Key_pass_phrase != "" && tag.Keyfile_path != "" && File.Exists(tag.Keyfile_path) && tag.Authentication_method == "key") ||
+						tag.Use_stored_keys == "Y"))
+					{
+						btn_Connect.Enabled = true;
+					}
+					else
+					{
+						btn_Connect.Enabled = false;
+					}
+
+					lbl_HostName.Text = tag.Host;
+					lbl_ProjectName.Text = Dbh.getProjectName(tag.Project_id);
+					lbl_Username.Text = tag.Username;
+					lbl_Auth.Text = tag.Authentication_method;
+					lbl_HomeDir.Text = tag.Home_folder;
+					lbl_Key.Text = tag.Keyfile_path;
+					lbl_LastConnected.Text = tag.LastConnected;
+					lbl_LastUpdate.Text = tag.Last_update_finished;
+					lbl_Password.Text = string.Concat(tag.Password.ToCharArray().Select(x => '•').ToArray());
+					lbl_Port.Text = tag.Port + "";
+					lbl_Protocol.Text = tag.Connection_protocol;
+				}
+				else
+				{
+					btn_Connect.Enabled = false;
+				}
+			}
+			catch
+			{
+				
+			}
+		}
+
+		private void btn_Connect_Click(object sender, EventArgs e)
+		{
+			connection_handler ch = new connection_handler(Dbh,tag);
+			int project_id = ch.Connect();
+			List<fileDataObject> lst = ch.getData();
+
+			foreach(fileDataObject fo in lst)
+			{
+				fo.ProjectId = project_id;
+				fo.Project = Dbh.getProjectName(fo.ProjectId);
+				fo.FileTypeId = Dbh.getFileTypeId(fo.FileTypeName);
+				object[] img = Dbh.getImageForType(fo.FileTypeName);
+				fo.FileImageId = int.Parse(img[0].ToString());
+				fo.FileImageName = img[1].ToString();
+				fo.FileImage = img[2].ToString();
+			}
+			
+		}
+	}
+
+	public class myComboBox : ComboBox
+	{
+		myObject SelectedItem = null;
+		List<myObject> Items = new List<myObject>();
+		public void Add(string str, object Tag)
+		{
+			base.Items.Add(new myObject { Text = str, Tag = Tag });
+			Items.Add(new myObject { Text = str, Tag = Tag });
+		}
+
+		public override string ToString()
+		{
+			return base.Text.ToString();
+		}
+
+		protected override void OnDropDown(EventArgs e)
+		{
+			base.OnDropDown(e);
+		}
+
+		protected override void OnSelectionChangeCommitted(EventArgs e)
+		{
+			base.OnSelectionChangeCommitted(e);
+			SelectedItem = Items[SelectedIndex];
+		}
+
+		public object getTag()
+		{
+			return SelectedItem.Tag;
+		}
+	}
+
+	public class myObject : Object
+	{
+		public  string Text { get; set; }
+		public  Object Tag { get; set; }
+
+		public override string ToString()
+		{
+			return Text.ToString();
 		}
 	}
 }

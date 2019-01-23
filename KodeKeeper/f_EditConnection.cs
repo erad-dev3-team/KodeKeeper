@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace KodeKeeper
 {
-	public partial class f_EditServer : Form
+	public partial class f_EditConnection : Form
 	{
-		public f_EditServer()
+		public f_EditConnection(bool edit = false, connection conn = null)
 		{
 			InitializeComponent();
+
+			if(edit && conn != null)
+			{
+				loadConnectionData(conn);
+			}
+		}
+
+		private void loadConnectionData(connection conn)
+		{
+
 		}
 	}
 }

@@ -19,6 +19,7 @@ namespace KodeKeeper
 		public string	FileTypeName	= "";					//Local (by id)
 		public int		FileImageId		= -1;					//Local (by name)
 		public string	FileImageName	= "";					//Local
+		public string	FileImage		= "";                   //Local
 		public string	FileVersion		= "";					//Local
 		public bool		InUse			= false;				//Local
 		public string	Parameters		= "";					//Local
@@ -34,6 +35,7 @@ namespace KodeKeeper
 		public DateTime	Modified		= default(DateTime);	//Local
 		public DateTime	UploadDateTime	= default(DateTime);	//Generated Locally
 		public string	Comment			= "";					//Local
+		public List<tag>Tags			= new List<tag>();		//List of tags
 
 		public fileDataObject()
 		{
