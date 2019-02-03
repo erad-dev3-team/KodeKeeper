@@ -197,6 +197,7 @@ namespace KodeKeeper
 		private void btn_Menu_Connections_AddNewConnection_Click(object sender, EventArgs e)
 		{
 			f_EditConnection ec = new f_EditConnection();
+			ec.Dbh = _dbh;
 			ec.ShowDialog();
 		}
 	}

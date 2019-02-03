@@ -9,7 +9,7 @@ namespace KodeKeeper
 {
 	public class connection
 	{
-		public	int		Id						{ get; set; }
+		public	int		Id						{ get; set; } = -1;
 		public	int		Log_id					{ get; set; }
 		public	int		Project_id				{ get; set; }
 		public	string	Name					{ get; set; }
@@ -24,10 +24,13 @@ namespace KodeKeeper
 		public	string	Use_stored_keys			{ get; set; }
 		public	string	SshHostKeyFingerprint	{ get; set; }
 		public	string	Home_folder				{ get; set; }
-		public	string	LastConnected			{ get; set; }
-		public	string	Last_error				{ get; set; }
-		public	string	Last_update_finished	{ get; set; }
+		public	string	Proxy_Settings			{ get; set; }
+		public	string	Ssh_Settings			{ get; set; }
+		public	string	Tunnel_Settings			{ get; set; }
 		public	int		Ping_interval			{ get; set; }
+		public	string	Last_error				{ get; set; }
+		public	string	LastConnected			{ get; set; }
+		public	string	Last_update_finished	{ get; set; }
 
 		public Protocol protocol()
 		{

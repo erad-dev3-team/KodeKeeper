@@ -140,6 +140,71 @@ namespace KodeKeeper
 			return conns;
 		}
 
+		public void saveConnection(connection c)
+		{
+			if (!checkConnection()) { return; }
+
+			if (c.Id == -1)
+			{
+				string logid = "";
+				byte[] logidbytes = Encoding.UTF8.GetBytes($"{c.Project_id}{c.Name}{c.Host}{c.Username}{c.Password}");
+				System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+				byte[] ret = md5.ComputeHash(logidbytes);
+				foreach (byte b in ret)
+				{
+					logid += b.ToString("X2").ToUpper();
+				}
+
+				_sql.CommandText = 
+$@"
+INSERT INTO connections
+(
+	project_id,
+	log_id,
+	name,
+	host_name,
+	username,
+	password,
+	port,
+	connection_protocol,
+	authentication_method,
+	keyfile_path,
+	key_pass_phrase,
+	use_stored_keys,
+	SshHostKeyFingerprint,
+	home_folder,
+	proxy_settings,
+	ssh_settings,
+	tunnel_settings,
+	ping_interval
+)
+VALUES
+(
+	'{c.Project_id}',
+	'{logid}',
+	'{c.Name}',
+	'{c.Host}',
+	'{c.Username}',
+	'{c.Password}',
+	'{c.Port}',
+	'{c.Connection_protocol}',
+	'{c.Authentication_method}',
+	'{c.Keyfile_path}',
+	'{c.Key_pass_phrase}',
+	'{c.Use_stored_keys}',
+	'{c.SshHostKeyFingerprint}',
+	'{c.Home_folder}',
+	'{c.Proxy_Settings}',
+	'{c.Ssh_Settings}',
+	'{c.Tunnel_Settings}',
+	'{c.Ping_interval}'
+);
+";
+				_sql.ExecuteNonQuery();
+
+			}
+		}
+
 		public string getProjectName(int project_id)
 		{
 			if (!checkConnection()) { return ""; }

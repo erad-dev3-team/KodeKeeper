@@ -326,6 +326,9 @@ namespace KodeKeeper
 										" 'ssh-ed25519 256 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00',	" +
 																										"	\r\n" +		//SshHostKeyFingerprint
 										"home_folder TEXT,													\r\n" +     //Home folder to connect to
+										"ssh_settings TEXT,													\r\n" +     //Settings string for SSH
+										"tunnel_settings TEXT,												\r\n" +     //Settings string for Tunneling
+										"proxy_settings TEXT,												\r\n" +     //Settings string for Proxy
 										"lastConnected TEXT,												\r\n" +     //Last connection time
 										"last_error TEXT,													\r\n" +     //When did the user last pull an update from the server
 										"last_update_finished TEXT,											\r\n" +     //When did the user last upload changes he made

@@ -110,6 +110,7 @@ namespace KodeKeeper
 		private void btn_Connect_Click(object sender, EventArgs e)
 		{
 			connection_handler ch = new connection_handler(Dbh,tag);
+			
 			int project_id = ch.Connect();
 			List<fileDataObject> lst = ch.getData();
 
