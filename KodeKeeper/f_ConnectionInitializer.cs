@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace KodeKeeper
 {
-	public partial class f_cts : Form
+	public partial class f_ConnectionInitializer : Form
 	{
 		public c_DBHandler Dbh { get; set; }
-		connection tag = null;
+		c_ConnectionObject tag = null;
 
-		public f_cts()
+		public f_ConnectionInitializer()
 		{
 			InitializeComponent();
 
@@ -26,8 +26,8 @@ namespace KodeKeeper
 		private void F_cts_Load(object sender, EventArgs e)
 		{
 			//TODO: Load connections from DB
-			List<connection> conn = Dbh.getConnections();
-			foreach(connection c in conn)
+			List<c_ConnectionObject> conn = Dbh.getConnections();
+			foreach(c_ConnectionObject c in conn)
 			{
 				cb_Servers.Add(c.Name,c);
 			}
@@ -68,7 +68,7 @@ namespace KodeKeeper
 			try
 			{
 				Text = "Connect to Server - " + cb_Servers.Text;
-				tag = (connection)cb_Servers.getTag();
+				tag = (c_ConnectionObject)cb_Servers.getTag();
 
 				if (tag != null)
 				{
@@ -109,12 +109,12 @@ namespace KodeKeeper
 
 		private void btn_Connect_Click(object sender, EventArgs e)
 		{
-			connection_handler ch = new connection_handler(Dbh,tag);
+			c_ScpConnectionManager ch = new c_ScpConnectionManager(Dbh,tag);
 			
 			int project_id = ch.Connect();
-			List<fileDataObject> lst = ch.getData();
+			List<c_FileDataObject> lst = ch.getData();
 
-			foreach(fileDataObject fo in lst)
+			foreach(c_FileDataObject fo in lst)
 			{
 				fo.ProjectId = project_id;
 				fo.Project = Dbh.getProjectName(fo.ProjectId);

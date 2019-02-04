@@ -2,7 +2,7 @@
 
 namespace KodeKeeper
 {
-	public partial class myPanel : Panel
+	public partial class c_CompositPanel : Panel
 	{
 		protected override CreateParams CreateParams
 		{
@@ -14,7 +14,7 @@ namespace KodeKeeper
 			}
 		}
 
-		public myPanel()
+		public c_CompositPanel()
 		{
 			InitializeComponent();
 		}

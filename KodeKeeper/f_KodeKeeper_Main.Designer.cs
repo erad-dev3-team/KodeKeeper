@@ -37,7 +37,7 @@
 			this.ts_SideToolBar = new System.Windows.Forms.ToolStrip();
 			this.btn_ToolStrip_Search = new System.Windows.Forms.ToolStripButton();
 			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-			this.p_Search = new KodeKeeper.myPanel();
+			this.p_Search = new KodeKeeper.c_CompositPanel();
 			this.p_Resize = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.btn_Search = new System.Windows.Forms.Button();
@@ -64,40 +64,45 @@
 			this.btn_Menu_File = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.editFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.connectionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Connections = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Connections_AddNewConnection = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Connections_EditConnection = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Connections_DefaultConnectionSettings = new System.Windows.Forms.ToolStripMenuItem();
-			this.sep_Connections_1 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsep_Menu_Connections_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btn_Menu_Connection_Open = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data_CheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Data_OpenUpdateScreen = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsep_Menu_Data_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btn_Menu_Data_UploadData = new System.Windows.Forms.ToolStripMenuItem();
-			this.displayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Display = new System.Windows.Forms.ToolStripMenuItem();
 			this.showSidebarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.showStatusStripToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.autohideMenuBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsep_Menu_Display_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.displaySettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Tools = new System.Windows.Forms.ToolStripMenuItem();
 			this.keysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.serversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsep_Menu_Tools_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.dBManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.linksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.manageImagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.manageFileTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsep_Menu_Tools_Sep2 = new System.Windows.Forms.ToolStripSeparator();
 			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btn_Menu_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.checkSoftwareUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsep_Menu_Help_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Projects = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Projects_Projects = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Projects_AddProject = new System.Windows.Forms.ToolStripMenuItem();
+			this.btn_Menu_Projects_EditProject = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsep_Menu_Projects_Sep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsc_Container.BottomToolStripPanel.SuspendLayout();
 			this.tsc_Container.ContentPanel.SuspendLayout();
 			this.tsc_Container.RightToolStripPanel.SuspendLayout();
@@ -497,9 +502,10 @@
 			this.ms_Menu.BackColor = System.Drawing.Color.Transparent;
 			this.ms_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_Menu_File,
-            this.connectionsToolStripMenuItem,
+            this.btn_Menu_Projects,
+            this.btn_Menu_Connections,
             this.btn_Menu_Data,
-            this.displayToolStripMenuItem,
+            this.btn_Menu_Display,
             this.btn_Menu_Tools,
             this.btn_Menu_Help});
 			this.ms_Menu.Location = new System.Drawing.Point(0, 0);
@@ -520,27 +526,27 @@
 			// btn_Menu_AddNewFile
 			// 
 			this.btn_Menu_AddNewFile.Name = "btn_Menu_AddNewFile";
-			this.btn_Menu_AddNewFile.Size = new System.Drawing.Size(144, 22);
+			this.btn_Menu_AddNewFile.Size = new System.Drawing.Size(180, 22);
 			this.btn_Menu_AddNewFile.Text = "Add New File";
 			this.btn_Menu_AddNewFile.Click += new System.EventHandler(this.btn_Menu_AddNewFile_Click);
 			// 
 			// editFilesToolStripMenuItem
 			// 
 			this.editFilesToolStripMenuItem.Name = "editFilesToolStripMenuItem";
-			this.editFilesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+			this.editFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.editFilesToolStripMenuItem.Text = "Edit Files";
 			// 
-			// connectionsToolStripMenuItem
+			// btn_Menu_Connections
 			// 
-			this.connectionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.btn_Menu_Connections.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_Menu_Connections_AddNewConnection,
             this.btn_Menu_Connections_EditConnection,
             this.btn_Menu_Connections_DefaultConnectionSettings,
-            this.sep_Connections_1,
+            this.tsep_Menu_Connections_Sep1,
             this.btn_Menu_Connection_Open});
-			this.connectionsToolStripMenuItem.Name = "connectionsToolStripMenuItem";
-			this.connectionsToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-			this.connectionsToolStripMenuItem.Text = "Connections";
+			this.btn_Menu_Connections.Name = "btn_Menu_Connections";
+			this.btn_Menu_Connections.Size = new System.Drawing.Size(86, 20);
+			this.btn_Menu_Connections.Text = "Connections";
 			// 
 			// btn_Menu_Connections_AddNewConnection
 			// 
@@ -561,10 +567,10 @@
 			this.btn_Menu_Connections_DefaultConnectionSettings.Size = new System.Drawing.Size(221, 22);
 			this.btn_Menu_Connections_DefaultConnectionSettings.Text = "Default Connection settings";
 			// 
-			// sep_Connections_1
+			// tsep_Menu_Connections_Sep1
 			// 
-			this.sep_Connections_1.Name = "sep_Connections_1";
-			this.sep_Connections_1.Size = new System.Drawing.Size(218, 6);
+			this.tsep_Menu_Connections_Sep1.Name = "tsep_Menu_Connections_Sep1";
+			this.tsep_Menu_Connections_Sep1.Size = new System.Drawing.Size(218, 6);
 			// 
 			// btn_Menu_Connection_Open
 			// 
@@ -612,45 +618,45 @@
 			this.btn_Menu_Data_UploadData.Size = new System.Drawing.Size(182, 22);
 			this.btn_Menu_Data_UploadData.Text = "Upload Changes";
 			// 
-			// displayToolStripMenuItem
+			// btn_Menu_Display
 			// 
-			this.displayToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.btn_Menu_Display.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showSidebarToolStripMenuItem,
             this.showStatusStripToolStripMenuItem,
             this.autohideMenuBarToolStripMenuItem,
-            this.toolStripSeparator4,
+            this.tsep_Menu_Display_Sep1,
             this.displaySettingsToolStripMenuItem});
-			this.displayToolStripMenuItem.Name = "displayToolStripMenuItem";
-			this.displayToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-			this.displayToolStripMenuItem.Text = "Display";
+			this.btn_Menu_Display.Name = "btn_Menu_Display";
+			this.btn_Menu_Display.Size = new System.Drawing.Size(57, 20);
+			this.btn_Menu_Display.Text = "Display";
 			// 
 			// showSidebarToolStripMenuItem
 			// 
 			this.showSidebarToolStripMenuItem.Name = "showSidebarToolStripMenuItem";
-			this.showSidebarToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.showSidebarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.showSidebarToolStripMenuItem.Text = "Show sidebar";
 			// 
 			// showStatusStripToolStripMenuItem
 			// 
 			this.showStatusStripToolStripMenuItem.Name = "showStatusStripToolStripMenuItem";
-			this.showStatusStripToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.showStatusStripToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.showStatusStripToolStripMenuItem.Text = "Show status strip";
 			// 
 			// autohideMenuBarToolStripMenuItem
 			// 
 			this.autohideMenuBarToolStripMenuItem.Name = "autohideMenuBarToolStripMenuItem";
-			this.autohideMenuBarToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.autohideMenuBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.autohideMenuBarToolStripMenuItem.Text = "Autohide menu bar";
 			// 
-			// toolStripSeparator4
+			// tsep_Menu_Display_Sep1
 			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(174, 6);
+			this.tsep_Menu_Display_Sep1.Name = "tsep_Menu_Display_Sep1";
+			this.tsep_Menu_Display_Sep1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// displaySettingsToolStripMenuItem
 			// 
 			this.displaySettingsToolStripMenuItem.Name = "displaySettingsToolStripMenuItem";
-			this.displaySettingsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.displaySettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.displaySettingsToolStripMenuItem.Text = "Display Settings";
 			// 
 			// btn_Menu_Tools
@@ -658,13 +664,13 @@
 			this.btn_Menu_Tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.keysToolStripMenuItem,
             this.serversToolStripMenuItem,
-            this.toolStripSeparator2,
+            this.tsep_Menu_Tools_Sep1,
             this.dBManagerToolStripMenuItem,
             this.tagsToolStripMenuItem,
             this.linksToolStripMenuItem,
             this.manageImagesToolStripMenuItem,
             this.manageFileTypesToolStripMenuItem,
-            this.toolStripSeparator1,
+            this.tsep_Menu_Tools_Sep2,
             this.preferencesToolStripMenuItem});
 			this.btn_Menu_Tools.Name = "btn_Menu_Tools";
 			this.btn_Menu_Tools.Size = new System.Drawing.Size(48, 20);
@@ -673,59 +679,59 @@
 			// keysToolStripMenuItem
 			// 
 			this.keysToolStripMenuItem.Name = "keysToolStripMenuItem";
-			this.keysToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.keysToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.keysToolStripMenuItem.Text = "Manage Keys";
 			// 
 			// serversToolStripMenuItem
 			// 
 			this.serversToolStripMenuItem.Name = "serversToolStripMenuItem";
-			this.serversToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.serversToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.serversToolStripMenuItem.Text = "Manage Servers";
 			// 
-			// toolStripSeparator2
+			// tsep_Menu_Tools_Sep1
 			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
+			this.tsep_Menu_Tools_Sep1.Name = "tsep_Menu_Tools_Sep1";
+			this.tsep_Menu_Tools_Sep1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// dBManagerToolStripMenuItem
 			// 
 			this.dBManagerToolStripMenuItem.Name = "dBManagerToolStripMenuItem";
-			this.dBManagerToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.dBManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.dBManagerToolStripMenuItem.Text = "DB Manager";
 			// 
 			// tagsToolStripMenuItem
 			// 
 			this.tagsToolStripMenuItem.Name = "tagsToolStripMenuItem";
-			this.tagsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.tagsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.tagsToolStripMenuItem.Text = "Tag Editor";
 			// 
 			// linksToolStripMenuItem
 			// 
 			this.linksToolStripMenuItem.Name = "linksToolStripMenuItem";
-			this.linksToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.linksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.linksToolStripMenuItem.Text = "Link Editor";
 			// 
 			// manageImagesToolStripMenuItem
 			// 
 			this.manageImagesToolStripMenuItem.Name = "manageImagesToolStripMenuItem";
-			this.manageImagesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.manageImagesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.manageImagesToolStripMenuItem.Text = "Manage Images";
 			// 
 			// manageFileTypesToolStripMenuItem
 			// 
 			this.manageFileTypesToolStripMenuItem.Name = "manageFileTypesToolStripMenuItem";
-			this.manageFileTypesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.manageFileTypesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.manageFileTypesToolStripMenuItem.Text = "Manage FileTypes";
 			// 
-			// toolStripSeparator1
+			// tsep_Menu_Tools_Sep2
 			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+			this.tsep_Menu_Tools_Sep2.Name = "tsep_Menu_Tools_Sep2";
+			this.tsep_Menu_Tools_Sep2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// preferencesToolStripMenuItem
 			// 
 			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.preferencesToolStripMenuItem.Text = "Preferences";
 			// 
 			// btn_Menu_Help
@@ -733,7 +739,7 @@
 			this.btn_Menu_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.checkSoftwareUpdateToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.toolStripSeparator3,
+            this.tsep_Menu_Help_Sep1,
             this.aboutToolStripMenuItem,
             this.websiteToolStripMenuItem});
 			this.btn_Menu_Help.Name = "btn_Menu_Help";
@@ -752,10 +758,10 @@
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.helpToolStripMenuItem.Text = "Help";
 			// 
-			// toolStripSeparator3
+			// tsep_Menu_Help_Sep1
 			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(192, 6);
+			this.tsep_Menu_Help_Sep1.Name = "tsep_Menu_Help_Sep1";
+			this.tsep_Menu_Help_Sep1.Size = new System.Drawing.Size(192, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
@@ -768,6 +774,42 @@
 			this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
 			this.websiteToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.websiteToolStripMenuItem.Text = "Website";
+			// 
+			// btn_Menu_Projects
+			// 
+			this.btn_Menu_Projects.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Menu_Projects_Projects,
+            this.tsep_Menu_Projects_Sep1,
+            this.btn_Menu_Projects_AddProject,
+            this.btn_Menu_Projects_EditProject});
+			this.btn_Menu_Projects.Name = "btn_Menu_Projects";
+			this.btn_Menu_Projects.Size = new System.Drawing.Size(61, 20);
+			this.btn_Menu_Projects.Text = "Projects";
+			// 
+			// btn_Menu_Projects_Projects
+			// 
+			this.btn_Menu_Projects_Projects.Name = "btn_Menu_Projects_Projects";
+			this.btn_Menu_Projects_Projects.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_Projects_Projects.Text = "Projects";
+			// 
+			// btn_Menu_Projects_AddProject
+			// 
+			this.btn_Menu_Projects_AddProject.Name = "btn_Menu_Projects_AddProject";
+			this.btn_Menu_Projects_AddProject.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_Projects_AddProject.Text = "Add Project";
+			this.btn_Menu_Projects_AddProject.Click += new System.EventHandler(this.btn_Menu_Projects_AddProject_Click);
+			// 
+			// btn_Menu_Projects_EditProject
+			// 
+			this.btn_Menu_Projects_EditProject.Name = "btn_Menu_Projects_EditProject";
+			this.btn_Menu_Projects_EditProject.Size = new System.Drawing.Size(180, 22);
+			this.btn_Menu_Projects_EditProject.Text = "Edit Project";
+			this.btn_Menu_Projects_EditProject.Click += new System.EventHandler(this.btn_Menu_Projects_EditProject_Click);
+			// 
+			// tsep_Menu_Projects_Sep1
+			// 
+			this.tsep_Menu_Projects_Sep1.Name = "tsep_Menu_Projects_Sep1";
+			this.tsep_Menu_Projects_Sep1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// f_KodeKeeperMain
 			// 
@@ -845,7 +887,7 @@
 		private System.Windows.Forms.CheckBox cb_LimitResults;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.Panel p_Resize;
-		private myPanel p_Search;
+		private c_CompositPanel p_Search;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_AddNewFile;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Data;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Data_CheckUpdates;
@@ -854,35 +896,40 @@
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Data_UploadData;
 		private System.Windows.Forms.ToolStripStatusLabel lbl_Info;
 		private System.Windows.Forms.ToolStripMenuItem editFilesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem connectionsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Connections;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Connection_Open;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Connections_DefaultConnectionSettings;
-		private System.Windows.Forms.ToolStripMenuItem displayToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Display;
 		private System.Windows.Forms.ToolStripMenuItem showSidebarToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem showStatusStripToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem autohideMenuBarToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Display_Sep1;
 		private System.Windows.Forms.ToolStripMenuItem displaySettingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem keysToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem serversToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Tools_Sep1;
 		private System.Windows.Forms.ToolStripMenuItem dBManagerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem tagsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem linksToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem manageImagesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem manageFileTypesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Tools_Sep2;
 		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem checkSoftwareUpdateToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Help_Sep1;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem websiteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Connections_AddNewConnection;
 		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Connections_EditConnection;
-		private System.Windows.Forms.ToolStripSeparator sep_Connections_1;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Connections_Sep1;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.Panel panel4;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Projects;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Projects_Projects;
+		private System.Windows.Forms.ToolStripSeparator tsep_Menu_Projects_Sep1;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Projects_AddProject;
+		private System.Windows.Forms.ToolStripMenuItem btn_Menu_Projects_EditProject;
 	}
 }
 

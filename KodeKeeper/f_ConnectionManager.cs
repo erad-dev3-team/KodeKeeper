@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KodeKeeper
 {
-	public partial class f_Connection : Form
+	public partial class f_ConnectionManager : Form
 	{
-		public f_Connection()
+		public f_ConnectionManager()
 		{
 			InitializeComponent();
 		}

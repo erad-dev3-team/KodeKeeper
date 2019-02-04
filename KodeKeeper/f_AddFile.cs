@@ -14,7 +14,7 @@ namespace KodeKeeper
 		List<CheckBox> rightCheckboxes = new List<CheckBox>();
 		string[] _stringTypes = new string[] { "txt", "html", "htm", "lst" };
 		string[] _archiveTypes = new string[] { "zip", "rar", "7z", "tar", "tar.gz" };
-		List<fileDataObject> _files = new List<fileDataObject>();
+		List<c_FileDataObject> _files = new List<c_FileDataObject>();
 
 		public f_AddFile()
 		{
@@ -203,7 +203,7 @@ namespace KodeKeeper
 				}
 			}
 
-			fileDataObject fdo = new fileDataObject();
+			c_FileDataObject fdo = new c_FileDataObject();
 			bool toComment = false;
 			bool toNotes = false;
 

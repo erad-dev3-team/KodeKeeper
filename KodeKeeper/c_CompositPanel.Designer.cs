@@ -1,6 +1,6 @@
 ﻿namespace KodeKeeper
 {
-	partial class myPanel
+	partial class c_CompositPanel
 	{
 		/// <summary> 
 		/// Required designer variable.

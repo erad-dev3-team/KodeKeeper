@@ -108,7 +108,7 @@ namespace KodeKeeper
 				//File.AppendAllText(fileName, "\r\n\r\n" + _sql.CommandText);
 				_sql.ExecuteNonQuery();
 
-				_sql.CommandText = auto_add_data.autoAddImages();
+				_sql.CommandText = c_DefaultQueryData.autoAddImages();
 
 				//File.AppendAllText(fileName, "\r\n\r\n" + _sql.CommandText);
 				_sql.ExecuteNonQuery();
@@ -138,7 +138,7 @@ namespace KodeKeeper
 				//File.AppendAllText(fileName, "\r\n\r\n" + _sql.CommandText);
 				_sql.ExecuteNonQuery();
 
-				_sql.CommandText = auto_add_data.autoAddFileTypes();
+				_sql.CommandText = c_DefaultQueryData.autoAddFileTypes();
 
 				//File.AppendAllText(fileName, "\r\n\r\n" + _sql.CommandText);
 				_sql.ExecuteNonQuery();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KodeKeeper
 {
-	class fileDataObject
+	class c_FileDataObject
 	{
 		public int		Id				= -1;					//Generated Locally
 		public int		FileUID			= -1;					//Generated on the server and queried after upload
@@ -35,9 +35,9 @@ namespace KodeKeeper
 		public DateTime	Modified		= default(DateTime);	//Local
 		public DateTime	UploadDateTime	= default(DateTime);	//Generated Locally
 		public string	Comment			= "";					//Local
-		public List<tag>Tags			= new List<tag>();		//List of tags
+		public List<c_TagObject>Tags			= new List<c_TagObject>();		//List of tags
 
-		public fileDataObject()
+		public c_FileDataObject()
 		{
 
 		}

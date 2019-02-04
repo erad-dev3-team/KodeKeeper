@@ -6,7 +6,7 @@ using System.Text;
 
 namespace KodeKeeper
 {
-	public class dataUpdateObject
+	public class c_DataUpdateObject
 	{
 		Hashtable values = new Hashtable();
 		public string Name { get; set; } = "";
@@ -59,19 +59,19 @@ namespace KodeKeeper
 
 	class dataObject
 	{
-		List<dataUpdateObject> data = new List<dataUpdateObject>();
+		List<c_DataUpdateObject> data = new List<c_DataUpdateObject>();
 		
-		public void Add(dataUpdateObject d)
+		public void Add(c_DataUpdateObject d)
 		{
 			data.Add(d);
 		}
 
-		public List<dataUpdateObject> GetAll()
+		public List<c_DataUpdateObject> GetAll()
 		{
 			return data;
 		}
 
-		public dataUpdateObject[] get(string Name)
+		public c_DataUpdateObject[] get(string Name)
 		{
 			return data.Where(x=>x.Name == Name).Select(x=>x).ToArray();
 		}

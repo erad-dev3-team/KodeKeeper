@@ -10,20 +10,20 @@ using WinSCP;
 
 namespace KodeKeeper
 {
-	class connection_handler
+	class c_ScpConnectionManager
 	{
 		public	c_DBHandler	Dbh					{ get; set; }
 		public	Protocol	_protocol		=	Protocol.Ftp;
-		private	logData		_logData		=	new logData();
+		private	c_LogDataObject		_logData		=	new c_LogDataObject();
 		public	string		_host			=	"127.0.0.1";
 		public	string		_username		=	"username";
 		public	string		_password		=	"password";
 		public	string		_fingerprint	=	"";
 		public	string		_keyPath		=	"";
 		public	Session		_session;
-		public	connection	_connection;
+		public	c_ConnectionObject	_connection;
 
-		public connection_handler(c_DBHandler _dbh, connection _Conn)
+		public c_ScpConnectionManager(c_DBHandler _dbh, c_ConnectionObject _Conn)
 		{
 			Dbh = _dbh;
 			_connection = _Conn;
@@ -99,7 +99,7 @@ namespace KodeKeeper
 					}
 					else
 					{
-						log.add(_connection.Log_id, _connection.Project_id, _logData);
+						c_LogManager.add(_connection.Log_id, _connection.Project_id, _logData);
 						return -1;
 					}
 
@@ -109,14 +109,14 @@ namespace KodeKeeper
 			return _connection.Project_id;
 		}
 
-		public List<fileDataObject> getData()
+		public List<c_FileDataObject> getData()
 		{
-			List<fileDataObject> files = new List<fileDataObject>();
+			List<c_FileDataObject> files = new List<c_FileDataObject>();
 			IEnumerable<RemoteFileInfo> v = _session.EnumerateRemoteFiles("/var/www/html/ps/wpss", "*", EnumerationOptions.AllDirectories);
 			int i = 0;
 			foreach (RemoteFileInfo finfo in v)
 			{
-				fileDataObject fo = new fileDataObject();
+				c_FileDataObject fo = new c_FileDataObject();
 
 				Console.WriteLine(i.ToString().PadLeft(3,'0') + ": " + finfo.Name);
 

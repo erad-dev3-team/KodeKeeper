@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KodeKeeper
 {
-	public class logData
+	public class c_LogDataObject
 	{
 		public string name { get; set; }
 		public string module { get; set; }

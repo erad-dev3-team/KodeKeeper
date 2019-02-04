@@ -20,12 +20,12 @@ using Newtonsoft.Json.Serialization;
 
 namespace KodeKeeper
 {
-	class update_handler
+	class c_FileDataCollectionManager
 	{
 		public SQLiteConnection Sqlc { get; set; }
 		private c_DBHandler _dbh { get; set; }
 
-		public update_handler(c_DBHandler dbh)
+		public c_FileDataCollectionManager(c_DBHandler dbh)
 		{
 			_dbh = dbh;
 			Sqlc = _dbh.Sqlc;
@@ -53,7 +53,7 @@ namespace KodeKeeper
 				foreach (JToken v in obj)
 				{
 					var o = v.First;
-					dataUpdateObject d = new dataUpdateObject();
+					c_DataUpdateObject d = new c_DataUpdateObject();
 					d.Name = o.First().First().ToString();
 					foreach (var vv in o.Children())
 					{
@@ -66,9 +66,9 @@ namespace KodeKeeper
 			return dObj;
 		}
 
-		public dataUpdateObject checkUpdate()
+		public c_DataUpdateObject checkUpdate()
 		{
-			dataUpdateObject d = new dataUpdateObject();
+			c_DataUpdateObject d = new c_DataUpdateObject();
 			string username = _dbh.getUserName();
 
 			username = "WolfyD";

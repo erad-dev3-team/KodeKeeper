@@ -7,7 +7,7 @@ using System.Text;
 
 namespace KodeKeeper
 {
-	class updater
+	class c_UpdateQueryGenerator
 	{
 		public c_DBHandler _dbh { get; set; }
 
@@ -17,9 +17,9 @@ namespace KodeKeeper
 		{
 			StringBuilder sb = new StringBuilder();
 			//TESTING!!!
-			update_handler uh = new update_handler(_dbh);
+			c_FileDataCollectionManager uh = new c_FileDataCollectionManager(_dbh);
 			dataObject v = uh.getUpdate();
-			foreach (dataUpdateObject c in v.GetAll())
+			foreach (c_DataUpdateObject c in v.GetAll())
 			{
 				Console.WriteLine($"-----{c.Name}-----");
 				string columns = "";

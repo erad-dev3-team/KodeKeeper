@@ -97,10 +97,10 @@ namespace KodeKeeper
 			_sql.ExecuteNonQuery();
 		}
 		
-		public List<connection> getConnections()
+		public List<c_ConnectionObject> getConnections()
 		{
 			if (!checkConnection()) { return null; }
-			List<connection> conns = new List<connection>();
+			List<c_ConnectionObject> conns = new List<c_ConnectionObject>();
 
 			_sql.CommandText = "SELECT * FROM connections";
 
@@ -108,7 +108,7 @@ namespace KodeKeeper
 
 			while (reader.Read())
 			{
-				connection c = new connection();
+				c_ConnectionObject c = new c_ConnectionObject();
 				
 				c.Id						= coalesce(0,	reader.GetValue(reader.GetOrdinal("id")						));
 				c.Project_id				= coalesce(0,	reader.GetValue(reader.GetOrdinal("project_id")				));
@@ -140,7 +140,7 @@ namespace KodeKeeper
 			return conns;
 		}
 
-		public void saveConnection(connection c)
+		public void saveConnection(c_ConnectionObject c)
 		{
 			if (!checkConnection()) { return; }
 
@@ -216,6 +216,22 @@ VALUES
 			}
 
 			return "";
+		}
+
+		public List<object[]> getProjectNames()
+		{
+			List<object[]> lst = new List<object[]>();
+
+			if (!checkConnection()) { return null; }
+			_sql.CommandText = $"SELECT name, projects_uid as id FROM projects";
+			SQLiteDataReader r = _sql.ExecuteReader();
+
+			while (r.Read())
+			{
+				lst.Add(new object[] { r.GetString(r.GetOrdinal("name")), r.GetInt32(r.GetOrdinal("id")) });
+			}
+
+			return lst;
 		}
 
 		public int getFileTypeId(string fileTypeName)

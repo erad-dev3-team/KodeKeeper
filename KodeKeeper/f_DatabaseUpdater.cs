@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace KodeKeeper
 {
-	public partial class dataUpdate : Form
+	public partial class f_DatabaseUpdater : Form
 	{
 		public c_DBHandler _dbh { get; set; }
 		public bool ApproovedUpdate = false;
@@ -24,7 +24,7 @@ namespace KodeKeeper
 		ListViewItem _l2 = null;
 		int _updateRowsExpected = 0;
 
-		public dataUpdate(dataUpdateObject obj = null)
+		public f_DatabaseUpdater(c_DataUpdateObject obj = null)
 		{
 			InitializeComponent();
 
@@ -135,7 +135,7 @@ namespace KodeKeeper
 			
 		}
 
-		public void fillNumbers(dataUpdateObject obj)
+		public void fillNumbers(c_DataUpdateObject obj)
 		{
 			int i = 0;
 			foreach (DictionaryEntry v in obj.Get())
@@ -207,7 +207,7 @@ namespace KodeKeeper
 
 		public void startUpdate()
 		{
-			updater upd = new updater() { _dbh = _dbh };
+			c_UpdateQueryGenerator upd = new c_UpdateQueryGenerator() { _dbh = _dbh };
 
 			_query = upd.update();
 			if (ApproovedUpdate)

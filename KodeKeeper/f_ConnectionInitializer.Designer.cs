@@ -1,6 +1,6 @@
 ﻿namespace KodeKeeper
 {
-	partial class f_cts
+	partial class f_ConnectionInitializer
 	{
 		/// <summary>
 		/// Required designer variable.

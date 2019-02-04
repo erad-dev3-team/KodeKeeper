@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KodeKeeper
 {
-	public static class auto_add_data
+	public static class c_DefaultQueryData
 	{
 		public static string _imageInsert = Properties.Resources.ImageInsert;
 

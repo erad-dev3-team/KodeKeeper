@@ -7,7 +7,7 @@ using WinSCP;
 
 namespace KodeKeeper
 {
-	public class connection
+	public class c_ConnectionObject
 	{
 		public	int		Id						{ get; set; } = -1;
 		public	int		Log_id					{ get; set; }

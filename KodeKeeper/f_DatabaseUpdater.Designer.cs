@@ -1,6 +1,6 @@
 ﻿namespace KodeKeeper
 {
-	partial class dataUpdate
+	partial class f_DatabaseUpdater
 	{
 		/// <summary>
 		/// Required designer variable.

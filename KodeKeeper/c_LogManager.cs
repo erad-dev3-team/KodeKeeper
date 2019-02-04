@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace KodeKeeper
 {
-	public static class log
+	public static class c_LogManager
 	{
-		public static void add(int log_id, int project_id, logData data)
+		public static void add(int log_id, int project_id, c_LogDataObject data)
 		{
 
 		}

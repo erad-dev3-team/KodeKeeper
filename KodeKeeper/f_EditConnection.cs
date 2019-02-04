@@ -16,10 +16,13 @@ namespace KodeKeeper
 		private string _proxy_settings = "";
 		private string _ssh_settings = "";
 		private string _tunnel_settings = "";
+		Dictionary<string, int> dict = new Dictionary<string, int>();
 
-		public f_EditConnection(bool edit = false, connection conn = null)
+		public f_EditConnection(bool edit = false, c_ConnectionObject conn = null)
 		{
 			InitializeComponent();
+
+			Load += F_EditConnection_Load;
 
 			if(edit && conn != null)
 			{
@@ -33,7 +36,28 @@ namespace KodeKeeper
 			}
 		}
 
-		private void loadConnectionData(connection conn)
+		private void F_EditConnection_Load(object sender, EventArgs e)
+		{
+			List<object[]> lst = Dbh.getProjectNames();
+			foreach (object[] arr in lst)
+			{
+				try
+				{
+					dict.Add(arr[0].ToString(), Convert.ToInt32(arr[1].ToString()));
+				}
+				catch
+				{
+
+				}
+			}
+
+			foreach(KeyValuePair<string, int> v in dict)
+			{
+				cb_Projects.Items.Add(v.Key);
+			}
+		}
+
+		private void loadConnectionData(c_ConnectionObject conn)
 		{
 
 		}
@@ -44,7 +68,7 @@ namespace KodeKeeper
 
 		public void save()
 		{
-			connection c = new connection() {
+			c_ConnectionObject c = new c_ConnectionObject() {
 				Name					=	tb_ConnectionName.Text,
 				Connection_protocol		=	cb_Protocol.Text,
 				Host					=	tb_HostName.Text,

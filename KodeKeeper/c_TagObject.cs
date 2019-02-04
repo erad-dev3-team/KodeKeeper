@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KodeKeeper
 {
-	class tag
+	class c_TagObject
 	{
 		public int tag_id;
 		public string tag_name;

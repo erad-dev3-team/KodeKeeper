@@ -17,7 +17,7 @@ namespace KodeKeeper
 		private bool searchResize_MDown = false;
 		private Point searchResize_Pnt = new Point(0, 0);
 		private c_DBHandler _dbh = new c_DBHandler("KodeKeeper.db");
-		private update_handler uh;
+		private c_FileDataCollectionManager uh;
 
 		protected override CreateParams CreateParams
 		{
@@ -38,7 +38,7 @@ namespace KodeKeeper
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			p_Search.Hide();
-			uh = new update_handler(_dbh);
+			uh = new c_FileDataCollectionManager(_dbh);
 		}
 
 		private void p_SearchHeader_MouseDown(object sender, MouseEventArgs e)
@@ -153,7 +153,7 @@ namespace KodeKeeper
 
 		private void btn_Menu_Data_CheckUpdates_Click(object sender, EventArgs e)
 		{
-			dataUpdateObject v = uh.checkUpdate();
+			c_DataUpdateObject v = uh.checkUpdate();
 			Hashtable vv = v.Get();
 			int i = 0;
 			foreach(DictionaryEntry vvv in vv)
@@ -176,9 +176,9 @@ namespace KodeKeeper
 			openUpdateScreen();
 		}
 
-		public void openUpdateScreen(dataUpdateObject obj = null)
+		public void openUpdateScreen(c_DataUpdateObject obj = null)
 		{
-			dataUpdate du = new dataUpdate(obj) { _dbh = _dbh };
+			f_DatabaseUpdater du = new f_DatabaseUpdater(obj) { _dbh = _dbh };
 			du.ShowDialog();
 		}
 
@@ -189,7 +189,7 @@ namespace KodeKeeper
 
 		private void btn_Menu_Connection_Open_Click(object sender, EventArgs e)
 		{
-			f_cts fcts = new f_cts();
+			f_ConnectionInitializer fcts = new f_ConnectionInitializer();
 			fcts.Dbh = _dbh;
 			fcts.ShowDialog();
 		}
@@ -199,6 +199,16 @@ namespace KodeKeeper
 			f_EditConnection ec = new f_EditConnection();
 			ec.Dbh = _dbh;
 			ec.ShowDialog();
+		}
+
+		private void btn_Menu_Projects_AddProject_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btn_Menu_Projects_EditProject_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
