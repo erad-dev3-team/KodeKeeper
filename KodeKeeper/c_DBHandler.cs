@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Data.SQLite;
 using System.IO;
+using KodeKeeper.Objects;
 
 namespace KodeKeeper
 {
@@ -51,19 +52,7 @@ namespace KodeKeeper
 			if (_sql.ExecuteScalar() is null) { return false; }
 			else { return true; }
 		}
-		/*
-		//TODO: 20190120 - GetData
-		public Dictionary<string, string> getData(string table)
-		{
-			
-			if (checkTableExists(table))
-			{
-				_sql.CommandText = "SELECT * FROM " + table;
-			}
-		}
-		*/
 		
-
 		public int coalesce(int type, object value)
 		{
 			int val = -1;
@@ -345,6 +334,11 @@ VALUES
 			}
 
 			return null;
+		}
+
+		public void updateProjects(  bool update = false)
+		{
+
 		}
 
 		public void setLastUpdateDataSent(DateTime last_update_sent)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KodeKeeper.Objects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,23 +110,7 @@ namespace KodeKeeper
 
 		private void num_Port_ValueChanged(object sender, EventArgs e)
 		{
-			switch (cb_Protocol.SelectedIndex)
-			{
-				case 0:
-					num_Port.Value = 21;
-					break;
-
-				case 1:
-				case 2:
-					num_Port.Value = 22;
-					break;
-
-				case 3:
-				case 4:
-					num_Port.Value = 443;
-					break;
-
-			}
+			
 		}
 
 		private void cb_Authentication_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,6 +138,27 @@ namespace KodeKeeper
 				lbl_Pwd.Text = "Key Passphrase: ";
 				tb_Password.Enabled = false;
 				btn_ViewPass.Enabled = false;
+			}
+		}
+
+		private void cb_Protocol_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			switch (cb_Protocol.SelectedIndex)
+			{
+				case 0:
+					num_Port.Value = 21;
+					break;
+
+				case 1:
+				case 2:
+					num_Port.Value = 22;
+					break;
+
+				case 3:
+				case 4:
+					num_Port.Value = 443;
+					break;
+
 			}
 		}
 	}

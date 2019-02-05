@@ -35,19 +35,20 @@
 			this.btn_SaveProject = new System.Windows.Forms.Button();
 			this.btn_Cancel = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
+			this.btn_ShowProjectFiles = new System.Windows.Forms.Button();
 			this.lbl_InsertUser = new System.Windows.Forms.Label();
 			this.lbl_ProjModified = new System.Windows.Forms.Label();
 			this.lbl_ProjAdded = new System.Windows.Forms.Label();
 			this.lbl_NumOfFiles = new System.Windows.Forms.Label();
 			this.lbl_ProjectUId = new System.Windows.Forms.Label();
 			this.lbl_ProjectId = new System.Windows.Forms.Label();
-			this.btn_ShowProjectFiles = new System.Windows.Forms.Button();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.btn_DeleteProject = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -92,6 +93,7 @@
 			this.btn_SaveProject.TabIndex = 4;
 			this.btn_SaveProject.Text = "Save";
 			this.btn_SaveProject.UseVisualStyleBackColor = true;
+			this.btn_SaveProject.Click += new System.EventHandler(this.btn_SaveProject_Click);
 			// 
 			// btn_Cancel
 			// 
@@ -119,69 +121,25 @@
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Location = new System.Drawing.Point(343, 6);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(291, 210);
+			this.groupBox1.Size = new System.Drawing.Size(291, 167);
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Project Data";
 			// 
-			// label6
+			// btn_ShowProjectFiles
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 100);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(68, 13);
-			this.label6.TabIndex = 3;
-			this.label6.Text = "Proj. Added: ";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(6, 76);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(53, 13);
-			this.label5.TabIndex = 2;
-			this.label5.Text = "# of files: ";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(6, 52);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(32, 13);
-			this.label4.TabIndex = 1;
-			this.label4.Text = "UID: ";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(6, 28);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(24, 13);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "ID: ";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(6, 124);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(77, 13);
-			this.label7.TabIndex = 4;
-			this.label7.Text = "Proj. Modified: ";
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(6, 148);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(64, 13);
-			this.label8.TabIndex = 5;
-			this.label8.Text = "Insert User: ";
+			this.btn_ShowProjectFiles.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.btn_ShowProjectFiles.Location = new System.Drawing.Point(3, 141);
+			this.btn_ShowProjectFiles.Name = "btn_ShowProjectFiles";
+			this.btn_ShowProjectFiles.Size = new System.Drawing.Size(285, 23);
+			this.btn_ShowProjectFiles.TabIndex = 12;
+			this.btn_ShowProjectFiles.Text = "Show files in this project";
+			this.btn_ShowProjectFiles.UseVisualStyleBackColor = true;
 			// 
 			// lbl_InsertUser
 			// 
 			this.lbl_InsertUser.AutoSize = true;
-			this.lbl_InsertUser.Location = new System.Drawing.Point(85, 148);
+			this.lbl_InsertUser.Location = new System.Drawing.Point(85, 123);
 			this.lbl_InsertUser.Name = "lbl_InsertUser";
 			this.lbl_InsertUser.Size = new System.Drawing.Size(9, 13);
 			this.lbl_InsertUser.TabIndex = 11;
@@ -190,7 +148,7 @@
 			// lbl_ProjModified
 			// 
 			this.lbl_ProjModified.AutoSize = true;
-			this.lbl_ProjModified.Location = new System.Drawing.Point(85, 124);
+			this.lbl_ProjModified.Location = new System.Drawing.Point(85, 104);
 			this.lbl_ProjModified.Name = "lbl_ProjModified";
 			this.lbl_ProjModified.Size = new System.Drawing.Size(9, 13);
 			this.lbl_ProjModified.TabIndex = 10;
@@ -199,7 +157,7 @@
 			// lbl_ProjAdded
 			// 
 			this.lbl_ProjAdded.AutoSize = true;
-			this.lbl_ProjAdded.Location = new System.Drawing.Point(85, 100);
+			this.lbl_ProjAdded.Location = new System.Drawing.Point(85, 85);
 			this.lbl_ProjAdded.Name = "lbl_ProjAdded";
 			this.lbl_ProjAdded.Size = new System.Drawing.Size(9, 13);
 			this.lbl_ProjAdded.TabIndex = 9;
@@ -208,7 +166,7 @@
 			// lbl_NumOfFiles
 			// 
 			this.lbl_NumOfFiles.AutoSize = true;
-			this.lbl_NumOfFiles.Location = new System.Drawing.Point(85, 76);
+			this.lbl_NumOfFiles.Location = new System.Drawing.Point(85, 66);
 			this.lbl_NumOfFiles.Name = "lbl_NumOfFiles";
 			this.lbl_NumOfFiles.Size = new System.Drawing.Size(9, 13);
 			this.lbl_NumOfFiles.TabIndex = 8;
@@ -217,7 +175,7 @@
 			// lbl_ProjectUId
 			// 
 			this.lbl_ProjectUId.AutoSize = true;
-			this.lbl_ProjectUId.Location = new System.Drawing.Point(85, 52);
+			this.lbl_ProjectUId.Location = new System.Drawing.Point(85, 47);
 			this.lbl_ProjectUId.Name = "lbl_ProjectUId";
 			this.lbl_ProjectUId.Size = new System.Drawing.Size(9, 13);
 			this.lbl_ProjectUId.TabIndex = 7;
@@ -232,21 +190,76 @@
 			this.lbl_ProjectId.TabIndex = 6;
 			this.lbl_ProjectId.Text = "|";
 			// 
-			// btn_ShowProjectFiles
+			// label8
 			// 
-			this.btn_ShowProjectFiles.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.btn_ShowProjectFiles.Location = new System.Drawing.Point(3, 184);
-			this.btn_ShowProjectFiles.Name = "btn_ShowProjectFiles";
-			this.btn_ShowProjectFiles.Size = new System.Drawing.Size(285, 23);
-			this.btn_ShowProjectFiles.TabIndex = 12;
-			this.btn_ShowProjectFiles.Text = "Show files in this project";
-			this.btn_ShowProjectFiles.UseVisualStyleBackColor = true;
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(6, 123);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(64, 13);
+			this.label8.TabIndex = 5;
+			this.label8.Text = "Insert User: ";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(6, 104);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(77, 13);
+			this.label7.TabIndex = 4;
+			this.label7.Text = "Proj. Modified: ";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(6, 85);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(68, 13);
+			this.label6.TabIndex = 3;
+			this.label6.Text = "Proj. Added: ";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(6, 66);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(53, 13);
+			this.label5.TabIndex = 2;
+			this.label5.Text = "# of files: ";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(6, 47);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(32, 13);
+			this.label4.TabIndex = 1;
+			this.label4.Text = "UID: ";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(6, 28);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(24, 13);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "ID: ";
+			// 
+			// btn_DeleteProject
+			// 
+			this.btn_DeleteProject.Location = new System.Drawing.Point(470, 193);
+			this.btn_DeleteProject.Name = "btn_DeleteProject";
+			this.btn_DeleteProject.Size = new System.Drawing.Size(164, 23);
+			this.btn_DeleteProject.TabIndex = 7;
+			this.btn_DeleteProject.Text = "Delete Project";
+			this.btn_DeleteProject.UseVisualStyleBackColor = true;
+			this.btn_DeleteProject.Click += new System.EventHandler(this.btn_DeleteProject_Click);
 			// 
 			// f_Add_Project
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(342, 228);
+			this.ClientSize = new System.Drawing.Size(338, 228);
+			this.Controls.Add(this.btn_DeleteProject);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btn_Cancel);
 			this.Controls.Add(this.btn_SaveProject);
@@ -288,5 +301,6 @@
 		private System.Windows.Forms.Label lbl_ProjectId;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button btn_DeleteProject;
 	}
 }

@@ -134,6 +134,7 @@
 			this.cb_Protocol.Name = "cb_Protocol";
 			this.cb_Protocol.Size = new System.Drawing.Size(156, 21);
 			this.cb_Protocol.TabIndex = 1;
+			this.cb_Protocol.SelectedIndexChanged += new System.EventHandler(this.cb_Protocol_SelectedIndexChanged);
 			// 
 			// label3
 			// 

@@ -1,4 +1,5 @@
-﻿using ScintillaNET;
+﻿using KodeKeeper.Objects;
+using ScintillaNET;
 using System;
 using System.Collections;
 using System.Collections.Generic;
